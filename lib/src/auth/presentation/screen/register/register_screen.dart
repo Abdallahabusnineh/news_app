@@ -30,11 +30,11 @@ class RegisterScreen extends ConsumerWidget {
           children: [
             Text(
               'Hello!',
-              style: AppFontStyle.fontSize48W700ColorBlue(),
+              style: AppFontStyle.w700ColorBlue(fontSize: 48),
             ),
             Text(
               'sign up to get started',
-              style: AppFontStyle.fontSize20W400ColorLightPurple(),
+              style: AppFontStyle.w400ColorLightPurple(fontSize:20),
               maxLines: 2,
             ),
             SizedBox(
@@ -42,7 +42,7 @@ class RegisterScreen extends ConsumerWidget {
             ),
             Text(
               'Email',
-              style: AppFontStyle.fontSize16W400ColorBlack(),
+              style: AppFontStyle.w400ColorBlack(fontSize: 16),
             ),
             SizedBox(
               height: 1.h,
@@ -72,7 +72,7 @@ class RegisterScreen extends ConsumerWidget {
             ),
             Text(
               'Username',
-              style: AppFontStyle.fontSize16W400ColorBlack(),
+              style: AppFontStyle.w400ColorBlack(fontSize: 16),
             ),
             SizedBox(
               height: 1.h,
@@ -98,7 +98,7 @@ class RegisterScreen extends ConsumerWidget {
             ),
             Text(
               'Password',
-              style: AppFontStyle.fontSize16W400ColorBlack(),
+              style: AppFontStyle.w400ColorBlack(fontSize: 16),
             ),
             SizedBox(
               height: 1.h,
@@ -135,7 +135,7 @@ class RegisterScreen extends ConsumerWidget {
             ),
             Text(
               'Confirm Password',
-              style: AppFontStyle.fontSize16W400ColorBlack(),
+              style: AppFontStyle.w400ColorBlack(fontSize: 16),
             ),
             SizedBox(
               height: 1.h,
@@ -178,7 +178,7 @@ class RegisterScreen extends ConsumerWidget {
                 ),
                 Text(
                   'Remember me',
-                  style: AppFontStyle.fontSize14W400ColorLightPurple(),
+                  style: AppFontStyle.w400ColorLightPurple(fontSize:14),
                 ),
               ],
             ),
@@ -209,7 +209,7 @@ class RegisterScreen extends ConsumerWidget {
                     },
                     child: Text(
                       'Sign Up',
-                      style: AppFontStyle.fontSize16W600ColorWhite(),
+                      style: AppFontStyle.w600ColorWhite(fontSize:16),
                     ))),
             SizedBox(
               height: 1.h,
@@ -218,7 +218,7 @@ class RegisterScreen extends ConsumerWidget {
                 alignment: Alignment.center,
                 child: Text(
                   'or continue with',
-                  style: AppFontStyle.fontSize14W400ColorLightPurple(),
+                  style: AppFontStyle.w400ColorLightPurple(fontSize:14),
                 )),
             SizedBox(
               height: 1.h,
@@ -244,7 +244,7 @@ class RegisterScreen extends ConsumerWidget {
                       ),
                       Text(
                         'Google',
-                        style: AppFontStyle.fontSize14W400ColorLightPurple(),
+                        style: AppFontStyle.w400ColorLightPurple(fontSize:14),
                       ),
                     ],
                   ),
@@ -271,7 +271,7 @@ class RegisterScreen extends ConsumerWidget {
                       ),
                       Text(
                         'Google',
-                        style: AppFontStyle.fontSize14W400ColorLightPurple(),
+                        style: AppFontStyle.w400ColorLightPurple(fontSize:14),
                       ),
                     ],
                   ),
@@ -283,7 +283,7 @@ class RegisterScreen extends ConsumerWidget {
               children: [
                 Text(
                   'Already have an account ?',
-                  style: AppFontStyle.fontSize14W400ColorLightPurple(),
+                  style: AppFontStyle.w400ColorLightPurple(fontSize:14),
                 ),
                 TextButton(
                   onPressed: () {
@@ -292,7 +292,7 @@ class RegisterScreen extends ConsumerWidget {
                   },
                   child: Text(
                     'Login',
-                    style: AppFontStyle.fontSize14W600ColorBlue(),
+                    style: AppFontStyle.w600ColorBlue(fontSize: 16),
                   ),
                 )
               ],

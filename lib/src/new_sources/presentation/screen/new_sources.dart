@@ -25,7 +25,7 @@ class NewSources extends StatelessWidget {
           centerTitle: true,
           title: Text(
             'Choose Your New Sources',
-            style: AppFontStyle.fontSize16W600ColorBlack(),
+            style: AppFontStyle.w600ColorBlack(fontSize: 16),
           ),
         ),
         body: Container(
@@ -73,7 +73,7 @@ class NewSources extends StatelessWidget {
                             SizedBox(
                               height: .5.h,
                             ),
-                            Text('CNBC',style: AppFontStyle.fontSize16W600ColorBlack(),),
+                            Text('CNBC',style: AppFontStyle.w600ColorBlack(fontSize: 16),),
                             Container(
                                 padding: EdgeInsets.symmetric(
                                   horizontal: 1.w,
@@ -86,7 +86,7 @@ class NewSources extends StatelessWidget {
                                   ),
                                   borderRadius: BorderRadius.circular(6),
                                 ),
-                                child: Text('Follow',style: AppFontStyle.fontSize16W600ColorBlue(),),),
+                                child: Text('Follow',style: AppFontStyle.w600ColorBlue(fontSize: 16),),),
                           ],
                         ),
                       );

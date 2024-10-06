@@ -62,7 +62,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               Text(
                 'Trending',
-                style: AppFontStyle.fontSize16W600ColorBlack(),
+                style: AppFontStyle.w600ColorBlack(fontSize: 16),
               ),
               TextButton(
                 onPressed: () {
@@ -73,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                 child: Text(
                   'see all',
                   style:
-                  AppFontStyle.fontSize14W400ColorLightPurple(),
+                  AppFontStyle.w400ColorLightPurple(fontSize:14),
                 ),
               )
             ],
@@ -87,14 +87,14 @@ class HomeScreen extends StatelessWidget {
             children: [
               Text(
                 'Latest',
-                style: AppFontStyle.fontSize16W600ColorBlack(),
+                style: AppFontStyle.w600ColorBlack(fontSize: 16),
               ),
               TextButton(
                 onPressed: () {},
                 child: Text(
                   'see all',
                   style:
-                  AppFontStyle.fontSize14W400ColorLightPurple(),
+                  AppFontStyle.w400ColorLightPurple(fontSize:14),
                 ),
               )
             ],
@@ -110,7 +110,7 @@ class HomeScreen extends StatelessWidget {
                 color: Colors.black,
                 fillColor: Colors.transparent,
                 renderBorder: false,
-                textStyle: AppFontStyle.fontSize16W400ColorBlack(),
+                textStyle: AppFontStyle.w400ColorBlack(fontSize: 16),
                 children: List.generate(labels.length, (index) {
                   return Container(
                     padding: EdgeInsets.symmetric(
@@ -127,9 +127,9 @@ class HomeScreen extends StatelessWidget {
                     child: Text(
                       labels[index],
                       style: isSelected[index]
-                          ? AppFontStyle.fontSize16W400ColorBlack()
+                          ? AppFontStyle.w400ColorBlack(fontSize: 16)
                           : AppFontStyle
-                          .fontSize16W400ColorLightPurple(),
+                          .w400ColorLightPurple(fontSize:16),
                     ),
                   );
                 }),

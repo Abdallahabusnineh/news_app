@@ -34,7 +34,7 @@ class FillProfile extends StatelessWidget {
           centerTitle: true,
           title: Text(
             'Fill your Profile',
-            style: AppFontStyle.fontSize16W600ColorBlack(),
+            style: AppFontStyle.w600ColorBlack(fontSize: 16),
           ),
         ),
         body: Form(
@@ -84,7 +84,7 @@ class FillProfile extends StatelessWidget {
                     ),
                     Text(
                       'Username',
-                      style: AppFontStyle.fontSize14W400ColorLightPurple(),
+                      style: AppFontStyle.w400ColorLightPurple(fontSize:14),
                     ),
                     SizedBox(
                       height: 1.h,
@@ -110,7 +110,7 @@ class FillProfile extends StatelessWidget {
                     ),
                     Text(
                       'Full Name',
-                      style: AppFontStyle.fontSize14W400ColorLightPurple(),
+                      style: AppFontStyle.w400ColorLightPurple(fontSize:14),
                     ),
                     SizedBox(
                       height: 1.h,
@@ -136,7 +136,7 @@ class FillProfile extends StatelessWidget {
                     ),
                     Text(
                       'Email Address',
-                      style: AppFontStyle.fontSize14W400ColorLightPurple(),
+                      style: AppFontStyle.w400ColorLightPurple(fontSize:14),
                     ),
                     SizedBox(
                       height: 1.h,
@@ -162,7 +162,7 @@ class FillProfile extends StatelessWidget {
                     ),
                     Text(
                       'Phone Number',
-                      style: AppFontStyle.fontSize14W400ColorLightPurple(),
+                      style: AppFontStyle.w400ColorLightPurple(fontSize:14),
                     ),
                     SizedBox(
                       height: 1.h,

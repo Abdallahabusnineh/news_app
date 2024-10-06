@@ -26,7 +26,7 @@ class ChooseYourTopics extends StatelessWidget {
           centerTitle: true,
           title: Text(
             'Select your country',
-            style: AppFontStyle.fontSize16W600ColorBlack(),
+            style: AppFontStyle.w600ColorBlack(fontSize: 16),
           ),
         ),
         body: Container(
@@ -52,7 +52,7 @@ class ChooseYourTopics extends StatelessWidget {
                        ),
                        child: Padding(
                          padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
-                         child: Text('Science', style: AppFontStyle.fontSize16W600ColorBlue()),
+                         child: Text('Science', style: AppFontStyle.w600ColorBlue(fontSize: 14)),
                        ),
                      ),
                      Container(
@@ -62,7 +62,7 @@ class ChooseYourTopics extends StatelessWidget {
                        ),
                        child: Padding(
                          padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
-                         child: Text('Science', style: AppFontStyle.fontSize16W600ColorBlue()),
+                         child: Text('Science', style: AppFontStyle.w600ColorBlue(fontSize: 14)),
                        ),
                      ),
                      Container(
@@ -72,7 +72,7 @@ class ChooseYourTopics extends StatelessWidget {
                        ),
                        child: Padding(
                          padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
-                         child: Text('Science', style: AppFontStyle.fontSize16W600ColorBlue()),
+                         child: Text('Science', style: AppFontStyle.w600ColorBlue(fontSize: 14)),
                        ),
                      ),
                      Container(
@@ -82,7 +82,7 @@ class ChooseYourTopics extends StatelessWidget {
                        ),
                        child: Padding(
                          padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
-                         child: Text('Science', style: AppFontStyle.fontSize16W600ColorBlue()),
+                         child: Text('Science', style: AppFontStyle.w600ColorBlue(fontSize: 14)),
                        ),
                      ),
                      Container(
@@ -92,7 +92,7 @@ class ChooseYourTopics extends StatelessWidget {
                        ),
                        child: Padding(
                          padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
-                         child: Text('Science', style: AppFontStyle.fontSize16W600ColorBlue()),
+                         child: Text('Science', style: AppFontStyle.w600ColorBlue(fontSize: 14)),
                        ),
                      ),
                      Container(
@@ -102,7 +102,7 @@ class ChooseYourTopics extends StatelessWidget {
                        ),
                        child: Padding(
                          padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
-                         child: Text('Science', style: AppFontStyle.fontSize16W600ColorBlue()),
+                         child: Text('Science', style: AppFontStyle.w600ColorBlue(fontSize: 14)),
                        ),
                      ),
                      Container(
@@ -112,7 +112,7 @@ class ChooseYourTopics extends StatelessWidget {
                        ),
                        child: Padding(
                          padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
-                         child: Text('Science', style: AppFontStyle.fontSize16W600ColorBlue()),
+                         child: Text('Science', style: AppFontStyle.w600ColorBlue(fontSize: 14)),
                        ),
                      ),
                     ],

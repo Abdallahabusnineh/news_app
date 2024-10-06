@@ -15,7 +15,7 @@ class TrendingScreen extends StatelessWidget {
 
         title: Text(
           'Trending',
-          style: AppFontStyle.fontSize16W600ColorBlack(),
+          style: AppFontStyle.w600ColorBlack(fontSize: 16),
         ),
         actions: [
           IconButton(

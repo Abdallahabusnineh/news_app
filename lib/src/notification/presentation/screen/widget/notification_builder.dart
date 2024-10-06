@@ -39,19 +39,19 @@ class NotificationBuilder extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: allNotification[index].title,
-                        style: AppFontStyle.fontSize16W600ColorBlack(),
+                        style: AppFontStyle.w600ColorBlack(fontSize: 16),
                       ),
                       TextSpan(
                         text:
                         allNotification[index].body,
-                        style: AppFontStyle.fontSize16W400ColorBlack(),
+                        style: AppFontStyle.w400ColorBlack(fontSize: 16),
                       ),
                     ],
                   ),
                 ),
                 Text(
                   allNotification[index].dateTime,
-                  style: AppFontStyle.fontSize13W400ColorExtraLightPurple(),
+                  style: AppFontStyle.w400ColorExtraLightPurple(fontSize:13),
                 )
               ],
             ),
@@ -70,7 +70,7 @@ class NotificationBuilder extends StatelessWidget {
                 Icon(Icons.add, color: AppColors.primaryColor),
                 Text(
                   'Follow',
-                  style: AppFontStyle.fontSize16W600ColorBlue(),
+                  style: AppFontStyle.w600ColorBlue(fontSize: 16),
                 ),
               ],
             ),

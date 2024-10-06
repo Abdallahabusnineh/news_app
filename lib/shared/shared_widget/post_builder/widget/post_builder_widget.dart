@@ -28,10 +28,10 @@ Widget isTrendingPostBuilder() {
         height: 1.h,
       ),
       Text(postBuilderModel.title,
-          style: AppFontStyle.fontSize13W400ColorExtraLightPurple()),
+          style: AppFontStyle.w400ColorExtraLightPurple(fontSize:13)),
       Text(
         postBuilderModel.subtitle,
-        style: AppFontStyle.fontSize16W400ColorBlack(),
+        style: AppFontStyle.w400ColorBlack(fontSize: 16),
         maxLines: 1,
       ),
       Row(
@@ -44,7 +44,8 @@ Widget isTrendingPostBuilder() {
           ),
           Text(
             postBuilderModel.authorName,
-            style: AppFontStyle.fontSize13W600ColorLightPurple(),
+            style: AppFontStyle.w600ColorLightPurple(fontSize: 13),
+
           ),
           SizedBox(
             width: 3.w,
@@ -58,7 +59,7 @@ Widget isTrendingPostBuilder() {
           ),
           Text(
             postBuilderModel.postTime,
-            style: AppFontStyle.fontSize13W400ColorExtraLightPurple(),
+            style: AppFontStyle.w400ColorExtraLightPurple(fontSize:13),
           ),
           const Spacer(),
           IconButton(
@@ -91,10 +92,10 @@ Widget latestPostBuilder() {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(postBuilderModel.title,
-                style: AppFontStyle.fontSize13W400ColorExtraLightPurple()),
+                style: AppFontStyle.w400ColorExtraLightPurple(fontSize:13)),
             Text(
               postBuilderModel.subtitle,
-              style: AppFontStyle.fontSize16W400ColorBlack(),
+              style: AppFontStyle.w400ColorBlack(fontSize: 16),
               maxLines: 2,
             ),
             Row(
@@ -107,7 +108,7 @@ Widget latestPostBuilder() {
                 ),
                 Text(
                   postBuilderModel.authorName,
-                  style: AppFontStyle.fontSize13W600ColorLightPurple(),
+                  style: AppFontStyle.w600ColorLightPurple(fontSize: 13),
                 ),
                 SizedBox(
                   width: 3.w,
@@ -121,7 +122,7 @@ Widget latestPostBuilder() {
                 ),
                 Text(
                   postBuilderModel.postTime,
-                  style: AppFontStyle.fontSize13W400ColorExtraLightPurple(),
+                  style: AppFontStyle.w400ColorExtraLightPurple(fontSize:13),
                 ),
                 const Spacer(),
                 IconButton(

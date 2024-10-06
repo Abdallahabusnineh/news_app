@@ -17,7 +17,7 @@ class SelectCountryScreen extends StatelessWidget {
           centerTitle: true,
           title: Text(
             'Select your country',
-            style: AppFontStyle.fontSize16W600ColorBlack(),
+            style: AppFontStyle.w600ColorBlack(fontSize: 16),
           ),
         ),
         body: Container(

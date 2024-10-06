@@ -28,15 +28,15 @@ class LoginScreen extends ConsumerWidget {
               children: [
                 Text(
                   'Hello',
-                  style: AppFontStyle.fontSize48W700(),
+                  style: AppFontStyle.w700ColorBlack(fontSize: 48),
                 ),
                 Text(
                   'Again!',
-                  style: AppFontStyle.fontSize48W700ColorBlue(),
+                  style: AppFontStyle.w700ColorBlue(fontSize: 48),
                 ),
                 Text(
                   'Welcome back you’ve been missed',
-                  style: AppFontStyle.fontSize20W400ColorLightPurple(),
+                  style: AppFontStyle.w400ColorLightPurple(fontSize:20),
                   maxLines: 2,
                 ),
                 SizedBox(
@@ -44,7 +44,7 @@ class LoginScreen extends ConsumerWidget {
                 ),
                 Text(
                   'Username',
-                  style: AppFontStyle.fontSize16W400ColorBlack(),
+                  style: AppFontStyle.w400ColorBlack(fontSize: 16),
                 ),
                 SizedBox(
                   height: 1.h,
@@ -70,7 +70,7 @@ class LoginScreen extends ConsumerWidget {
                 ),
                 Text(
                   'Password',
-                  style: AppFontStyle.fontSize16W400ColorBlack(),
+                  style: AppFontStyle.w400ColorBlack(fontSize: 16),
                 ),
                 SizedBox(
                   height: 1.h,
@@ -112,14 +112,14 @@ class LoginScreen extends ConsumerWidget {
                     ),
                     Text(
                       'Remember me',
-                      style: AppFontStyle.fontSize14W400ColorLightPurple(),
+                      style: AppFontStyle.w400ColorLightPurple(fontSize:14),
                     ),
                     const Spacer(),
                     TextButton(
                       onPressed: () {},
                       child: Text(
                         'Forgot Password ?',
-                        style: AppFontStyle.fontSize14W400ColorLightBlue(),
+                        style: AppFontStyle.w400ColorLightBlue(fontSize:14),
                       ),
                     )
                   ],
@@ -159,7 +159,7 @@ class LoginScreen extends ConsumerWidget {
                         },
                         child: Text(
                           'Login',
-                          style: AppFontStyle.fontSize16W600ColorWhite(),
+                          style: AppFontStyle.w600ColorWhite(fontSize:16),
                         ))),
                 SizedBox(
                   height: 1.h,
@@ -168,7 +168,7 @@ class LoginScreen extends ConsumerWidget {
                     alignment: Alignment.center,
                     child: Text(
                       'or continue with',
-                      style: AppFontStyle.fontSize14W400ColorLightPurple(),
+                      style: AppFontStyle.w400ColorLightPurple(fontSize:14),
                     )),
                 SizedBox(
                   height: 1.h,
@@ -194,7 +194,7 @@ class LoginScreen extends ConsumerWidget {
                           ),
                           Text(
                             'Google',
-                            style: AppFontStyle.fontSize14W400ColorLightPurple(),
+                            style: AppFontStyle.w400ColorLightPurple(fontSize:14),
                           ),
                         ],
                       ),
@@ -221,7 +221,7 @@ class LoginScreen extends ConsumerWidget {
                           ),
                           Text(
                             'Google',
-                            style: AppFontStyle.fontSize14W400ColorLightPurple(),
+                            style: AppFontStyle.w400ColorLightPurple(fontSize:14),
                           ),
                         ],
                       ),
@@ -233,7 +233,7 @@ class LoginScreen extends ConsumerWidget {
                   children: [
                     Text(
                       'Don’t have an account ?',
-                      style: AppFontStyle.fontSize14W400ColorLightPurple(),
+                      style: AppFontStyle.w400ColorLightPurple(fontSize:14),
                     ),
                     TextButton(
                       onPressed: () {
@@ -245,7 +245,7 @@ class LoginScreen extends ConsumerWidget {
                       },
                       child: Text(
                         'Sign Up',
-                        style: AppFontStyle.fontSize14W600ColorBlue(),
+                        style: AppFontStyle.w600ColorBlue(fontSize: 16),
                       ),
                     )
                   ],

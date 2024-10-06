@@ -30,13 +30,13 @@ class FirstOnBoardingScreen extends StatelessWidget {
              children: [
                Text(
                  'Lorem Ipsum is simply dummy',
-                 style: AppFontStyle.fontSize24W700(),
+                 style: AppFontStyle.w700ColorBlack(fontSize:24),
                  maxLines: 2,
                ),
                Expanded(
                  child: Text(
                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-                   style: AppFontStyle.fontSize16W400ColorLightPurple(),
+                   style: AppFontStyle.w400ColorLightPurple(fontSize:16),
                    maxLines: 10,
                  ),
                ),

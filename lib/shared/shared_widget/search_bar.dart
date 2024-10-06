@@ -11,7 +11,7 @@ final bool isHasLeading;
     return SearchBar(
       hintText: 'Search ',
       textStyle:  WidgetStatePropertyAll(
-        AppFontStyle.fontSize14W400ColorExtraLightPurple(),
+        AppFontStyle.w400ColorExtraLightPurple(fontSize:14),
       ),
       shape: WidgetStatePropertyAll(
         RoundedRectangleBorder(

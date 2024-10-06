@@ -16,7 +16,7 @@ class NotificationScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           'Notification',
-          style: AppFontStyle.fontSize16W600ColorBlack(),
+          style: AppFontStyle.w600ColorBlack(fontSize: 16),
         ),
         actions: [
           IconButton(
@@ -28,7 +28,7 @@ class NotificationScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-           Text('Today, April 22',style: AppFontStyle.fontSize16W600ColorBlack(),),
+           Text('Today, April 22',style: AppFontStyle.w600ColorBlack(fontSize: 16),),
             SizedBox(height: 2.h,),
             Expanded(
               child: ListView.builder(

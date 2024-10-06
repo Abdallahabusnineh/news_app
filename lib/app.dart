@@ -19,6 +19,9 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           locale: const Locale('en'),
           theme: ThemeData(
+            searchBarTheme: SearchBarThemeData(
+
+            ),
             scaffoldBackgroundColor: AppColors.whiteColor,
             appBarTheme: const AppBarTheme(
               backgroundColor: AppColors.whiteColor,

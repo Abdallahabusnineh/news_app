@@ -38,7 +38,7 @@ class BottomSheetButton extends StatelessWidget {
         },
         child: Text(
           'Next',
-          style: AppFontStyle.fontSize16W600ColorWhite(),
+          style: AppFontStyle.w600ColorWhite(fontSize:16),
         ),
       ),
     );
