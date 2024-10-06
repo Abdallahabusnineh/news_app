@@ -48,7 +48,7 @@ class ChooseYourTopics extends StatelessWidget {
                      Container(
                        decoration: BoxDecoration(
                          borderRadius: BorderRadius.circular(6),
-                         border: Border.all(color: AppColors.secondaryColor, width: 1),
+                         border: Border.all(color: AppColors.primaryColor, width: 1),
                        ),
                        child: Padding(
                          padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
@@ -58,7 +58,7 @@ class ChooseYourTopics extends StatelessWidget {
                      Container(
                        decoration: BoxDecoration(
                          borderRadius: BorderRadius.circular(6),
-                         border: Border.all(color: AppColors.secondaryColor, width: 1),
+                         border: Border.all(color: AppColors.primaryColor, width: 1),
                        ),
                        child: Padding(
                          padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
@@ -68,7 +68,7 @@ class ChooseYourTopics extends StatelessWidget {
                      Container(
                        decoration: BoxDecoration(
                          borderRadius: BorderRadius.circular(6),
-                         border: Border.all(color: AppColors.secondaryColor, width: 1),
+                         border: Border.all(color: AppColors.primaryColor, width: 1),
                        ),
                        child: Padding(
                          padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
@@ -78,7 +78,7 @@ class ChooseYourTopics extends StatelessWidget {
                      Container(
                        decoration: BoxDecoration(
                          borderRadius: BorderRadius.circular(6),
-                         border: Border.all(color: AppColors.secondaryColor, width: 1),
+                         border: Border.all(color: AppColors.primaryColor, width: 1),
                        ),
                        child: Padding(
                          padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
@@ -88,7 +88,7 @@ class ChooseYourTopics extends StatelessWidget {
                      Container(
                        decoration: BoxDecoration(
                          borderRadius: BorderRadius.circular(6),
-                         border: Border.all(color: AppColors.secondaryColor, width: 1),
+                         border: Border.all(color: AppColors.primaryColor, width: 1),
                        ),
                        child: Padding(
                          padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
@@ -98,7 +98,7 @@ class ChooseYourTopics extends StatelessWidget {
                      Container(
                        decoration: BoxDecoration(
                          borderRadius: BorderRadius.circular(6),
-                         border: Border.all(color: AppColors.secondaryColor, width: 1),
+                         border: Border.all(color: AppColors.primaryColor, width: 1),
                        ),
                        child: Padding(
                          padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),
@@ -108,7 +108,7 @@ class ChooseYourTopics extends StatelessWidget {
                      Container(
                        decoration: BoxDecoration(
                          borderRadius: BorderRadius.circular(6),
-                         border: Border.all(color: AppColors.secondaryColor, width: 1),
+                         border: Border.all(color: AppColors.primaryColor, width: 1),
                        ),
                        child: Padding(
                          padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 1.h),

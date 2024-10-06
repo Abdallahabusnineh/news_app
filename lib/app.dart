@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/src/auth/presentation/screen/login/login_screen.dart';
-import 'package:news_app/src/main_screen/presentaion/screen/main_screen.dart';
-import 'package:news_app/src/notification/presentation/screen/notification_screen.dart';
+import 'package:news_app/src/auth/presentation/screen/register/register_screen.dart';
 
 
 import 'package:news_app/src/onboarding_screen/initial_screen.dart';
@@ -20,8 +17,6 @@ class MyApp extends StatelessWidget {
         return  MaterialApp(
 
           title: 'Flutter Demo',
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
           locale: const Locale('en'),
           theme: ThemeData(
             scaffoldBackgroundColor: AppColors.whiteColor,
@@ -33,7 +28,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           debugShowCheckedModeBanner: false,
-          home:      const InitialScreen()
+          home:        const InitialScreen()
         );
       },
     );

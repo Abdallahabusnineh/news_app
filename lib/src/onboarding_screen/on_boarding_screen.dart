@@ -49,7 +49,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   controller: _controller,
                   count: 3,
                   effect: JumpingDotEffect(
-                    activeDotColor: AppColors.secondaryColor,
+                    activeDotColor: AppColors.primaryColor,
                     dotHeight: 2.5.h,
                     dotWidth: 2.5.h,
                     jumpScale: 1.5,
@@ -88,7 +88,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         foregroundColor:
                         WidgetStateProperty.all(AppColors.whiteColor),
                         backgroundColor:
-                        WidgetStateProperty.all(AppColors.secondaryColor),
+                        WidgetStateProperty.all(AppColors.primaryColor),
                       ),
                       child: onLastPage ? const Text('Get Started') : const Text('Next'),
                     )

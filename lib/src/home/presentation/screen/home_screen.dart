@@ -119,7 +119,7 @@ class HomeScreen extends StatelessWidget {
                       border: Border(
                         bottom: BorderSide(
                           color: isSelected[index]
-                              ? AppColors.secondaryColor
+                              ? AppColors.primaryColor
                               : Colors.transparent,
                         ),
                       ),

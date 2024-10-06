@@ -28,7 +28,7 @@ class MainScreen extends ConsumerWidget {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: indexBottomNavbar,
-        fixedColor: AppColors.secondaryColor,
+        fixedColor: AppColors.primaryColor,
         backgroundColor: AppColors.whiteColor,
         type: BottomNavigationBarType.fixed,
         onTap: (value) => ref

@@ -81,7 +81,7 @@ class NewSources extends StatelessWidget {
                                 ),
                                 decoration: BoxDecoration(
                                   border: Border.all(
-                                    color: AppColors.secondaryColor,
+                                    color: AppColors.primaryColor,
                                     width: 1.5
                                   ),
                                   borderRadius: BorderRadius.circular(6),

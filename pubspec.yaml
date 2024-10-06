@@ -40,6 +40,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   shared_preferences: ^2.3.2
   dio: ^5.7.0
+  json_annotation: ^4.9.0
   flutter_svg: ^2.0.10+1
   responsive_sizer: ^3.3.1
   animate_do: ^3.3.4
@@ -59,7 +60,12 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^4.0.0
+  pretty_dio_logger: ^1.4.0
+  fluttertoast: ^8.2.8
   riverpod_generator: ^2.4.3
+  json_serializable: ^6.8.0
+  equatable: ^2.0.5
+  dartz: ^0.10.1
   build_runner: ^2.4.13
   custom_lint: ^0.6.7
   riverpod_lint: ^2.3.13

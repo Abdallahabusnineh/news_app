@@ -61,13 +61,13 @@ class NotificationBuilder extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 1.h),
             decoration: BoxDecoration(
               border: Border.all(
-                color: AppColors.secondaryColor
+                color: AppColors.primaryColor
               ),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Row(
               children: [
-                Icon(Icons.add, color: AppColors.secondaryColor),
+                Icon(Icons.add, color: AppColors.primaryColor),
                 Text(
                   'Follow',
                   style: AppFontStyle.fontSize16W600ColorBlue(),

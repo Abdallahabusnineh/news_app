@@ -59,7 +59,7 @@ class FillProfile extends StatelessWidget {
                                   height: 30,
                                   width: 30,
                                   decoration: const BoxDecoration(
-                                      color: AppColors.secondaryColor,
+                                      color: AppColors.primaryColor,
                                       shape: BoxShape.circle),
                                   child: GestureDetector(
                                     onTap: () async {
@@ -74,7 +74,7 @@ class FillProfile extends StatelessWidget {
                                     child: CircleAvatar(
                                         radius: 50,
                                         backgroundColor:
-                                            AppColors.secondaryColor,
+                                            AppColors.primaryColor,
                                         child: Image.asset(
                                           AppAssets.camera,
                                         )),

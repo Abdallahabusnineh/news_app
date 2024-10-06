@@ -5,9 +5,9 @@ import 'package:news_app/shared/core/theme/app_colors.dart';
 
 ThemeData lightTheme() => ThemeData(
   colorScheme: ColorScheme.fromSeed(
-    seedColor: AppColors.secondaryColor,
-    primary: AppColors.secondaryColor,
-    secondary: AppColors.secondaryColor,
+    seedColor: AppColors.primaryColor,
+    primary: AppColors.primaryColor,
+    secondary: AppColors.primaryColor,
     tertiary: AppColors.whiteColor,
   ),
       appBarTheme: const AppBarTheme(
@@ -24,6 +24,9 @@ final ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   primaryColor: Colors.blue,
   hintColor: Colors.blueAccent,
+  textSelectionTheme: const TextSelectionThemeData(
+
+  )
   // Define additional light theme properties here
 );
 final ThemeData darkTheme = ThemeData(

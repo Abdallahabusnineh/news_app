@@ -32,7 +32,9 @@ class NotificationScreen extends StatelessWidget {
             SizedBox(height: 2.h,),
             Expanded(
               child: ListView.builder(
-                physics: const AlwaysScrollableScrollPhysics(),
+                physics: const AlwaysScrollableScrollPhysics(
+
+                ),
                 itemCount: allNotification.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Column(

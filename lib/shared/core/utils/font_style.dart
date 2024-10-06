@@ -19,7 +19,7 @@ class AppFontStyle {
       fontFamily: 'Poppins',
       letterSpacing: 0.12,
       fontWeight: FontWeight.w700,
-      color: AppColors.secondaryColor,
+      color: AppColors.primaryColor,
       overflow: TextOverflow.ellipsis,
     );
   }
@@ -29,7 +29,7 @@ class AppFontStyle {
       fontFamily: 'Poppins',
       letterSpacing: 0.12,
       fontWeight: FontWeight.w600,
-      color: AppColors.secondaryColor,
+      color: AppColors.primaryColor,
       overflow: TextOverflow.ellipsis,
     );
   }
@@ -39,7 +39,7 @@ class AppFontStyle {
       fontFamily: 'Poppins',
       letterSpacing: 0.12,
       fontWeight: FontWeight.w600,
-      color: AppColors.secondaryColor,
+      color: AppColors.primaryColor,
       overflow: TextOverflow.ellipsis,
     );
   }

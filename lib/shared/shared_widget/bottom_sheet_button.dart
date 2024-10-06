@@ -28,7 +28,7 @@ class BottomSheetButton extends StatelessWidget {
       ),
       child: TextButton(
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(AppColors.secondaryColor),
+          backgroundColor: MaterialStateProperty.all(AppColors.primaryColor),
           shape: MaterialStateProperty.all(RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(6),
           )),
