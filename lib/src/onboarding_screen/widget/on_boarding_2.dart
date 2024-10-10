@@ -1,8 +1,6 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 import '../../../shared/core/utils/app_assets.dart';
-import '../../../shared/core/utils/font_style.dart';
 
 
 class SecondOnBoardingScreen extends StatelessWidget {
@@ -23,18 +21,18 @@ class SecondOnBoardingScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              padding: EdgeInsets.only(left: 24,right: 24,bottom: 8,top: 24),
+              padding: const EdgeInsets.only(left: 24,right: 24,bottom: 8,top: 24),
               child: Column(
                 children: [
                   Text(
                     'Lorem Ipsum is simply dummy',
-                    style: AppFontStyle.w700ColorBlack(fontSize:24),
+                    style: Theme.of(context).textTheme.bodyLarge,
                     maxLines: 2,
                   ),
                   Expanded(
                     child: Text(
                       'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-                      style: AppFontStyle.w400ColorLightPurple(fontSize:16),
+                      style: Theme.of(context).textTheme.bodySmall,
                       maxLines: 10,
                     ),
                   ),

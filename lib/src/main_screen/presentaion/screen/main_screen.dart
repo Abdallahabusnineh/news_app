@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:news_app/shared/core/theme/app_colors.dart';
 
 import '../../../home/presentation/screen/home_screen.dart';
+import '../../../test_theme.dart';
 import '../providers/navigation_bar_providers.dart';
 
 class MainScreen extends ConsumerWidget {
@@ -15,9 +14,7 @@ class MainScreen extends ConsumerWidget {
 
     final bodies = [
       const HomeScreen(),
-      const Center(
-        child: Text('Hello From explore Screen'),
-      ),
+      const TestThemeMode(),
       const Center(
         child: Text('Hello From Bookmark Screen'),
       ),
@@ -28,8 +25,6 @@ class MainScreen extends ConsumerWidget {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: indexBottomNavbar,
-        fixedColor: AppColors.primaryColor,
-        backgroundColor: AppColors.whiteColor,
         type: BottomNavigationBarType.fixed,
         onTap: (value) => ref
             .read(indexBottomNavbarProvider.notifier)

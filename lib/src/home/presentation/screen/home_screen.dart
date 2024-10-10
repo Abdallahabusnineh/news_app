@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
-import 'package:news_app/shared/core/utils/font_style.dart';
 import 'package:news_app/shared/shared_widget/post_builder/post_builder.dart';
-import 'package:news_app/shared/shared_widget/search_bar.dart';
 import 'package:news_app/src/home/presentation/screen/widget/home_widget.dart';
 import 'package:news_app/src/notification/presentation/screen/notification_screen.dart';
 import 'package:news_app/src/trending/presentation/screen/trending_screen.dart';
@@ -26,7 +23,7 @@ class HomeScreen extends StatelessWidget {
           ),
           Container(
             decoration: BoxDecoration(
-                color: AppColors.whiteColor,
+                color: Theme.of(context).brightness == Brightness.light?AppColors.whiteColor:const Color(0xFF3A3B3C),
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: [
                   BoxShadow(
@@ -42,7 +39,7 @@ class HomeScreen extends StatelessWidget {
                   }));
                 },
                 icon: Image.asset(
-                  AppAssets.iconNotifications,
+                  AppAssets.iconNotifications,color: Theme.of(context).brightness == Brightness.light?AppColors.blackColor:AppColors.whiteColor,
                 )),
           ),
         ],
@@ -51,8 +48,12 @@ class HomeScreen extends StatelessWidget {
         padding: EdgeInsets.all(3.0.w),
         physics: const AlwaysScrollableScrollPhysics(),
         children: [
-          const CustomSearchBar(
-            isHasLeading: true,
+          SearchBar(
+            hintText: 'Search ',
+            leading:
+            Image.asset(AppAssets.iconSearch,color: Theme.of(context).brightness == Brightness.light?AppColors.lightPurpleColor:AppColors.lightGreyColor,),
+            trailing: List.filled(1, Image.asset(AppAssets.iconFilters,color: Theme.of(context).brightness == Brightness.light?AppColors.lightPurpleColor:AppColors.lightGreyColor),
+                growable: true),
           ),
           SizedBox(
             height: 1.h,
@@ -62,7 +63,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               Text(
                 'Trending',
-                style: AppFontStyle.w600ColorBlack(fontSize: 16),
+                style: Theme.of(context).textTheme.titleMedium,
               ),
               TextButton(
                 onPressed: () {
@@ -73,7 +74,7 @@ class HomeScreen extends StatelessWidget {
                 child: Text(
                   'see all',
                   style:
-                  AppFontStyle.w400ColorLightPurple(fontSize:14),
+                  Theme.of(context).textTheme.labelMedium,
                 ),
               )
             ],
@@ -87,14 +88,14 @@ class HomeScreen extends StatelessWidget {
             children: [
               Text(
                 'Latest',
-                style: AppFontStyle.w600ColorBlack(fontSize: 16),
+                style: Theme.of(context).textTheme.titleMedium,
               ),
               TextButton(
                 onPressed: () {},
                 child: Text(
                   'see all',
                   style:
-                  AppFontStyle.w400ColorLightPurple(fontSize:14),
+                  Theme.of(context).textTheme.labelMedium,
                 ),
               )
             ],
@@ -110,7 +111,7 @@ class HomeScreen extends StatelessWidget {
                 color: Colors.black,
                 fillColor: Colors.transparent,
                 renderBorder: false,
-                textStyle: AppFontStyle.w400ColorBlack(fontSize: 16),
+                textStyle: Theme.of(context).textTheme.bodyMedium,
                 children: List.generate(labels.length, (index) {
                   return Container(
                     padding: EdgeInsets.symmetric(
@@ -127,9 +128,8 @@ class HomeScreen extends StatelessWidget {
                     child: Text(
                       labels[index],
                       style: isSelected[index]
-                          ? AppFontStyle.w400ColorBlack(fontSize: 16)
-                          : AppFontStyle
-                          .w400ColorLightPurple(fontSize:16),
+                          ? Theme.of(context).textTheme.bodyMedium
+                          : Theme.of(context).textTheme.bodySmall,
                     ),
                   );
                 }),

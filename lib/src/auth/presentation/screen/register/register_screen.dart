@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
-import 'package:news_app/src/auth/data/model/user_model.dart';
-import 'package:news_app/src/auth/domain/entites/user_entites.dart';
 import 'package:news_app/src/auth/domain/providers/auth_provider.dart';
-import 'package:news_app/src/main_screen/presentaion/screen/main_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../../../shared/core/theme/app_colors.dart';
-import '../../../../../shared/core/utils/font_style.dart';
 import '../../../../../shared/core/utils/regex_validation.dart';
 import '../../../../select_country/presentation/screen/select_country_screen.dart';
 import '../login/login_screen.dart';
 
 class RegisterScreen extends ConsumerWidget {
-  RegisterScreen({super.key});
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -30,33 +26,26 @@ class RegisterScreen extends ConsumerWidget {
           children: [
             Text(
               'Hello!',
-              style: AppFontStyle.w700ColorBlue(fontSize: 48),
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineLarge
+                  ?.copyWith(color: AppColors.primaryColor),
             ),
             Text(
               'sign up to get started',
-              style: AppFontStyle.w400ColorLightPurple(fontSize:20),
+              style: Theme.of(context).textTheme.headlineMedium,
               maxLines: 2,
             ),
             SizedBox(
               height: 3.h,
             ),
-            Text(
-              'Email',
-              style: AppFontStyle.w400ColorBlack(fontSize: 16),
-            ),
+            Text('Email', style: Theme.of(context).textTheme.labelMedium),
             SizedBox(
               height: 1.h,
             ),
             TextFormField(
               controller: registerNotifier.emailController,
               keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderSide:
-                      const BorderSide(color: Color(0xFF4E4B66), width: 1),
-                  borderRadius: BorderRadius.circular(6.0),
-                ),
-              ),
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter email ';
@@ -70,36 +59,25 @@ class RegisterScreen extends ConsumerWidget {
             SizedBox(
               height: 2.h,
             ),
-            Text(
-              'Username',
-              style: AppFontStyle.w400ColorBlack(fontSize: 16),
-            ),
+            Text('Username', style: Theme.of(context).textTheme.labelMedium),
             SizedBox(
               height: 1.h,
             ),
             TextFormField(
               controller: registerNotifier.userNameController,
               keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderSide:
-                      const BorderSide(color: Color(0xFF4E4B66), width: 1),
-                  borderRadius: BorderRadius.circular(6.0),
-                ),
-              ),
+
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter username';
                 }
+                return null;
               },
             ),
             SizedBox(
               height: 1.h,
             ),
-            Text(
-              'Password',
-              style: AppFontStyle.w400ColorBlack(fontSize: 16),
-            ),
+            Text('Password', style: Theme.of(context).textTheme.labelMedium),
             SizedBox(
               height: 1.h,
             ),
@@ -133,10 +111,8 @@ class RegisterScreen extends ConsumerWidget {
             SizedBox(
               height: 1.h,
             ),
-            Text(
-              'Confirm Password',
-              style: AppFontStyle.w400ColorBlack(fontSize: 16),
-            ),
+            Text('Confirm Password',
+                style: Theme.of(context).textTheme.labelMedium),
             SizedBox(
               height: 1.h,
             ),
@@ -145,6 +121,10 @@ class RegisterScreen extends ConsumerWidget {
               controller: registerNotifier.confirmPasswordController,
               keyboardType: TextInputType.visiblePassword,
               decoration: InputDecoration(
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(6.0),
+                    borderSide: const BorderSide(color: Colors.red, width: 1),
+                  ),
                   border: OutlineInputBorder(
                     borderSide:
                         const BorderSide(color: Color(0xFF4E4B66), width: 1),
@@ -164,6 +144,7 @@ class RegisterScreen extends ConsumerWidget {
                     registerNotifier.passwordController.text) {
                   return 'Password does not match';
                 }
+                return null;
               },
             ),
             Row(
@@ -178,7 +159,7 @@ class RegisterScreen extends ConsumerWidget {
                 ),
                 Text(
                   'Remember me',
-                  style: AppFontStyle.w400ColorLightPurple(fontSize:14),
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
               ],
             ),
@@ -187,8 +168,8 @@ class RegisterScreen extends ConsumerWidget {
                 child: ElevatedButton(
                     style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(AppColors.primaryColor),
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            WidgetStateProperty.all(AppColors.primaryColor),
+                        shape: WidgetStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(6)))),
                     onPressed: () {
                       if (registerNotifier.registerFormKey.currentState!
@@ -201,15 +182,11 @@ class RegisterScreen extends ConsumerWidget {
                                     builder: (context) =>
                                         const SelectCountryScreen()))
                             : const CircularProgressIndicator();
-                        print('state success is ${registerState.isSuccess}');
-                        print('state initial is ${registerState.isInitial}');
-                        print('state loading is ${registerState.isLoading}');
-                        print('state error is ${registerState.isError}');
                       }
                     },
                     child: Text(
                       'Sign Up',
-                      style: AppFontStyle.w600ColorWhite(fontSize:16),
+                      style: Theme.of(context).textTheme.titleMedium,
                     ))),
             SizedBox(
               height: 1.h,
@@ -218,7 +195,7 @@ class RegisterScreen extends ConsumerWidget {
                 alignment: Alignment.center,
                 child: Text(
                   'or continue with',
-                  style: AppFontStyle.w400ColorLightPurple(fontSize:14),
+                  style: Theme.of(context).textTheme.labelMedium,
                 )),
             SizedBox(
               height: 1.h,
@@ -229,8 +206,8 @@ class RegisterScreen extends ConsumerWidget {
                     child: TextButton(
                   style: ButtonStyle(
                     backgroundColor:
-                        MaterialStateProperty.all(Color(0xFFEEF1F4)),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        WidgetStateProperty.all(const Color(0xFFEEF1F4)),
+                    shape: WidgetStateProperty.all(RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6),
                     )),
                   ),
@@ -242,10 +219,8 @@ class RegisterScreen extends ConsumerWidget {
                       SizedBox(
                         width: 1.w,
                       ),
-                      Text(
-                        'Google',
-                        style: AppFontStyle.w400ColorLightPurple(fontSize:14),
-                      ),
+                      Text('Facebook',
+                          style: Theme.of(context).textTheme.labelMedium),
                     ],
                   ),
                 )),
@@ -256,8 +231,8 @@ class RegisterScreen extends ConsumerWidget {
                     child: TextButton(
                   style: ButtonStyle(
                     backgroundColor:
-                        MaterialStateProperty.all(Color(0xFFEEF1F4)),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        WidgetStateProperty.all(const Color(0xFFEEF1F4)),
+                    shape: WidgetStateProperty.all(RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6),
                     )),
                   ),
@@ -269,10 +244,8 @@ class RegisterScreen extends ConsumerWidget {
                       SizedBox(
                         width: 1.w,
                       ),
-                      Text(
-                        'Google',
-                        style: AppFontStyle.w400ColorLightPurple(fontSize:14),
-                      ),
+                      Text('Google',
+                          style: Theme.of(context).textTheme.labelMedium),
                     ],
                   ),
                 )),
@@ -281,19 +254,18 @@ class RegisterScreen extends ConsumerWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  'Already have an account ?',
-                  style: AppFontStyle.w400ColorLightPurple(fontSize:14),
-                ),
+                Text('Already have an account ?',
+                    style: Theme.of(context).textTheme.labelMedium),
                 TextButton(
                   onPressed: () {
                     Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()));
+                        MaterialPageRoute(builder: (context) => const LoginScreen()));
                   },
-                  child: Text(
-                    'Login',
-                    style: AppFontStyle.w600ColorBlue(fontSize: 16),
-                  ),
+                  child: Text('Login',
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelLarge
+                          ?.copyWith(color: AppColors.primaryColor,fontWeight: FontWeight.w600)),
                 )
               ],
             ),

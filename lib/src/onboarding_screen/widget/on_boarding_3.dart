@@ -1,8 +1,6 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 import '../../../shared/core/utils/app_assets.dart';
-import '../../../shared/core/utils/font_style.dart';
 
 
 class ThirdOnBoardingScreen extends StatelessWidget {
@@ -28,13 +26,13 @@ class ThirdOnBoardingScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Lorem Ipsum is simply dummy',
-                    style: AppFontStyle.w700ColorBlack(fontSize:24),
+                    style: Theme.of(context).textTheme.bodyLarge,
                     maxLines: 2,
                   ),
                   Expanded(
                     child: Text(
                       'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-                      style: AppFontStyle.w400ColorLightPurple(fontSize:16),
+                      style: Theme.of(context).textTheme.bodySmall,
                       maxLines: 10,
                     ),
                   ),

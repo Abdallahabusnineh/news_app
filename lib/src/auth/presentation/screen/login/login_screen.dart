@@ -2,16 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
-import 'package:news_app/shared/core/utils/font_style.dart';
 import 'package:news_app/shared/core/utils/regex_validation.dart';
-import 'package:news_app/shared/core/utils/show_toast.dart';
 import 'package:news_app/src/auth/domain/providers/auth_provider.dart';
-import 'package:news_app/src/select_country/presentation/screen/select_country_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import '../register/register_screen.dart';
 
 class LoginScreen extends ConsumerWidget {
-  LoginScreen({super.key});
+  const LoginScreen({super.key});
 
 
   @override
@@ -28,15 +25,20 @@ class LoginScreen extends ConsumerWidget {
               children: [
                 Text(
                   'Hello',
-                  style: AppFontStyle.w700ColorBlack(fontSize: 48),
+                  style: Theme.of(context).textTheme.headlineLarge,
                 ),
                 Text(
                   'Again!',
-                  style: AppFontStyle.w700ColorBlue(fontSize: 48),
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                      color: AppColors.primaryColor
+                  ),
+                ),
+                SizedBox(
+                  height: 1.h,
                 ),
                 Text(
                   'Welcome back you’ve been missed',
-                  style: AppFontStyle.w400ColorLightPurple(fontSize:20),
+                  style: Theme.of(context).textTheme.headlineMedium,
                   maxLines: 2,
                 ),
                 SizedBox(
@@ -44,7 +46,7 @@ class LoginScreen extends ConsumerWidget {
                 ),
                 Text(
                   'Username',
-                  style: AppFontStyle.w400ColorBlack(fontSize: 16),
+                  style: Theme.of(context).textTheme.labelMedium
                 ),
                 SizedBox(
                   height: 1.h,
@@ -52,17 +54,11 @@ class LoginScreen extends ConsumerWidget {
                 TextFormField(
                   controller: loginNotifier.usernameController,
                   keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(color: Color(0xFF4E4B66), width: 1),
-                      borderRadius: BorderRadius.circular(6.0),
-                    ),
-                  ),
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter username ';
                     }
+                    return null;
                   },
                 ),
                 SizedBox(
@@ -70,7 +66,7 @@ class LoginScreen extends ConsumerWidget {
                 ),
                 Text(
                   'Password',
-                  style: AppFontStyle.w400ColorBlack(fontSize: 16),
+                  style: Theme.of(context).textTheme.labelMedium
                 ),
                 SizedBox(
                   height: 1.h,
@@ -112,14 +108,14 @@ class LoginScreen extends ConsumerWidget {
                     ),
                     Text(
                       'Remember me',
-                      style: AppFontStyle.w400ColorLightPurple(fontSize:14),
+                      style: Theme.of(context).textTheme.labelMedium
                     ),
                     const Spacer(),
                     TextButton(
                       onPressed: () {},
                       child: Text(
                         'Forgot Password ?',
-                        style: AppFontStyle.w400ColorLightBlue(fontSize:14),
+                        style: Theme.of(context).textTheme.displayMedium
                       ),
                     )
                   ],
@@ -131,35 +127,15 @@ class LoginScreen extends ConsumerWidget {
                 ) : SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                                AppColors.primaryColor),
-                            shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(6)))),
+
                         onPressed: (){
                           if (loginNotifier.loginFormKey.currentState!.validate()) {
-                            loginNotifier.login();
-                        if(loginState.isSuccess)
-                              {
-                                showToast(text: 'Login Successfully', state: ToastState.SUCCESS);
-                             Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                        const SelectCountryScreen()));
-                              }
-                           else  if(loginState.isError)
-                              {
-                                showToast(text: 'Login Failed', state: ToastState.ERROR);
-                              }
-                            print('state is ${loginState.isSuccess}');
+                            loginNotifier.login(context);
                             //navigate to home
                           }
                         },
-                        child: Text(
+                        child: const Text(
                           'Login',
-                          style: AppFontStyle.w600ColorWhite(fontSize:16),
                         ))),
                 SizedBox(
                   height: 1.h,
@@ -168,7 +144,7 @@ class LoginScreen extends ConsumerWidget {
                     alignment: Alignment.center,
                     child: Text(
                       'or continue with',
-                      style: AppFontStyle.w400ColorLightPurple(fontSize:14),
+                      style: Theme.of(context).textTheme.labelMedium,
                     )),
                 SizedBox(
                   height: 1.h,
@@ -179,8 +155,8 @@ class LoginScreen extends ConsumerWidget {
                         child: TextButton(
                       style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(Color(0xFFEEF1F4)),
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            WidgetStateProperty.all(const Color(0xFFEEF1F4)),
+                        shape: WidgetStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(6),
                         )),
                       ),
@@ -193,8 +169,8 @@ class LoginScreen extends ConsumerWidget {
                             width: 1.w,
                           ),
                           Text(
-                            'Google',
-                            style: AppFontStyle.w400ColorLightPurple(fontSize:14),
+                            'facebook',
+                              style: Theme.of(context).textTheme.labelMedium
                           ),
                         ],
                       ),
@@ -206,8 +182,8 @@ class LoginScreen extends ConsumerWidget {
                         child: TextButton(
                       style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(Color(0xFFEEF1F4)),
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            WidgetStateProperty.all(const Color(0xFFEEF1F4)),
+                        shape: WidgetStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(6),
                         )),
                       ),
@@ -221,7 +197,7 @@ class LoginScreen extends ConsumerWidget {
                           ),
                           Text(
                             'Google',
-                            style: AppFontStyle.w400ColorLightPurple(fontSize:14),
+                            style: Theme.of(context).textTheme.labelMedium
                           ),
                         ],
                       ),
@@ -233,19 +209,23 @@ class LoginScreen extends ConsumerWidget {
                   children: [
                     Text(
                       'Don’t have an account ?',
-                      style: AppFontStyle.w400ColorLightPurple(fontSize:14),
+                      style: Theme.of(context).textTheme.labelMedium,
                     ),
                     TextButton(
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => RegisterScreen()),
+                              builder: (context) => const RegisterScreen()),
                         );
                       },
                       child: Text(
                         'Sign Up',
-                        style: AppFontStyle.w600ColorBlue(fontSize: 16),
+                        style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                          color: AppColors.primaryColor,
+                          fontWeight: FontWeight.w600
+
+                        )
                       ),
                     )
                   ],

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:news_app/shared/shared_widget/post_builder/post_builder.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../../../shared/core/utils/font_style.dart';
 
 class TrendingScreen extends StatelessWidget {
   const TrendingScreen({super.key});
@@ -11,11 +10,9 @@ class TrendingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
 
-        title: Text(
+        title: const Text(
           'Trending',
-          style: AppFontStyle.w600ColorBlack(fontSize: 16),
         ),
         actions: [
           IconButton(

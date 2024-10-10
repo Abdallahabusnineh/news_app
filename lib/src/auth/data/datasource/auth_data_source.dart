@@ -3,11 +3,9 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:news_app/shared/abstraction/dio_helper.dart';
 import 'package:news_app/shared/core/error/exceptions.dart';
-import 'package:news_app/shared/core/error/failure.dart';
 import 'package:news_app/shared/core/network/api_urls.dart';
 import 'package:news_app/shared/core/network/error_message_model.dart';
 import 'package:news_app/src/auth/data/model/user_model.dart';
-import 'package:dartz/dartz.dart';
 abstract class BaseAuthDataSource {
   Future<UserModel> login(String username, String password);
 
@@ -31,8 +29,6 @@ class AuthDataSource extends BaseAuthDataSource {
           "password_confirmation": confirmPassword
         },
       );
-
-
       if (res.statusCode == 200) {
         return UserModel.fromJson(res.data['result']);
       } else {

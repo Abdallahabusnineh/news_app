@@ -6,11 +6,8 @@ class DioHelper {
 
   static init() {
     dio = Dio(
-
       BaseOptions(
         baseUrl: "",
-
-
         receiveDataWhenStatusError: true,
         headers: {
           "Content-Type": "application/json",

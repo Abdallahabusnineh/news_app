@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../core/theme/app_colors.dart';
 import '../core/utils/font_style.dart';
 
 class BottomSheetButton extends StatelessWidget {
@@ -12,13 +10,11 @@ class BottomSheetButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-
       width: double.infinity,
       decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border(
+          border: Theme.of(context).brightness == Brightness.light?Border(
             top: BorderSide(color: Colors.grey.shade300, width: 1),
-          )
+          ):null
       ),
       padding: EdgeInsets.only(
         top: 3.h,
@@ -26,19 +22,13 @@ class BottomSheetButton extends StatelessWidget {
         left: 5.w,
         right: 5.w,
       ),
-      child: TextButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(AppColors.primaryColor),
-          shape: MaterialStateProperty.all(RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(6),
-          )),
-        ),
+      child: ElevatedButton(
         onPressed: () {
           onPressed!();
         },
         child: Text(
           'Next',
-          style: AppFontStyle.w600ColorWhite(fontSize:16),
+          style: AppFontStyle.w600(fontSize:16),
         ),
       ),
     );

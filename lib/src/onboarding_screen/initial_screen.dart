@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:news_app/shared/core/utils/app_constant.dart';
+import 'package:news_app/src/main_screen/presentaion/screen/main_screen.dart';
 import 'on_boarding_screen.dart';
 
 
@@ -18,11 +20,11 @@ class _InitialScreenState extends State<InitialScreen> {
     // TODO: implement initState
     super.initState();
 
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 1), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-            builder: (context) => const OnBoardingScreen()), // Call nextPage() to your main page
+            builder: (context) =>  startPage()), // Call nextPage() to your main page
       );
     });
   }
@@ -37,5 +39,12 @@ class _InitialScreenState extends State<InitialScreen> {
         ),
       ),
     );
+  }
+  Widget startPage() {
+    if (AppConstant.token == "") {
+      return const OnBoardingScreen();
+    } else {
+      return const MainScreen();
+    }
   }
 }

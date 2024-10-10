@@ -39,7 +39,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         ],
       ),
       bottomSheet: Container(
-          color: AppColors.whiteColor,
+
           padding:
               EdgeInsets.only(left: 24, right: 24, bottom: 15.sp, top: 5.sp),
           child: Row(
@@ -80,7 +80,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         ? Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LoginScreen()))
+                                builder: (context) => const LoginScreen()))
                         : null;
                   },
                   style: ButtonStyle(

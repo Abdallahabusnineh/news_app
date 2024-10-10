@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
-import 'package:news_app/shared/core/utils/app_assets.dart';
-import 'package:news_app/shared/core/utils/font_style.dart';
 import 'package:news_app/src/notification/presentation/screen/widget/notification_model.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -14,7 +12,8 @@ class NotificationBuilder extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(3.w),
       decoration: BoxDecoration(
-        color: Color(0xFFEEF1F4),
+        color: Theme.of(context).brightness == Brightness.light?const Color(0xFFEEF1F4):const Color(0xFF3A3B3C),
+
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
@@ -39,22 +38,26 @@ class NotificationBuilder extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: allNotification[index].title,
-                        style: AppFontStyle.w600ColorBlack(fontSize: 16),
+                        style: Theme.of(context).textTheme.titleMedium,
                       ),
                       TextSpan(
                         text:
                         allNotification[index].body,
-                        style: AppFontStyle.w400ColorBlack(fontSize: 16),
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ],
                   ),
                 ),
                 Text(
                   allNotification[index].dateTime,
-                  style: AppFontStyle.w400ColorExtraLightPurple(fontSize:13),
+                  style: Theme.of(context).textTheme.labelSmall,
                 )
               ],
             ),
+          ),
+
+          SizedBox(
+            width: 2.w,
           ),
           allNotification[index].type == NotificationType.follow
               ?Container(
@@ -67,10 +70,13 @@ class NotificationBuilder extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Icon(Icons.add, color: AppColors.primaryColor),
+                const Icon(Icons.add, color: AppColors.primaryColor),
                 Text(
                   'Follow',
-                  style: AppFontStyle.w600ColorBlue(fontSize: 16),
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium!
+                      .copyWith(color: AppColors.primaryColor),
                 ),
               ],
             ),

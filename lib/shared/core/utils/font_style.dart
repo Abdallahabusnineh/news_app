@@ -1,25 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../theme/app_colors.dart';
 
 class AppFontStyle {
-  //***************************************   White     ***************************************
-
-  static TextStyle w600ColorWhite({required double fontSize}) {
-    return  TextStyle(
-      color:AppColors.whiteColor,
-      fontSize: fontSize,
-      fontWeight: FontWeight.w600,
-      letterSpacing: 0.12,
-      overflow: TextOverflow.ellipsis,
-
-
-    );
-  }
-
-  //***************************************     black     ***************************************
-  static TextStyle w700ColorBlack({required double fontSize}) {
+  static TextStyle w700({required double fontSize}) {
     return TextStyle(
       fontSize: fontSize,
       letterSpacing: 0.12,
@@ -27,18 +11,17 @@ class AppFontStyle {
       overflow: TextOverflow.ellipsis,
     );
   }
-  static TextStyle w600ColorBlack({required double fontSize}) {
+  static TextStyle w600({required double fontSize}) {
     return  TextStyle(
-      color:AppColors.blackColor,
       fontSize: fontSize,
       fontWeight: FontWeight.w600,
       letterSpacing: 0.12,
       overflow: TextOverflow.ellipsis,
     );
   }
-  static TextStyle w400ColorBlack({required double fontSize}) {
+  static TextStyle w400({required double fontSize}) {
     return  TextStyle(
-      color: AppColors.blackColor,
+
       fontSize: fontSize,
 
       fontWeight: FontWeight.w400,
@@ -123,6 +106,17 @@ class AppFontStyle {
       color:AppColors.lightGreyColor,
       fontSize: fontSize,
       fontWeight: FontWeight.w600,
+      letterSpacing: 0.12,
+      overflow: TextOverflow.ellipsis,
+
+
+    );
+  }
+  static TextStyle w400ColorLightGrey({required double fontSize}) {
+    return  TextStyle(
+      color:AppColors.lightGreyColor,
+      fontSize: fontSize,
+      fontWeight: FontWeight.w400,
       letterSpacing: 0.12,
       overflow: TextOverflow.ellipsis,
 
