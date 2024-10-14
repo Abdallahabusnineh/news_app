@@ -30,6 +30,7 @@ class TopicsNotifier extends StateNotifier<TopicsState> {
   }
   TopicsRepository topicsRepository;
   List<TopicsModel> topics = [];
+ static List<int> selectedTopics = [];
 bool isTopicSelected = false;
   Future<void> getTopics(String text) async {
     state = state.copyWith(isLoading: true);
@@ -46,8 +47,12 @@ bool isTopicSelected = false;
     }
   }
 void selectTopic(int index) {
-isTopicSelected = !isTopicSelected;
-print('isTopicSelected $isTopicSelected');
+  if (selectedTopics.contains(index)) {
+    selectedTopics.remove(index);
+  } else {
+    selectedTopics.add(index);
+  }
+print('selectedTopics $selectedTopics');
   state = state.copyWith(isTopicSelected: true);
 }
   void searchTopic(String text) {

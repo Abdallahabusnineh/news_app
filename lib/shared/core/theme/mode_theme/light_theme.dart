@@ -83,11 +83,14 @@ ThemeData buildLightTheme() {
         ),
         backgroundColor:  const WidgetStatePropertyAll(AppColors.whiteColor),
       ),
+
       inputDecorationTheme: InputDecorationTheme(
+
         hintStyle: TextStyle(
           color: AppColors.blackColor.withOpacity(0.5),
           fontSize: 14,
         ),
+
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6.0),
         ),
@@ -100,7 +103,11 @@ ThemeData buildLightTheme() {
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: AppColors.whiteColor,
         selectedItemColor: AppColors.primaryColor,
-        unselectedItemColor: AppColors.blackColor,
+        unselectedItemColor: AppColors.lightPurpleColor
+      ),
+
+      iconTheme: const IconThemeData(
+          color: AppColors.lightPurpleColor
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(

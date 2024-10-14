@@ -53,6 +53,9 @@ class LoginScreen extends ConsumerWidget {
                 ),
                 TextFormField(
                   controller: loginNotifier.usernameController,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      fontSize: 12
+                  ),
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -75,6 +78,9 @@ class LoginScreen extends ConsumerWidget {
                   controller: loginNotifier.passwordController,
                   obscureText: loginNotifier.showPassword,
                   keyboardType: TextInputType.visiblePassword,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      fontSize: 12
+                  ),
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderSide:

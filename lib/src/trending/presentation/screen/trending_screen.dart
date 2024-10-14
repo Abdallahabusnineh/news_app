@@ -24,14 +24,7 @@ class TrendingScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 2.h),
           itemCount: 10,
           itemBuilder: (context, index) {
-          return Column(
-            children: [
-              PostBuilder(isTrendingPost: true),
-              SizedBox(
-                height: 3.h,
-              )
-            ],
-          );
+          return PostBuilder(isTrendingPost: true);
         },)
       ),
     );

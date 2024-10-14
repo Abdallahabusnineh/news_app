@@ -9,28 +9,21 @@ import 'package:news_app/shared/core/utils/app_constant.dart';
 import 'package:news_app/src/fill_profile/data/model/fill_your_profile_model.dart';
 
 abstract class BaseDataSourceCreateYourProfile {
-  Future<CreateProfileModel> createProfile(String fullName, String phone);
+  Future<CreateProfileModel> createProfile(FormData formData);
 }
 
 class CreateYourProfileDataSource extends BaseDataSourceCreateYourProfile {
   @override
-  Future<CreateProfileModel> createProfile(String fullName,
-      String phone) async {
+  Future<CreateProfileModel> createProfile(FormData formData) async {
     try {
       final res = await DioHelper.postData(
         url: ApiUrls.createYourProfile(),
         token: AppConstant.token,
-        data:{
-          "phone_number": phone,
-          "full_name": fullName,
-          "country_id": 1,
-          "topics:": 1,
-          "profile_photo":'image.png'
-        },
+        data:formData,
       );
       //print('result is $AppConstant.token');
       if (res.statusCode == 200) {
-        return res.data['result'];
+        return CreateProfileModel.fromJson(res.data['result']);
       } else {
         throw ServerExceptions(
             errorMessageModel: ErrorMessageModel.fromJson(
@@ -43,7 +36,7 @@ class CreateYourProfileDataSource extends BaseDataSourceCreateYourProfile {
           errorMessageModel:
           ErrorMessageModel.fromJson(e.message!, e.message!, true));
     } catch (e) {
-      log('createProfile datasource error ${e.toString()}');
+      log('createProfile datasource error ${e.toString()}  ');
       throw ServerExceptions(
           errorMessageModel:
           ErrorMessageModel.fromJson(e.toString(), e.toString(), true));

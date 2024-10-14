@@ -1,32 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
+import 'package:news_app/shared/core/utils/app_assets.dart';
+import 'package:news_app/shared/core/utils/show_toast.dart';
+import 'package:news_app/shared/shared_widget/bottom_sheet_button.dart';
+import 'package:news_app/src/fill_profile/presentation/providers/fill_profile_notifer.dart';
 import 'package:news_app/src/main_screen/presentaion/screen/main_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../../../shared/core/utils/app_assets.dart';
-import '../../../../shared/shared_widget/bottom_sheet_button.dart';
 
-class FillProfile extends StatefulWidget {
-  const FillProfile({super.key});
+class FillProfile extends ConsumerWidget {
+   const FillProfile({super.key});
 
-  @override
-  State<FillProfile> createState() => _FillProfileState();
-}
 
-class _FillProfileState extends State<FillProfile> {
-  TextEditingController phoneNumberController = TextEditingController();
-
-  TextEditingController userNameController = TextEditingController();
-
-  TextEditingController emailController = TextEditingController();
-
-  TextEditingController fullNameController = TextEditingController();
-
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    var notifier = ref.read(createProfileNotifierProvider.notifier);
+
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -41,7 +32,7 @@ class _FillProfileState extends State<FillProfile> {
           ),
         ),
         body: Form(
-          key: formKey,
+          key: notifier.formKey,
           child: Stack(
             children: [
                   Container(
@@ -56,7 +47,9 @@ class _FillProfileState extends State<FillProfile> {
                             children: [
                               CircleAvatar(
                                   radius: 35.sp,
-                                  backgroundImage: AssetImage(AppAssets.user)),
+                                  backgroundImage: notifier.isFilePicked?Image.file(notifier.attachmentFile!).image:
+                                   AssetImage(AppAssets.user)
+                              ),
                               Positioned(
                                   right: 1,
                                   bottom: 1,
@@ -67,14 +60,8 @@ class _FillProfileState extends State<FillProfile> {
                                           color: AppColors.primaryColor,
                                           shape: BoxShape.circle),
                                       child: GestureDetector(
-                                        onTap: () async {
-                                          final ImagePicker picker = ImagePicker();
-                                          // Pick an image
-                                          final XFile? image =
-                                              await picker.pickImage(
-                                                  source: ImageSource.gallery);
-                                          AppAssets.user = image!.path;
-
+                                        onTap: ()  {
+                                       notifier.pickFile();
                                         },
                                         child: CircleAvatar(
                                             radius: 50,
@@ -98,8 +85,11 @@ class _FillProfileState extends State<FillProfile> {
                           height: 1.h,
                         ),
                         TextFormField(
-                          controller: fullNameController,
+                          controller: notifier.fullNameController,
                           keyboardType: TextInputType.text,
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              fontSize: 12
+                          ),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'Please enter full name';
@@ -118,8 +108,11 @@ class _FillProfileState extends State<FillProfile> {
                           height: 1.h,
                         ),
                         TextFormField(
-                          controller: phoneNumberController,
+                          controller: notifier.phoneNumberController,
                           keyboardType: TextInputType.phone,
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              fontSize: 12
+                          ),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'Please enter phone number ';
@@ -133,13 +126,15 @@ class _FillProfileState extends State<FillProfile> {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: BottomSheetButton(
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      print('Validated');
+                  onPressed: () async {
+                    if (notifier.formKey.currentState!.validate()) {
+                     await notifier.createProfile();
+                      notifier.isSuccess?Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) {
+                        return const MainScreen();
+                      },),
+                      ):showToast(text: 'Something went wrong', state: ToastState.ERROR);
                     }
-                    Navigator.push(context,MaterialPageRoute(builder: (context) {
-                      return const MainScreen();
-                    },));
+
                   },
                 ),
               )

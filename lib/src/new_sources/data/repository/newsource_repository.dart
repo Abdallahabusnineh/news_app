@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:news_app/shared/core/error/failure.dart';
 import 'package:news_app/src/new_sources/data/datasource/new_source_datasource.dart';
+import 'package:news_app/src/new_sources/data/model/your_following_models.dart';
 import 'package:news_app/src/new_sources/domain/repository/new_source_base_repository.dart';
 
 import '../../../../shared/core/error/exceptions.dart';
@@ -37,6 +38,16 @@ class NewSourceRepository extends NewSourceBaseRepository {
    } on ServerExceptions catch (e) {
      return Left(ServerFailure(e.errorMessageModel.message));
    }
+  }
+
+  @override
+  Future<Either<Failure, List<YourFollowingModels>>> yourFollowing() async {
+    try {
+      final result = await baseNewSourceDataSource.yourFollowing();
+      return Right(result);
+    } on ServerExceptions catch (e) {
+      return Left(ServerFailure(e.errorMessageModel.message));
+    }
   }
 
 

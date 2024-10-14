@@ -11,8 +11,9 @@ ThemeData buildDarkTheme() {
     brightness: Brightness.dark,
     fontFamily: 'poppins',
     textTheme: buildTextThemeDark(),
+    scaffoldBackgroundColor: Colors.black,
     appBarTheme:  AppBarTheme(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.black,
       elevation: 0,
       centerTitle: true,
       titleTextStyle: AppFontStyle.w600(fontSize: 16),
@@ -39,12 +40,15 @@ ThemeData buildDarkTheme() {
       ),
     ),
     bottomSheetTheme: const BottomSheetThemeData(
-      backgroundColor: Colors.transparent
+      backgroundColor: Colors.black
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.black,
       selectedItemColor: AppColors.primaryColor,
-      unselectedItemColor: AppColors.whiteColor,
+      unselectedItemColor: AppColors.lightGreyColor,
+    ),
+    iconTheme: const IconThemeData(
+      color: AppColors.lightGreyColor
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(

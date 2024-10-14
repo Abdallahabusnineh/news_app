@@ -27,7 +27,7 @@ class CountriesNotifier extends StateNotifier<CountriesState> {
   }
 List <CountriesModel> countries = [];
   final CountriesRepository countriesRepository;
-  bool isCountrySelected = false;
+static  int selectedCountryId = 0;
 
   Future<void> getCountries(String text) async {
     state = state.copyWith(isLoading: true,isInitial: false);
@@ -43,9 +43,13 @@ List <CountriesModel> countries = [];
       state = state.copyWith(isError: true, isLoading: false);
     }
   }
-  void selectCountry()  {
-   isCountrySelected=!isCountrySelected;
-   state = state.copyWith(isCountrySelected: isCountrySelected);
+  void selectCountry(int countryId) {
+    for (int i = 0; i < countries.length; i++) {
+      countries[i].isSelected = false;
+    }
+countries[countryId].isSelected = !countries[countryId].isSelected;
+selectedCountryId = countries[countryId].id;
+      state = state.copyWith(isCountrySelected: true);
   }
   void searchCountry(String text) {
     state = state.copyWith(isLoading: true);

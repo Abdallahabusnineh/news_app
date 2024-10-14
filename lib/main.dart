@@ -10,7 +10,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
  await DioHelper.init();
   await CacheHelper.init();
-  AppConstant.token =await CacheHelper.getData(key: 'token')??"";
+  AppConstant.token =await CacheHelper.getData(key: 'token');
   AppConstant.lang = await CacheHelper.getData(key: 'lang')??"en";
   //AppConstant.isDark = await CacheHelper.isDark();
   runApp(const ProviderScope(child: MyApp()));

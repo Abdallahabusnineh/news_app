@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
 import 'package:news_app/shared/shared_widget/post_builder/post_builder.dart';
 import 'package:news_app/src/home/presentation/screen/widget/home_widget.dart';
+import 'package:news_app/src/home_search/presentation/screen/home_search_screen.dart';
 import 'package:news_app/src/notification/presentation/screen/notification_screen.dart';
 import 'package:news_app/src/trending/presentation/screen/trending_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -49,6 +50,12 @@ class HomeScreen extends StatelessWidget {
         physics: const AlwaysScrollableScrollPhysics(),
         children: [
           SearchBar(
+
+            onTap: () {
+              Navigator.push(context,MaterialPageRoute(builder: (context) {
+                return const HomeSearchScreen();
+              }));
+            },
             hintText: 'Search ',
             leading:
             Image.asset(AppAssets.iconSearch,color: Theme.of(context).brightness == Brightness.light?AppColors.lightPurpleColor:AppColors.lightGreyColor,),

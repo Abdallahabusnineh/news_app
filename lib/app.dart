@@ -4,9 +4,9 @@ import 'package:news_app/shared/core/theme/mode_theme/dark_theme.dart';
 import 'package:news_app/shared/core/theme/mode_theme/light_theme.dart';
 import 'package:news_app/shared/core/theme/mode_theme/provider_mode_theme.dart';
 import 'package:news_app/shared/core/utils/app_constant.dart';
-import 'package:news_app/src/fill_profile/presentation/screen/fill_profile.dart';
-
+import 'package:news_app/src/onboarding_screen/initial_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
   // This widget is the root of your application.
@@ -24,7 +24,7 @@ print('token is ${AppConstant.token}');
           darkTheme: buildDarkTheme(),
           themeMode: themeMode,
           debugShowCheckedModeBanner: false,
-          home:    const FillProfile()
+          home:  const InitialScreen(),
 
         );
       },

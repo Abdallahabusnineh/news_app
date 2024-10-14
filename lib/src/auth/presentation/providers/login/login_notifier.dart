@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/shared/abstraction/cash_helper.dart';
 import 'package:news_app/src/auth/data/repositories/auth_repository.dart';
+import 'package:news_app/src/main_screen/presentaion/screen/main_screen.dart';
 import 'package:news_app/src/select_country/presentation/screen/select_country_screen.dart';
 
 import 'login_state.dart';
@@ -29,15 +30,15 @@ class LoginNotifier extends StateNotifier<LoginState> {
     state = state.copyWith(isLoading: true,isInitial: false);
     try {
       final result = await authRepository.login(
-          usernameController.text, passwordController.text);
+          usernameController.text.trim(), passwordController.text.trim());
       result.fold(
             (l) {
           state = state.copyWith(isLoading: false, isError: true);
         },
             (r) {
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>  const MainScreen()));
               CacheHelper.saveData(key: 'token', value: r.token);
               state = state.copyWith(isLoading: false, isSuccess: true);
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const SelectCountryScreen()));
 
             },
       );

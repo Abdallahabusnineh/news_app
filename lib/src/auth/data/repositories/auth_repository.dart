@@ -34,4 +34,17 @@ class AuthRepository extends BaseAuthRepository {
       return Left(ServerFailure(e.errorMessageModel.message));
     }
   }
+
+  @override
+  Future<Either<Failure, String>> logout() async {
+    // TODO: implement logout
+    try {
+      final result = await baseAuthDataSource.logout();
+      print('result logout $result');
+      return Right(result);
+    } on ServerExceptions catch (e) {
+      print('result logout${e.errorMessageModel.message}');
+      return Left(ServerFailure(e.errorMessageModel.message));
+    }
+  }
 }

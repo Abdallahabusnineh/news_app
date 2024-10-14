@@ -42,6 +42,8 @@ dependencies:
   dio: ^5.7.0
   json_annotation: ^4.9.0
   flutter_svg: ^2.0.10+1
+  file_picker: any
+  awesome_dialog: ^3.2.1
   skeletonizer: ^1.4.2
   responsive_sizer: ^3.3.1
   animate_do: ^3.3.4
@@ -49,12 +51,10 @@ dependencies:
   image_picker: ^1.1.2
   flutter_riverpod: ^2.5.1
   riverpod_annotation: ^2.3.5
-
-
-  pretty_dio_logger: any
-  equatable: any
-  fluttertoast: any
-  dartz: any
+  pretty_dio_logger: ^1.4.0
+  equatable: ^2.0.5
+  fluttertoast: ^8.2.8
+  dartz: ^0.10.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

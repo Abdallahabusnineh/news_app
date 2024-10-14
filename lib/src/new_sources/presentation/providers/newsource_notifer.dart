@@ -144,6 +144,32 @@ class NewSourceChangeNotifier extends ChangeNotifier {
 
   NewSourceRepository newSourceRepository =
       NewSourceRepository(baseNewSourceDataSource: NewSourceDataSource());
+  bool _isLoading = false;
+
+  bool get isLoading => _isLoading;
+
+  set isLoading(bool isLoading) {
+    _isLoading = isLoading;
+    notifyListeners();
+  }
+
+  bool _isError = false;
+
+  bool get isError => _isError;
+
+  set isError(bool isError) {
+    _isError = isError;
+    notifyListeners();
+  }
+  bool _isSuccess = false;
+
+  bool get isSuccess => _isSuccess;
+
+  set isSuccess(bool isSuccess) {
+    _isSuccess = isSuccess;
+    notifyListeners();
+  }
+
 
   Future<void> getSources(String text) async {
     isLoading = true;
@@ -156,9 +182,9 @@ class NewSourceChangeNotifier extends ChangeNotifier {
         for (int i = 0; i < sources.length; i++) {
           if (await userFollowing(sources[i].id)) {
             sources[i].isFollowed = true;
-          /*  print(
-                'source is followed ${sources[i].isFollowed} source is ${sources}');
-          */} else {
+            print(
+                'source is followed ${sources[i].isFollowed} source is $sources');
+          } else {
             sources[i].isFollowed = false;
             print(
                 'source is followed ${sources[i].isFollowed} source is $sources');
@@ -198,6 +224,7 @@ class NewSourceChangeNotifier extends ChangeNotifier {
         isError = true;
         isLoading = false;
       }, (r) {
+        print('true');
         if (!r) {
           sources[index].isFollowed = true;
         }
@@ -211,7 +238,6 @@ class NewSourceChangeNotifier extends ChangeNotifier {
     }
     toggleFollowUpdate=false;
   }
-
   Future<bool> userFollowing(int index) async {
       final result = await newSourceRepository.checkFollow(index);
       return result.fold(
@@ -224,9 +250,7 @@ class NewSourceChangeNotifier extends ChangeNotifier {
           return r; // Return the actual result if the operation succeeded
         },
       );
-
   }
-
   List<NewSourceModel> _sources = [];
 
   List<NewSourceModel> get sources => _sources;
@@ -236,14 +260,6 @@ class NewSourceChangeNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool _isSuccess = false;
-
-  bool get isSuccess => _isSuccess;
-
-  set isSuccess(bool isSuccess) {
-    _isSuccess = isSuccess;
-    notifyListeners();
-  }
 
 bool _toggleFollowUpdate = false;
   bool get toggleFollowUpdate => _toggleFollowUpdate;
@@ -253,41 +269,26 @@ bool _toggleFollowUpdate = false;
   }
 
 
-  bool _isLoading = false;
 
-  bool get isLoading => _isLoading;
 
-  set isLoading(bool isLoading) {
-    _isLoading = isLoading;
-    notifyListeners();
-  }
+  final List<int> _checkFollow = [];
 
-  bool _isError = false;
-
-  bool get isError => _isError;
-
-  set isError(bool isError) {
-    _isError = isError;
-    notifyListeners();
-  }
-
-  /*List<int> _checkFollow = [];
-
-  List<int> get checkFollow => _checkFollow;*/
+  List<int> get checkFollow => _checkFollow;
 
   // toggle follower to the list
-/*  void toggleFollow(int index) {
+  void toggleFollow(int index) {
     if (_checkFollow.contains(index)) {
       _checkFollow.remove(index);
     } else {
       _checkFollow.add(index);
     }
     notifyListeners();
-  }*/
-  /*bool isFollowed(int index) {
+  }
+bool youFollow(int index) {
+  return _sources[index].isFollowed;
+}
+ /* bool isFollowed(int index) {
     return _checkFollow.contains(index);
   }*/
-bool youFollow(int index){
-    return _sources[index].isFollowed;
-}
+
 }

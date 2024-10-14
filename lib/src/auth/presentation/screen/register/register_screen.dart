@@ -46,6 +46,9 @@ class RegisterScreen extends ConsumerWidget {
             TextFormField(
               controller: registerNotifier.emailController,
               keyboardType: TextInputType.emailAddress,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontSize: 12
+              ),
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter email ';
@@ -66,6 +69,9 @@ class RegisterScreen extends ConsumerWidget {
             TextFormField(
               controller: registerNotifier.userNameController,
               keyboardType: TextInputType.text,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontSize: 12
+              ),
 
               validator: (value) {
                 if (value!.isEmpty) {
@@ -85,6 +91,9 @@ class RegisterScreen extends ConsumerWidget {
               obscureText: registerNotifier.showPassword,
               controller: registerNotifier.passwordController,
               keyboardType: TextInputType.visiblePassword,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontSize: 12
+              ),
               decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderSide:
@@ -120,6 +129,9 @@ class RegisterScreen extends ConsumerWidget {
               obscureText: registerNotifier.showConfirmedPassword,
               controller: registerNotifier.confirmPasswordController,
               keyboardType: TextInputType.visiblePassword,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontSize: 12
+              ),
               decoration: InputDecoration(
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(6.0),
@@ -180,13 +192,12 @@ class RegisterScreen extends ConsumerWidget {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        const SelectCountryScreen()))
+                                         SelectCountryScreen()))
                             : const CircularProgressIndicator();
                       }
                     },
-                    child: Text(
+                    child: const Text(
                       'Sign Up',
-                      style: Theme.of(context).textTheme.titleMedium,
                     ))),
             SizedBox(
               height: 1.h,

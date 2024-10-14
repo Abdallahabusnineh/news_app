@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../../home/presentation/screen/home_screen.dart';
-import '../../../test_theme.dart';
-import '../providers/navigation_bar_providers.dart';
+import 'package:news_app/src/bookmark/presentation/screen/bookmark_screen.dart';
+import 'package:news_app/src/explore/presentation/screen/explore_screen.dart';
+import 'package:news_app/src/home/presentation/screen/home_screen.dart';
+import 'package:news_app/src/main_screen/presentaion/providers/navigation_bar_providers.dart';
+import 'package:news_app/src/profile/presentation/screen/profile_screen.dart';
 
 class MainScreen extends ConsumerWidget {
   const MainScreen({super.key});
@@ -11,16 +12,11 @@ class MainScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final indexBottomNavbar = ref.watch(indexBottomNavbarProvider);
-
     final bodies = [
       const HomeScreen(),
-      const TestThemeMode(),
-      const Center(
-        child: Text('Hello From Bookmark Screen'),
-      ),
-      const Center(
-        child: Text('Hello From Profile Screen'),
-      ),
+      const ExploreScreen(),
+      const BookmarkScreen(),
+      const ProfileScreen(),
     ];
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
@@ -29,14 +25,14 @@ class MainScreen extends ConsumerWidget {
         onTap: (value) => ref
             .read(indexBottomNavbarProvider.notifier)
             .update((state) => value),
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.explore_outlined), label: 'Explore'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.bookmark_border), label: 'Bookmark'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person_pin_circle_outlined), label: 'Profile'),
+        items: [
+          BottomNavigationBarItem(icon: Icon(indexBottomNavbar == 0 ? Icons.home : Icons.home_outlined), label: 'Home'),
+           BottomNavigationBarItem(
+              icon: Icon(indexBottomNavbar == 1 ? Icons.explore : Icons.explore_outlined), label: 'Explore'),
+           BottomNavigationBarItem(
+              icon: Icon(indexBottomNavbar == 2 ? Icons.bookmark : Icons.bookmark_outline), label: 'Bookmark'),
+           BottomNavigationBarItem(
+              icon: Icon(indexBottomNavbar == 3 ? Icons.person : Icons.person_outline), label: 'Profile'),
         ],
       ),
       body: bodies[indexBottomNavbar],

@@ -7,6 +7,7 @@ import 'package:news_app/shared/core/network/api_urls.dart';
 import 'package:news_app/shared/core/network/error_message_model.dart';
 import 'package:news_app/shared/core/utils/app_constant.dart';
 import 'package:news_app/src/new_sources/data/model/new_source_model.dart';
+import 'package:news_app/src/new_sources/data/model/your_following_models.dart';
 
 abstract class BaseNewSourceDataSource {
   Future<List<NewSourceModel>> getNewSource(String text);
@@ -14,6 +15,7 @@ abstract class BaseNewSourceDataSource {
   Future<bool> follow(int id);
 
   Future<bool> checkFollow(int id);
+  Future<List<YourFollowingModels>> yourFollowing();
 }
 
 class NewSourceDataSource extends BaseNewSourceDataSource {
@@ -107,6 +109,38 @@ class NewSourceDataSource extends BaseNewSourceDataSource {
       throw ServerExceptions(
           errorMessageModel:
               ErrorMessageModel.fromJson(e.toString(), e.toString(), true));
+    }
+  }
+
+  @override
+  Future<List<YourFollowingModels>> yourFollowing() async {
+    try {
+      final res = await DioHelper.getData(
+        url: ApiUrls.yourFollowing(),
+        token: AppConstant.token,
+      );
+      //print('result is $AppConstant.token');
+
+      if (res.statusCode == 200) {
+        List<dynamic> data = res.data['result']['followed'];
+        return List<YourFollowingModels>.from(
+            data.map((country) => NewSourceModel.fromJson(country)));
+      } else {
+        throw ServerExceptions(
+            errorMessageModel: ErrorMessageModel.fromJson(
+                res.data['message'], res.data['errors'], true));
+      }
+    } on DioException catch (e) {
+      log('yourFollowing c datasource error ${e.response!.data}');
+      log('yourFollowing datasource error ${e.response!.statusCode}');
+      throw ServerExceptions(
+          errorMessageModel:
+          ErrorMessageModel.fromJson(e.message!, e.message!, true));
+    } catch (e) {
+      log('yourFollowing s datasource error ${e.toString()}');
+      throw ServerExceptions(
+          errorMessageModel:
+          ErrorMessageModel.fromJson(e.toString(), e.toString(), true));
     }
   }
 }

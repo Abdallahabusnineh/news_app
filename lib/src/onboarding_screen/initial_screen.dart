@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:news_app/shared/core/utils/app_constant.dart';
 import 'package:news_app/src/main_screen/presentaion/screen/main_screen.dart';
+import '../select_country/presentation/screen/select_country_screen.dart';
 import 'on_boarding_screen.dart';
 
 
@@ -40,11 +41,12 @@ class _InitialScreenState extends State<InitialScreen> {
       ),
     );
   }
+
   Widget startPage() {
     if (AppConstant.token == "") {
       return const OnBoardingScreen();
     } else {
-      return const MainScreen();
+      return  const MainScreen();
     }
   }
 }

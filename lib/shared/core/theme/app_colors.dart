@@ -11,4 +11,5 @@ class AppColors {
   static const Color lightBlueColor = Color(0xFF5890FF);
   static const Color textFormFieldDarkMode = Color(0xFF3A3B3C);
   static const Color lightGreyColor = Color(0xFFB0B3B8);
+
 }

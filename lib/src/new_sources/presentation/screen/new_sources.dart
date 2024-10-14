@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
+import 'package:news_app/src/fill_profile/presentation/screen/fill_profile.dart';
 import 'package:news_app/src/new_sources/presentation/providers/newsource_notifer.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../../shared/core/theme/app_colors.dart';
 import '../../../../shared/shared_widget/bottom_sheet_button.dart';
-import '../../../fill_profile/presentation/screen/fill_profile.dart';
 
 class NewSources extends ConsumerWidget {
   const NewSources({super.key});
@@ -18,6 +18,8 @@ class NewSources extends ConsumerWidget {
 
     var prov = ref.watch(newSourceChangeNotifierProvider);
     var sources = prov.sources;
+ /*   var topicsProv =ref.watch(topicsNotifierProvider.notifier);
+    var countryProv =ref.watch(countriesNotifierProvider.notifier);*/
     bool isLoading = prov.isLoading;
     bool isSuccess = prov.isSuccess;
     bool isError = prov.isError;
@@ -106,7 +108,7 @@ class NewSources extends ConsumerWidget {
                                   item.userName,
                                   style: Theme.of(context).textTheme.labelLarge,
                                 ),
-                                !isFollowed
+                                isFollowed
                                     ? Expanded(
                                         child: Container(
                                           padding: EdgeInsets.symmetric(
@@ -173,8 +175,10 @@ class NewSources extends ConsumerWidget {
           )),
       bottomSheet: BottomSheetButton(
         onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (_) => const FillProfile()));
+Navigator.push(context, MaterialPageRoute(builder: (context) => const FillProfile()));
+      /*    print('sssssss ${topicsProv.selectedTopics}');
+          print('ggggg ${topicsProv.topics.length}');
+          print('id is ${countryProv.selectedCountryId}');*/
         },
       ),
     );

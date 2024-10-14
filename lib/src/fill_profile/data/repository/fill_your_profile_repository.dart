@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:news_app/shared/core/error/exceptions.dart';
 import 'package:news_app/shared/core/error/failure.dart';
 import 'package:news_app/src/fill_profile/data/datasourse/fill_your_profile_datasource.dart';
@@ -9,9 +10,9 @@ class CreateProfileRepository extends CreateProfileBaseRepository {
   BaseDataSourceCreateYourProfile baseDataSourceCreateYourProfile;
   CreateProfileRepository(this.baseDataSourceCreateYourProfile);
   @override
-  Future<Either<Failure, CreateProfileModel>> createProfile(String fullName, String phone) async {
+  Future<Either<Failure, CreateProfileModel>> createProfile(FormData formData) async {
     try {
-      final result = await baseDataSourceCreateYourProfile.createProfile(fullName, phone);
+      final result = await baseDataSourceCreateYourProfile.createProfile(formData);
       return Right(result);
     } on ServerExceptions catch (e) {
       return Left(ServerFailure(e.errorMessageModel.message));

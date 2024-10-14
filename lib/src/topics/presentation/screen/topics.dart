@@ -14,6 +14,7 @@ import '../../../../shared/shared_widget/bottom_sheet_button.dart';
 class ChooseYourTopics extends ConsumerWidget {
   const ChooseYourTopics({super.key});
 
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     TopicsState state = ref.watch(topicsNotifierProvider);
@@ -58,7 +59,7 @@ class ChooseYourTopics extends ConsumerWidget {
                     SizedBox(
                       width: double.infinity,
                       child: Skeletonizer(
-                        enabled: notifier.topics.isEmpty ? true : false,
+                        enabled: state.isLoading ? true : false,
                         containersColor: Colors.grey.shade300,
                         child: Wrap(
                           spacing: 2.w,
@@ -68,20 +69,28 @@ class ChooseYourTopics extends ConsumerWidget {
                             for (int index = 0;
                                 index < notifier.topics.length;
                                 index++)
-                              notifier.isTopicSelected ? Container(
+                              TopicsNotifier.selectedTopics
+                                      .contains(notifier.topics[index].id)
+                                  ? Container(
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(6),
                                         color: AppColors.primaryColor,
                                       ),
                                       child: TextButton(
                                         onPressed: () {
-                                          notifier.isTopicSelected =
-                                              !notifier.isTopicSelected;
+                                         notifier.selectTopic(
+                                             notifier.topics[index].id
+                                         );
+
                                         },
                                         child: Text(
-                                            notifier.topics[index].topic,
-                                            style: AppFontStyle.w600ColorBlue(
-                                                fontSize: 14)),
+                                          notifier.topics[index].topic,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium
+                                              ?.copyWith(
+                                                  color: AppColors.whiteColor),
+                                        ),
                                       ))
                                   : Container(
                                       decoration: BoxDecoration(
@@ -92,8 +101,10 @@ class ChooseYourTopics extends ConsumerWidget {
                                       ),
                                       child: TextButton(
                                         onPressed: () {
-                                          notifier.isTopicSelected =
-                                              !notifier.isTopicSelected;
+                                          notifier.selectTopic(
+                                              notifier.topics[index].id
+                                          );
+
                                         },
                                         child: Text(
                                             notifier.topics[index].topic,
@@ -108,8 +119,16 @@ class ChooseYourTopics extends ConsumerWidget {
                 )),
         bottomSheet: BottomSheetButton(
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => const NewSources()));
+            if(TopicsNotifier.selectedTopics.isNotEmpty){
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const NewSources()));
+            }
+            else
+            {
+             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                 content: Text('Please select at least one topic.')));
+            }
+
           },
         ));
   }
