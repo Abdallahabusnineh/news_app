@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
 import 'package:news_app/src/fill_profile/presentation/screen/fill_profile.dart';
-import 'package:news_app/src/new_sources/presentation/providers/newsource_notifer.dart';
+import 'package:news_app/src/new_sources/presentation/providers/newsource_notifier.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../../shared/core/theme/app_colors.dart';
@@ -13,16 +14,11 @@ class NewSources extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // NewSourceNotifier notifier = ref.read(newSourceNotifierProvider.notifier);
-    // NewSourceState state = ref.watch(newSourceNotifierProvider);
+    NewsourceNotifier notifier =
+    ref.watch(newSourceChangeNotifierProviderTest);
+    bool isSuccess=notifier.isSuccess;
+    var sources = notifier.sources;
 
-    var prov = ref.watch(newSourceChangeNotifierProvider);
-    var sources = prov.sources;
- /*   var topicsProv =ref.watch(topicsNotifierProvider.notifier);
-    var countryProv =ref.watch(countriesNotifierProvider.notifier);*/
-    bool isLoading = prov.isLoading;
-    bool isSuccess = prov.isSuccess;
-    bool isError = prov.isError;
 
     return Scaffold(
       appBar: AppBar(
@@ -52,15 +48,16 @@ class NewSources extends ConsumerWidget {
                     ),
                     growable: true),
                 onChanged: (value) {
-                  prov.getSources(value);
+                  notifier.getSources(value);
                 },
               ),
               SizedBox(
                 height: 2.h,
               ),
-              !isSuccess
-                  ? const CircularProgressIndicator()
-                  : Expanded(
+              !isSuccess?
+              const SpinKitSquareCircle(
+                color: AppColors.primaryColor,
+              ): Expanded(
                       child: GridView.builder(
                         physics: const AlwaysScrollableScrollPhysics(),
                         shrinkWrap: true,
@@ -74,7 +71,8 @@ class NewSources extends ConsumerWidget {
                         ),
                         itemBuilder: (BuildContext context, int index) {
                           var item = sources[index];
-                          bool isFollowed = prov.youFollow(index);
+                          bool isFollowed = notifier.userFollowing(notifier.sources[index].id);
+
                           return Container(
                             width: double.infinity,
                             padding: EdgeInsets.symmetric(
@@ -122,7 +120,7 @@ class NewSources extends ConsumerWidget {
                                           ),
                                           child: TextButton(
                                               onPressed: () async {
-                                                await prov.follow(index);
+                                                await notifier.follow(index+1);
                                               },
                                               child: FittedBox(
                                                 child: Text(
@@ -153,7 +151,7 @@ class NewSources extends ConsumerWidget {
                                           ),
                                           child: TextButton(
                                               onPressed: () async {
-                                                await prov.follow(index);
+                                                await notifier.follow(index+1);
                                               },
                                               child: FittedBox(
                                                 child: Text(

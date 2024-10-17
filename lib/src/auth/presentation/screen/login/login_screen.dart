@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
 import 'package:news_app/shared/core/utils/regex_validation.dart';
@@ -126,10 +127,8 @@ class LoginScreen extends ConsumerWidget {
                     )
                   ],
                 ),
-                loginState.isLoading ? const Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.primaryColor,
-                  ),
+                loginState.isLoading ? const SpinKitSquareCircle(
+                  color: AppColors.primaryColor,
                 ) : SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
@@ -139,6 +138,7 @@ class LoginScreen extends ConsumerWidget {
                             loginNotifier.login(context);
                             //navigate to home
                           }
+
                         },
                         child: const Text(
                           'Login',

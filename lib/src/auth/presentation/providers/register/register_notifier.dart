@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:news_app/shared/abstraction/cash_helper.dart';
+import 'package:news_app/shared/core/utils/app_constant.dart';
+import 'package:news_app/shared/core/utils/show_toast.dart';
 import 'package:news_app/src/auth/data/repositories/auth_repository.dart';
 import 'package:news_app/src/auth/presentation/providers/register/register_state.dart';
+import 'package:news_app/src/select_country/presentation/screen/select_country_screen.dart';
 
 class RegisterNotifier extends StateNotifier<RegisterState> {
   RegisterNotifier(this.authRepository)
@@ -25,7 +29,7 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
 
   /*bool ShowPassword = false;*/
 
-  Future<void> register() async {
+  Future<void> register(BuildContext context) async {
     // Set loading state to true
     state = state.copyWith(isLoading: true,isInitial: false);
     try {
@@ -37,12 +41,19 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
       result.fold(
         (l) {
           print('error abd ${l.message}');
+          showToast(text: 'Invalid username or password', state: ToastState.ERROR);
           state = state.copyWith(isLoading: false, isError: true);
         },
         (r) {
           {
+            CacheHelper.saveData(key: 'token', value: r.token).then((value) {
+              AppConstant.token = r.token;
+            });
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>   SelectCountryScreen()));
+            showToast(text: 'Sign Up Successfully', state: ToastState.SUCCESS);
             print('register success');
             state = state.copyWith(isLoading: false, isSuccess: true,);
+
           }
         },
       );
@@ -51,6 +62,8 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
       state = state.copyWith(
         isLoading: false,
       );
+      showToast(text: 'Invalid username or password', state: ToastState.ERROR);
+
     }
   }
 

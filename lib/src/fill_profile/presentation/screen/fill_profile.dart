@@ -16,7 +16,7 @@ class FillProfile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var notifier = ref.read(createProfileNotifierProvider.notifier);
+    var notifier = ref.watch(createProfileNotifierProvider);
 
     return Scaffold(
         appBar: AppBar(

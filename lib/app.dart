@@ -14,7 +14,6 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeNotifierProvider); // Get the current theme mode
 print('token is ${AppConstant.token}');
-
     return ResponsiveSizer(
       builder: (BuildContext , Orientation , ScreenType ) {
         return  MaterialApp(
@@ -25,7 +24,6 @@ print('token is ${AppConstant.token}');
           themeMode: themeMode,
           debugShowCheckedModeBanner: false,
           home:  const InitialScreen(),
-
         );
       },
     );

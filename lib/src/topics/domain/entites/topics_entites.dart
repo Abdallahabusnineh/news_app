@@ -1,10 +1,10 @@
-class Topics {
+class TopicsEntites {
 final String imageUri;
 final int id;
 final String description;
 final String topic;
+  bool isSaved;
 
-  Topics({required this.imageUri, required this.id, required this.description, required this.topic});
-
+TopicsEntites({required this.imageUri, required this.id, required this.description, required this.topic, required this.isSaved});
 
   }

@@ -5,8 +5,6 @@ import 'package:news_app/src/select_country/presentation/providers/countries_not
 import 'package:news_app/src/select_country/presentation/providers/countries_state.dart';
 import 'package:news_app/src/topics/presentation/screen/topics.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:skeletonizer/skeletonizer.dart';
-
 import '../../../../shared/core/theme/app_colors.dart';
 import '../../../../shared/shared_widget/bottom_sheet_button.dart';
 
@@ -62,9 +60,7 @@ class SelectCountryScreen extends ConsumerWidget {
                 height: 2.h,
               ),
               Expanded(
-                child: Skeletonizer(
-                 enabled: state.isLoading?true:false,
-                  child: ListView.builder(
+               child:   ListView.builder(
                           itemCount: notifier.countries.length,
                           padding: EdgeInsets.symmetric(horizontal: 2.w),
                           itemBuilder: (context, index) {
@@ -104,7 +100,7 @@ class SelectCountryScreen extends ConsumerWidget {
                               );
                           },
                         ),
-                ),
+
               ),
             ],
           ),

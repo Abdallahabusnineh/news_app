@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:news_app/shared/core/utils/app_assets.dart';
 import 'package:news_app/shared/core/utils/app_constant.dart';
 import 'package:news_app/src/main_screen/presentaion/screen/main_screen.dart';
 import '../select_country/presentation/screen/select_country_screen.dart';
@@ -29,13 +30,12 @@ class _InitialScreenState extends State<InitialScreen> {
       );
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: SvgPicture.asset(
-          'assets/images/logo.svg',
+          AppAssets.logo,
           fit: BoxFit.cover,
         ),
       ),

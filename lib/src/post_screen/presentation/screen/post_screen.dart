@@ -27,7 +27,12 @@ class PostScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-            const AuthorBuilder(authorName: 'BBC News', authorImg: AppAssets.trendingCircleAvatar, subtitle: '14m ago',),
+              const AuthorBuilder(
+                authorName: 'BBC News',
+                authorImg: AppAssets.trendingCircleAvatar,
+                subtitle: '14m ago',
+                 index: 1,
+              ),
               SizedBox(
                 height: 3.h,
               ),
@@ -87,11 +92,17 @@ class PostScreen extends StatelessWidget {
               SizedBox(
                 width: 3.w,
               ),
-             IconButton(onPressed: (){
-               Navigator.push(context, MaterialPageRoute(builder: (context)=>const CommentScreen()));
-             }, icon:  const Icon(
-               Icons.mode_comment_outlined,
-             ),),
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CommentScreen()));
+                },
+                icon: const Icon(
+                  Icons.mode_comment_outlined,
+                ),
+              ),
               SizedBox(
                 width: 1.h,
               ),
@@ -101,13 +112,11 @@ class PostScreen extends StatelessWidget {
               ),
               const Spacer(),
               IconButton(
-                onPressed: () {
-
-                },
-                icon: const Icon(
-                  Icons.bookmark,
-                  color: AppColors.primaryColor,
-                )),
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.bookmark,
+                    color: AppColors.primaryColor,
+                  )),
             ],
           ),
         ));

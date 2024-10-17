@@ -32,7 +32,7 @@ class NewSourceDataSource extends BaseNewSourceDataSource {
       if (res.statusCode == 200) {
         List<dynamic> data = res.data['result'];
         return List<NewSourceModel>.from(
-            data.map((country) => NewSourceModel.fromJson(country)));
+            data.map((e) => NewSourceModel.fromJson(e)));
       } else {
         throw ServerExceptions(
             errorMessageModel: ErrorMessageModel.fromJson(
@@ -43,12 +43,12 @@ class NewSourceDataSource extends BaseNewSourceDataSource {
       log('newSources datasource error ${e.response!.statusCode}');
       throw ServerExceptions(
           errorMessageModel:
-              ErrorMessageModel.fromJson(e.message!, e.message!, true));
+          ErrorMessageModel.fromJson(e.message!, e.message!, true));
     } catch (e) {
       log('newSources datasource error ${e.toString()}');
       throw ServerExceptions(
           errorMessageModel:
-              ErrorMessageModel.fromJson(e.toString(), e.toString(), true));
+          ErrorMessageModel.fromJson(e.toString(), e.toString(), true));
     }
   }
 
@@ -122,9 +122,9 @@ class NewSourceDataSource extends BaseNewSourceDataSource {
       //print('result is $AppConstant.token');
 
       if (res.statusCode == 200) {
-        List<dynamic> data = res.data['result']['followed'];
+        List<dynamic> data = res.data['result'];
         return List<YourFollowingModels>.from(
-            data.map((country) => NewSourceModel.fromJson(country)));
+            data.map((e) => YourFollowingModels.fromJson(e)));
       } else {
         throw ServerExceptions(
             errorMessageModel: ErrorMessageModel.fromJson(

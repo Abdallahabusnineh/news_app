@@ -63,8 +63,12 @@ class LogoutChangeNotifier extends ChangeNotifier{
                     builder: (context) => const LoginScreen(),
                   ),
                       (route) => false);
-          CacheHelper.removeData(key: 'token');
-              AppConstant.token="";
+          CacheHelper.removeData(key: 'token').then(
+                (value) {
+          AppConstant.token = '';
+          print('logout $value');
+          });
+
           isSuccess = true;
           print('logout $r');
         },

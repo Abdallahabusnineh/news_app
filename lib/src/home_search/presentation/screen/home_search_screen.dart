@@ -4,6 +4,9 @@ import 'package:news_app/shared/core/utils/app_assets.dart';
 import 'package:news_app/shared/shared_widget/autho_builder.dart';
 import 'package:news_app/shared/shared_widget/post_builder/post_builder.dart';
 import 'package:news_app/shared/shared_widget/topic_builder.dart';
+import 'package:news_app/src/home_search/presentation/widget/author_tab_bar_view.dart';
+import 'package:news_app/src/home_search/presentation/widget/news_tab_bar_view.dart';
+import 'package:news_app/src/home_search/presentation/widget/topics_tab_bar_view.dart';
 import 'package:news_app/src/visit_profile_author/presentation/screen/visit_profile_author_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -27,7 +30,7 @@ class HomeSearchScreen extends StatelessWidget {
               children: [
                 SearchBar(
                   onTap: () {
-                    Navigator.pop(context);
+                    // here we will go to search screen by tabBar view
                   },
                   hintText: 'Search ',
                   leading: Image.asset(
@@ -51,6 +54,7 @@ class HomeSearchScreen extends StatelessWidget {
                       growable: true),
                 ),
                 TabBar(
+
                   dividerColor: Colors.transparent,
                   indicatorColor: AppColors.primaryColor,
                   indicatorWeight: 1,
@@ -58,13 +62,15 @@ class HomeSearchScreen extends StatelessWidget {
                       Theme.of(context).brightness == Brightness.light
                           ? AppColors.lightPurpleColor
                           : AppColors.lightGreyColor,
+                  unselectedLabelStyle: Theme.of(context).textTheme.labelLarge,
+                  labelStyle: Theme.of(context).textTheme.bodyMedium,
                   labelColor: Theme.of(context).brightness == Brightness.light
                       ? AppColors.lightPurpleColor
                       : AppColors.lightGreyColor,
                   indicatorSize: TabBarIndicatorSize.label,
                   onTap: (value) {},
                   tabs: const [
-                    Tab(text: 'News'),
+                    Tab(text: 'News',),
                     Tab(text: 'Topics'),
                     Tab(text: 'Author'),
                   ],
@@ -72,55 +78,11 @@ class HomeSearchScreen extends StatelessWidget {
                 SizedBox(
                   height: 2.h,
                 ),
-                Expanded(
+                const Expanded(
                   child: TabBarView(children: [
-                    SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          for (int i = 0; i < 10; i++)
-                            PostBuilder(
-                              isTrendingPost: false,
-                            ),
-                        ],
-                      ),
-                    ),
-                    SingleChildScrollView(
-                      child: Wrap(
-                        runSpacing: 1.h,
-                        children: [
-                          for (int i = 0; i < 10; i++)
-                            const TopicBuilder(
-                              image: AppAssets.topicImg,
-                              title: 'Health',
-                              subtitle:
-                                  'Get energizing workout moves, healthy recipes',
-                            ),
-                        ],
-                      ),
-                    ),
-                    SingleChildScrollView(
-                      child: Wrap(
-                        runSpacing: 2.h,
-                        children: [
-                          for (int i = 0; i < 10; i++)
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const VisitProfileAuthorScreen(),
-                                  ),
-                                );
-                              },
-                              child: const AuthorBuilder(
-                                authorName: 'BBC News',
-                                authorImg: AppAssets.trendingCircleAvatar,
-                                subtitle: '12M Followers',
-                              ),
-                            )
-                        ],
-                      ),
-                    ),
+                    NewTabBarView(),
+                    TopicsTabBarView(),
+                    AuthorTabBarView()
                   ]),
                 )
               ],

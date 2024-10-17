@@ -1,5 +1,6 @@
+/*
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:news_app/src/topics/data/model/topics_model.dart';
+import 'package:news_app/src/topics/data/model/topics_by_search_model.dart';
 import 'package:news_app/src/topics/data/repositories/topics_repository.dart';
 import 'package:news_app/src/topics/presentation/providers/topics_state.dart';
 
@@ -26,16 +27,16 @@ class TopicsNotifier extends StateNotifier<TopicsState> {
             isSuccess: false,
             isInitial: true,
             isTopicSelected: false)) {
-    getTopics('');
+    getTopicsBySearch('');
   }
   TopicsRepository topicsRepository;
-  List<TopicsModel> topics = [];
+  List<TopicsBySearchModel> topics = [];
  static List<int> selectedTopics = [];
 bool isTopicSelected = false;
-  Future<void> getTopics(String text) async {
+  Future<void> getTopicsBySearch(String text) async {
     state = state.copyWith(isLoading: true);
     try {
-      final result = await topicsRepository.getTopics(text);
+      final result = await topicsRepository.getTopicsBySearch(text);
       result.fold((l) {
         state = state.copyWith(isError: true, isLoading: false);
       }, (r) {
@@ -57,7 +58,8 @@ print('selectedTopics $selectedTopics');
 }
   void searchTopic(String text) {
     state = state.copyWith(isLoading: true);
-    getTopics(text);
+    getTopicsBySearch(text);
     state = state.copyWith(isSuccess: true,isLoading: false);
   }
 }
+*/

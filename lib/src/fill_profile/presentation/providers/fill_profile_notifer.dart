@@ -9,6 +9,7 @@ import 'package:news_app/src/fill_profile/data/datasourse/fill_your_profile_data
 import 'package:news_app/src/fill_profile/data/repository/fill_your_profile_repository.dart';
 import 'package:news_app/src/select_country/presentation/providers/countries_notifer.dart';
 import 'package:news_app/src/topics/presentation/providers/topics_notifer.dart';
+import 'package:news_app/src/topics/presentation/providers/topics_notifer_test.dart';
 //.split('/').last
 final createProfileNotifierProvider =
 ChangeNotifierProvider<CreateProfileNotifier>((ref) {
@@ -72,7 +73,8 @@ class CreateProfileNotifier extends ChangeNotifier {
         'phone_number': phoneNumberController.text,
         'country_id': CountriesNotifier.selectedCountryId,
 
-        'topics:': TopicsNotifier.selectedTopics,
+        'topics:': TopicsNotifier.selectedTopics.toString().replaceAll(
+            '[', '').replaceAll(']', ''),
         /* why the result of send always is last index ????????
         'topics:': [1,2]
         */'profile_photo': await MultipartFile.fromFile(attachmentFile!.path,
@@ -104,6 +106,7 @@ class CreateProfileNotifier extends ChangeNotifier {
       attachmentFile = File(result.files.first.path!);
       isFilePicked = true;
       print('file picked $attachmentFile');
+
 
     }
     else {

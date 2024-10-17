@@ -62,9 +62,13 @@ class BookmarkScreen extends StatelessWidget {
                           ),
                         );
                       },
-                      child: PostBuilder(
-                        isTrendingPost: false,
-                      ),
+                      child:PostBuilder(isTrendingPost: true,
+                          postImage: AppAssets.trendingImg,
+                          postTitle: 'title',
+                          postContent: 'content',
+                          postAuthorName: 'authorName',
+                          postAuthorImg: AppAssets.trendingCircleAvatar,
+                          postTime: '2h ago'),
                     );
                   },
                 ),

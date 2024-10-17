@@ -1,7 +1,14 @@
 class YourFollowingEntities {
-  final int id;
-  final String uesername;
+  final int followedId;
+  final int userId;
+  final String userName;
   final String email;
+  bool isFollowed;
 
-  YourFollowingEntities({required this.id, required this.uesername, required this.email});
+  YourFollowingEntities(
+      {required this.followedId,
+      required this.userId,
+      required this.userName,
+      required this.email,
+      required this.isFollowed});
 }

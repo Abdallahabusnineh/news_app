@@ -51,7 +51,9 @@ class LogoutChangeNotifier extends ChangeNotifier{
              backgroundColor: AppColors.errorColor,
              content: Text(
                'Logout Failed',
-               style: Theme.of(context).textTheme.bodyMedium,
+               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                 color: Colors.white
+               ),
              ),
            ),
          );

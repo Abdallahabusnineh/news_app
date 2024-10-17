@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
+import 'package:news_app/shared/core/utils/font_style.dart';
+import 'package:news_app/shared/shared_widget/bottom_sheet_button.dart';
 import 'package:news_app/src/new_sources/presentation/screen/new_sources.dart';
-import 'package:news_app/src/topics/presentation/providers/topics_notifer.dart';
-import 'package:news_app/src/topics/presentation/providers/topics_state.dart';
+import 'package:news_app/src/topics/presentation/providers/topics_notifer_test.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
-import '../../../../shared/core/theme/app_colors.dart';
-import '../../../../shared/core/utils/font_style.dart';
-import '../../../../shared/shared_widget/bottom_sheet_button.dart';
+
+
 
 class ChooseYourTopics extends ConsumerWidget {
   const ChooseYourTopics({super.key});
@@ -17,8 +17,8 @@ class ChooseYourTopics extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    TopicsState state = ref.watch(topicsNotifierProvider);
-    TopicsNotifier notifier = ref.read(topicsNotifierProvider.notifier);
+    TopicsNotifier notifier = ref.watch(topicsNotifierProvider);
+
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -50,7 +50,8 @@ class ChooseYourTopics extends ConsumerWidget {
                           ),
                           growable: true),
                       onChanged: (value) {
-                        notifier.getTopics(value);
+                       /* notifier.getTopicsBySearch(value);*/
+                        notifier.searchTopic(value);
                       },
                     ),
                     SizedBox(
@@ -58,9 +59,6 @@ class ChooseYourTopics extends ConsumerWidget {
                     ),
                     SizedBox(
                       width: double.infinity,
-                      child: Skeletonizer(
-                        enabled: state.isLoading ? true : false,
-                        containersColor: Colors.grey.shade300,
                         child: Wrap(
                           spacing: 2.w,
                           runSpacing: 1.h,
@@ -69,18 +67,14 @@ class ChooseYourTopics extends ConsumerWidget {
                             for (int index = 0;
                                 index < notifier.topics.length;
                                 index++)
-                              TopicsNotifier.selectedTopics
-                                      .contains(notifier.topics[index].id)
-                                  ? Container(
+                             notifier.topics[index].isSaved? Container(
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(6),
                                         color: AppColors.primaryColor,
                                       ),
                                       child: TextButton(
                                         onPressed: () {
-                                         notifier.selectTopic(
-                                             notifier.topics[index].id
-                                         );
+                                         notifier.toggleTopic(index);
 
                                         },
                                         child: Text(
@@ -101,10 +95,7 @@ class ChooseYourTopics extends ConsumerWidget {
                                       ),
                                       child: TextButton(
                                         onPressed: () {
-                                          notifier.selectTopic(
-                                              notifier.topics[index].id
-                                          );
-
+                                          notifier.toggleTopic(index);
                                         },
                                         child: Text(
                                             notifier.topics[index].topic,
@@ -113,13 +104,13 @@ class ChooseYourTopics extends ConsumerWidget {
                                       )),
                           ],
                         ),
-                      ),
+
                     ),
                   ],
                 )),
         bottomSheet: BottomSheetButton(
           onPressed: () {
-            if(TopicsNotifier.selectedTopics.isNotEmpty){
+            if(notifier.topics.where((element) => element.isSaved == true).isNotEmpty){
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const NewSources()));
             }

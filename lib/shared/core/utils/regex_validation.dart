@@ -28,7 +28,24 @@ bool validatePasswordRegex({required String password}) {
 }*/
 bool validatePasswordRegex({required String password}) {
   return RegExp(
+
+    /*
+
+     Explanation of the regex pattern:
+     (?=.*[A-Za-z]): Ensures there is at least one letter (uppercase or lowercase).
+     (?=.*[!@#$%^&*(),.?":{}|<>]): Ensures there is at least one special character.
+      .{6,}: Ensures the total length of the password is at least 6 characters.
+
+
+    * */
+
+      r'^(?=.*[A-Za-z])(?=.*[!@#$%^&*(),.?":{}|<>]).{6,}$')
+      .hasMatch(password);
+}
+
+/*bool validatePasswordRegex({required String password}) {
+  return RegExp(
       //this password must have at least 8 digits this is same flutter firebase .
       r'\d{6,}')
       .hasMatch(password);
-}
+}*/

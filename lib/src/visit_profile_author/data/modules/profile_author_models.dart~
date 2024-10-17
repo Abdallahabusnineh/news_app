@@ -1,0 +1,39 @@
+import 'package:news_app/src/visit_profile_author/domain/entities/profile_author_entites.dart';
+
+class ProfileAuthorModels extends ProfileAuthorEntites {
+  ProfileAuthorModels(
+      {required super.id,
+      required super.userName,
+      required super.email,
+      required super.type,
+      required super.followingCount,
+      required super.followersCount,
+      required super.newsCount,
+      required super.fullName,
+      required super.imageUri,
+      required super.phoneNumber,
+      required super.countryName,
+      required super.countryId,
+      required super.bio,
+      required super.website});
+
+  factory ProfileAuthorModels.fromJson(Map<String, dynamic> json) {
+    return ProfileAuthorModels(
+      id: json['id'],
+      userName: json['user_name'],
+      email: json['email'],
+      type: json['type'],
+      followingCount: json['following_count'],
+      followersCount: json['followers_count'],
+      newsCount: json['news_count'],
+      //*******************************************************
+      fullName: json['profile']['full_name'],
+      imageUri: json['profile']['image_uri'],
+      phoneNumber: json['profile']['phone_number'],
+      countryName: json['profile']['country']['name'],
+      countryId: json['profile']['country']['id'],
+      bio: json['profile']['bio'],
+      website: json['profile']['website'],
+    );
+  }
+}

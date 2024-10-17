@@ -39,12 +39,13 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   shared_preferences: ^2.3.2
+  flutter_easyloading: ^3.0.5
   dio: ^5.7.0
   json_annotation: ^4.9.0
   flutter_svg: ^2.0.10+1
   file_picker: any
   awesome_dialog: ^3.2.1
-  skeletonizer: ^1.4.2
+  flutter_spinkit: ^5.2.1
   responsive_sizer: ^3.3.1
   animate_do: ^3.3.4
   smooth_page_indicator: ^1.2.0+3

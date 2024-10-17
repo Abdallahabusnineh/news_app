@@ -1,0 +1,14 @@
+class NewEntities {
+  // post model
+  final int postId;
+  final int user_id;
+  final int topic_id;
+  final String image_uri;
+  final String title;
+  final String content;
+  // user model
+final int userId;
+final String user_name;
+final String email;
+final String type;
+}

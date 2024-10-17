@@ -6,21 +6,17 @@ import 'package:news_app/shared/shared_widget/post_builder/post_builder_model.da
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class PostBuilder extends StatelessWidget {
-  PostBuilder({
-    super.key, required this.isTrendingPost,
-  });
-final bool isTrendingPost ;
 
-  PostBuilderModel postBuilderModel = PostBuilderModel(
-      postId: 1,
-      postImage: AppAssets.trendingImg,
-      title: "Europe",
-      subtitle: "Russian warship: Moskva sinks in Black Sea",
-      postTime: "4h ago",
-      authorImg: AppAssets.trendingCircleAvatar,
-      authorName: "BBC News");
+final bool isTrendingPost;
+final String postImage;
+final String postTitle;
+final String postContent;
+final String postAuthorName;
+final String postAuthorImg;
+final String postTime;
 
-
+  const PostBuilder({super.key, required this.isTrendingPost, required this.postImage, required this.postTitle, required this.postContent, required this.postAuthorName, required this.postAuthorImg, required this.postTime});
+  
   @override
   Widget build(BuildContext context) {
     return isTrendingPost ?Padding(
@@ -29,29 +25,29 @@ final bool isTrendingPost ;
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Image.asset(
-            postBuilderModel.postImage,
+            postImage,
             fit: BoxFit.cover,
           ),
           SizedBox(
             height: 1.h,
           ),
-          Text(postBuilderModel.title,
+          Text(postTitle,
               style: Theme.of(context).textTheme.labelSmall),
           Text(
-            postBuilderModel.subtitle,
+            postContent,
             style: Theme.of(context).textTheme.bodyMedium,
             maxLines: 1,
           ),
           Row(
             children: [
               Image.asset(
-                postBuilderModel.authorImg,
+                postAuthorImg,
               ),
               SizedBox(
                 width: 1.w,
               ),
               Text(
-                postBuilderModel.authorName,
+                postAuthorName,
                 style: Theme.of(context).textTheme.displaySmall,
 
               ),
@@ -67,9 +63,11 @@ final bool isTrendingPost ;
               SizedBox(
                 width: 1.w,
               ),
-              Text(
-                postBuilderModel.postTime,
-                style: Theme.of(context).textTheme.labelSmall,
+              Flexible(
+                child: Text(
+                  postTime,
+                  style: Theme.of(context).textTheme.labelSmall,
+                ),
               ),
               const Spacer(),
               IconButton(
@@ -102,24 +100,24 @@ final bool isTrendingPost ;
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(postBuilderModel.title,
+                Text(postTitle,
                     style: Theme.of(context).textTheme.labelSmall),
                
                 Text(
-                  postBuilderModel.subtitle,
+                  postContent,
                   style: Theme.of(context).textTheme.bodyMedium,
                   maxLines: 2,
                 ),
                 Row(
                   children: [
                     Image.asset(
-                      postBuilderModel.authorImg,
+                      postAuthorImg,
                     ),
                     SizedBox(
                       width: 1.w,
                     ),
                     Text(
-                      postBuilderModel.authorName,
+                      postAuthorName,
                       style: Theme.of(context).textTheme.displaySmall,
                     ),
                     SizedBox(
@@ -132,11 +130,13 @@ final bool isTrendingPost ;
                     SizedBox(
                       width: 1.w,
                     ),
-                    Text(
-                      postBuilderModel.postTime,
-                      style: Theme.of(context).textTheme.labelSmall,
+                    Flexible(
+                      child: Text(
+                        postTime,
+                        style: Theme.of(context).textTheme.labelSmall,
+                      ),
                     ),
-                    const Spacer(),
+
                     IconButton(
                         onPressed: () {},
                         icon: const Icon(

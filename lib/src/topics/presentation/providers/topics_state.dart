@@ -1,3 +1,4 @@
+/*
 class TopicsState {
   final bool isInitial;
   final bool isLoading;
@@ -23,3 +24,4 @@ class TopicsState {
         isError: isError ?? this.isError);
   }
 }
+*/

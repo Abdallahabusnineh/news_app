@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
 import 'package:news_app/src/auth/domain/providers/auth_provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -175,7 +176,9 @@ class RegisterScreen extends ConsumerWidget {
                 ),
               ],
             ),
-            SizedBox(
+            registerState.isLoading ? const SpinKitSquareCircle(
+              color: AppColors.primaryColor,
+            ): SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                     style: ButtonStyle(
@@ -186,14 +189,8 @@ class RegisterScreen extends ConsumerWidget {
                     onPressed: () {
                       if (registerNotifier.registerFormKey.currentState!
                           .validate()) {
-                        registerNotifier.register();
-                        registerState.isSuccess
-                            ? Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                         SelectCountryScreen()))
-                            : const CircularProgressIndicator();
+                        registerNotifier.register(context);
+
                       }
                     },
                     child: const Text(
