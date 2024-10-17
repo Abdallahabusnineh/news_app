@@ -8,7 +8,7 @@ import 'package:news_app/src/topics/presentation/providers/topics_notifer_test.d
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class AllTopicScreen extends ConsumerWidget {
-  const AllTopicScreen({Key? key}) : super(key: key);
+  const AllTopicScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

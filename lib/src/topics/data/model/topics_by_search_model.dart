@@ -1,5 +1,4 @@
 import 'package:news_app/src/topics/domain/entites/topics_by_search_entites.dart';
-import 'package:news_app/src/topics/domain/entites/topics_entites.dart';
 
 
 

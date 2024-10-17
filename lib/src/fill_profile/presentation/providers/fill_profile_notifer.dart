@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -8,7 +7,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/src/fill_profile/data/datasourse/fill_your_profile_datasource.dart';
 import 'package:news_app/src/fill_profile/data/repository/fill_your_profile_repository.dart';
 import 'package:news_app/src/select_country/presentation/providers/countries_notifer.dart';
-import 'package:news_app/src/topics/presentation/providers/topics_notifer.dart';
 import 'package:news_app/src/topics/presentation/providers/topics_notifer_test.dart';
 //.split('/').last
 final createProfileNotifierProvider =

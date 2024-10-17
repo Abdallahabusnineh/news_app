@@ -5,7 +5,6 @@ import 'package:news_app/shared/core/utils/app_constant.dart';
 import 'package:news_app/shared/core/utils/show_toast.dart';
 import 'package:news_app/src/auth/data/repositories/auth_repository.dart';
 import 'package:news_app/src/main_screen/presentaion/screen/main_screen.dart';
-import 'package:news_app/src/select_country/presentation/screen/select_country_screen.dart';
 
 import 'login_state.dart';
 

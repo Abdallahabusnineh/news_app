@@ -3,9 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
-import 'package:news_app/shared/shared_widget/post_builder/post_builder.dart';
-import 'package:news_app/src/home_search/presentation/widget/news_tab_bar_view.dart';
-import 'package:news_app/src/home_search/presentation/widget/topics_tab_bar_view.dart';
 import 'package:news_app/src/visit_profile_author/presentation/provider/profile_author_notifier.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 

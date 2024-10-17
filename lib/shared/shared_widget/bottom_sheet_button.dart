@@ -4,18 +4,19 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import '../core/utils/font_style.dart';
 
 class BottomSheetButton extends StatelessWidget {
-   BottomSheetButton({super.key,this.onPressed});
-  void Function()? onPressed;
+  const BottomSheetButton({super.key, this.onPressed});
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-          border: Theme.of(context).brightness == Brightness.light?Border(
-            top: BorderSide(color: Colors.grey.shade300, width: 1),
-          ):null
-      ),
+          border: Theme.of(context).brightness == Brightness.light
+              ? Border(
+                  top: BorderSide(color: Colors.grey.shade300, width: 1),
+                )
+              : null),
       padding: EdgeInsets.only(
         top: 3.h,
         bottom: 2.h,
@@ -28,7 +29,7 @@ class BottomSheetButton extends StatelessWidget {
         },
         child: Text(
           'Next',
-          style: AppFontStyle.w600(fontSize:16),
+          style: AppFontStyle.w600(fontSize: 16),
         ),
       ),
     );

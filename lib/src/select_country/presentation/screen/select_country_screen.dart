@@ -9,7 +9,7 @@ import '../../../../shared/core/theme/app_colors.dart';
 import '../../../../shared/shared_widget/bottom_sheet_button.dart';
 
 class SelectCountryScreen extends ConsumerWidget {
-   SelectCountryScreen({super.key});
+   const SelectCountryScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

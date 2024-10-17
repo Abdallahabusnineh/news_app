@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
-import 'package:news_app/shared/shared_widget/post_builder/post_builder_model.dart';
 
 import 'package:responsive_sizer/responsive_sizer.dart';
 

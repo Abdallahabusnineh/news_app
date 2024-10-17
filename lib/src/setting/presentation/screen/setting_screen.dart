@@ -4,9 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/theme/mode_theme/provider_mode_theme.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
-import 'package:news_app/shared/core/utils/show_toast.dart';
 import 'package:news_app/src/auth/presentation/providers/logout/logout_provider.dart';
-import 'package:news_app/src/auth/presentation/screen/login/login_screen.dart';
 import 'package:news_app/src/notification/presentation/screen/notification_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 

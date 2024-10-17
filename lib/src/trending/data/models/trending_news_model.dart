@@ -1,4 +1,3 @@
-import 'package:news_app/src/home/domain/entites/all_news_entites.dart';
 import 'package:news_app/src/trending/domain/entites/trending_news_entites.dart';
 
 class TrendingNewsModel extends TrendingNewsEntities {

@@ -4,10 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
 import 'package:news_app/shared/core/utils/app_constant.dart';
 import 'package:news_app/src/main_screen/presentaion/screen/main_screen.dart';
-import '../select_country/presentation/screen/select_country_screen.dart';
 import 'on_boarding_screen.dart';
-
-
 
 class InitialScreen extends StatefulWidget {
   const InitialScreen({super.key});
@@ -19,17 +16,19 @@ class InitialScreen extends StatefulWidget {
 class _InitialScreenState extends State<InitialScreen> {
   @override
   void initState() {
-    // TODO: implement initState
-    super.initState();
-
-    Timer(const Duration(seconds: 1), () {
+    // Timer();
+    Future.delayed(const Duration(seconds: 1), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-            builder: (context) =>  startPage()), // Call nextPage() to your main page
+            builder: (context) =>
+                startPage()), // Call nextPage() to your main page
       );
     });
+
+    super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +45,7 @@ class _InitialScreenState extends State<InitialScreen> {
     if (AppConstant.token == "") {
       return const OnBoardingScreen();
     } else {
-      return  const MainScreen();
+      return const MainScreen();
     }
   }
 }

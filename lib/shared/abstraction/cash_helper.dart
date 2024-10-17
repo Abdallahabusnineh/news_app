@@ -1,24 +1,28 @@
+import 'package:news_app/shared/core/utils/app_constant.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheHelper {
   static late SharedPreferences sharedPreferences;
 
   static init() async {
-     sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences = await SharedPreferences.getInstance();
+    AppConstant.token = await CacheHelper.getData(key: 'token') ?? "";
+    AppConstant.lang = await CacheHelper.getData(key: 'lang') ?? "en";
   }
-  static late   String _token;
+
+  static late String _token;
 
   static set token(String value) {
     _token = value;
     saveData(key: "token", value: value);
   }
+
   static String get token => _token;
-
-
 
   static dynamic getData({required String key}) => sharedPreferences.get(key);
 
-  static Future<bool> saveData({required String key, required dynamic value}) async {
+  static Future<bool> saveData(
+      {required String key, required dynamic value}) async {
     if (value is String) {
       return await sharedPreferences.setString(key, value);
     }
@@ -33,11 +37,14 @@ class CacheHelper {
     return await sharedPreferences.setDouble(key, value);
   }
 
-  static Future<bool> removeData({required String key}) async => await sharedPreferences.remove(key);
+  static Future<bool> removeData({required String key}) async =>
+      await sharedPreferences.remove(key);
 
-  static Future<bool> isDark() async => sharedPreferences.getBool("is_dark") ?? false;
+  static Future<bool> isDark() async =>
+      sharedPreferences.getBool("is_dark") ?? false;
 
-  static Future<void> setTheme(bool isDark) async => sharedPreferences.setBool("is_dark", isDark);
+  static Future<void> setTheme(bool isDark) async =>
+      sharedPreferences.setBool("is_dark", isDark);
 
 //TODO: use it when start coding
 // static Future<void> getAppConstant() async {

@@ -7,7 +7,6 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../../../shared/core/theme/app_colors.dart';
 import '../../../../../shared/core/utils/regex_validation.dart';
-import '../../../../select_country/presentation/screen/select_country_screen.dart';
 import '../login/login_screen.dart';
 
 class RegisterScreen extends ConsumerWidget {
