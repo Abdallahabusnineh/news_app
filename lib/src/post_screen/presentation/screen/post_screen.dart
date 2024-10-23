@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
 import 'package:news_app/shared/shared_widget/autho_builder.dart';
 import 'package:news_app/src/comment_screen/presentation/screen/comment_screen.dart';
+import 'package:news_app/src/post_screen/presentation/provider/get_post_info_notifier.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class PostScreen extends StatelessWidget {
+class PostScreen extends ConsumerWidget {
   const PostScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    GetPostInfoNotifier getPostInfoNotifier =
+        ref.watch(getPostInfoNotifierProvider);
+    var postItem = getPostInfoNotifier.getPostInfoModel;
+  //  print('postItem ${postItem!.userId}');
     return Scaffold(
         appBar: AppBar(
           actions: [
@@ -21,17 +28,19 @@ class PostScreen extends StatelessWidget {
                 onPressed: () {}, icon: const Icon(Icons.more_vert_rounded)),
           ],
         ),
-        body: SingleChildScrollView(
+        body: getPostInfoNotifier.isLoading ? const Center(child: SpinKitDoubleBounce(
+          color: AppColors.primaryColor,
+        )) : SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
           padding: EdgeInsets.only(left: 5.w, right: 5.w, bottom: 15.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const AuthorBuilder(
-                authorName: 'BBC News',
+              AuthorBuilder(
+                authorName: postItem?.userName??'',
                 authorImg: AppAssets.trendingCircleAvatar,
-                subtitle: '14m ago',
-                 index: 1,
+                subtitle: postItem?.createdAt??'',
+                id: postItem?.userId??1,
               ),
               SizedBox(
                 height: 3.h,
@@ -44,11 +53,11 @@ class PostScreen extends StatelessWidget {
                 height: 1.h,
               ),
               Text(
-                'Europe',
+                postItem?.topicName??'',
                 style: Theme.of(context).textTheme.labelMedium,
               ),
               Text(
-                'Ukraine\'s President Zelensky to BBC: Blood money being paid for Russian oil',
+                postItem?.title??'',
                 style: Theme.of(context)
                     .textTheme
                     .bodyMedium
@@ -60,20 +69,18 @@ class PostScreen extends StatelessWidget {
               ),
               RichText(
                   text: TextSpan(
-                text:
-                    'Ukrainian President Volodymyr Zelensky has accused European countries'
-                    'that continue to buy Russian oil of "earning their money in other people\'s blood".',
+                text: postItem?.content,
                 style: Theme.of(context).textTheme.labelLarge,
               )),
               SizedBox(
                 height: 3.h,
               ),
-              RichText(
+              /* RichText(
                   text: TextSpan(
                 text:
                     'In an interview with the BBC, President Zelensky singled out Germany and Hungary, accusing them of blocking efforts to embargo energy sales, from which Russia stands to make up to £250bn (\$326bn) this year.',
                 style: Theme.of(context).textTheme.labelLarge,
-              )),
+              )),*/
             ],
           ),
         ),
@@ -81,12 +88,18 @@ class PostScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 3.h),
           child: Row(
             children: [
-              const Icon(Icons.favorite, color: Color(0xFFED2E7E)),
+              postItem?.isLiked??false
+                  ?  IconButton(onPressed: () {
+getPostInfoNotifier.toggleLikePost(postItem?.postId??0);
+                  }, icon: const Icon(Icons.favorite, color: Color(0xFFED2E7E)))
+                  : IconButton(onPressed: () {
+                getPostInfoNotifier.toggleLikePost(postItem?.postId??0);
+              } , icon: const Icon(Icons.favorite_border, color: Color(0xFFED2E7E)),) ,
               SizedBox(
                 width: 1.h,
               ),
               Text(
-                '24.5',
+                '${postItem?.likeCount}',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               SizedBox(
@@ -107,14 +120,19 @@ class PostScreen extends StatelessWidget {
                 width: 1.h,
               ),
               Text(
-                '1K',
+                "${postItem?.commentCount}",
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               const Spacer(),
               IconButton(
                   onPressed: () {},
-                  icon: const Icon(
+                  icon: postItem?.isBookMarked??false
+                      ? const Icon(
                     Icons.bookmark,
+                    color: AppColors.primaryColor,
+                  ):
+                  const Icon(
+                    Icons.bookmark_outline,
                     color: AppColors.primaryColor,
                   )),
             ],

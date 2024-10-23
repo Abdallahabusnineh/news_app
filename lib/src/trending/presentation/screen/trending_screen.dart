@@ -24,21 +24,25 @@ class TrendingScreen extends ConsumerWidget {
               onPressed: () {}, icon: const Icon(Icons.more_vert_rounded)),
         ],
       ),
-      body: trendingNewsNotifier.isLoading ? const SpinKitSquareCircle(
-        color: AppColors.primaryColor,
-      ) : ListView.builder(
+      body: trendingNewsNotifier.isLoading
+          ? const SpinKitSquareCircle(
+              color: AppColors.primaryColor,
+            )
+          : ListView.builder(
               padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 2.h),
               itemCount: trendingNewsNotifier.trendingNews.length,
               itemBuilder: (context, index) {
-      var item = trendingNewsNotifier.trendingNews;
-      return PostBuilder(
-          isTrendingPost: true,
-          postImage: AppAssets.trendingImg,
-          postTitle: item[index].title,
-          postContent: item[index].content,
-          postAuthorName: item[index].userName,
-          postAuthorImg: AppAssets.trendingCircleAvatar,
-          postTime: item[index].createdAt);
+                var item = trendingNewsNotifier.trendingNews;
+                return PostBuilder(
+                  isTrendingPost: true,
+                  postImage: AppAssets.trendingImg,
+                  postTitle: item[index].title,
+                  postContent: item[index].content,
+                  postAuthorName: item[index].userName,
+                  postAuthorImg: AppAssets.trendingCircleAvatar,
+                  postTime: item[index].createdAt,
+                  postId: item[index].postId,
+                );
               },
             ),
     );

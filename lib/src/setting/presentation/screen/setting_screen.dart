@@ -5,6 +5,7 @@ import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/theme/mode_theme/provider_mode_theme.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
 import 'package:news_app/src/auth/presentation/providers/logout/logout_provider.dart';
+import 'package:news_app/src/notification/presentation/providers/notification_notifier.dart';
 import 'package:news_app/src/notification/presentation/screen/notification_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -13,6 +14,7 @@ class SettingScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    NotificationNotifier notificationNotifier =ref.watch(notificationChangeNotifierProvider);
     final themeNotifier =
         ref.read(themeNotifierProvider.notifier); // Access ThemeNotifier
     LogoutChangeNotifier logoutChangeNotifier =
@@ -33,6 +35,7 @@ class SettingScreen extends ConsumerWidget {
           children: [
             GestureDetector(
               onTap: () {
+                notificationNotifier.getNotifications();
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
                     return const NotificationScreen();
@@ -160,13 +163,13 @@ class SettingScreen extends ConsumerWidget {
                   dialogBackgroundColor:
                       Theme.of(context).brightness == Brightness.light
                           ? AppColors.whiteColor
-                          : AppColors.blackColor,
+                          : Colors.white10,
                   dialogType: DialogType.warning,
                   animType: AnimType.scale,
                   title: 'Logout',
                   desc: 'Are you sure want to logout?',
                   btnCancelOnPress: () {
-                    Navigator.pop(context);
+
                   },
                   btnOkOnPress: () {
                     logoutChangeNotifier.logout(context);

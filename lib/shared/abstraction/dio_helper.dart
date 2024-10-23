@@ -74,7 +74,7 @@ class DioHelper {
     dio!.options.headers = {
       "Content-Type": "application/json",
       "lang": lang ?? "en",
-      "Authorization": token ?? "",
+      "Authorization": "Bearer $token",
       "accept": "application/json",
     };
     var x = await dio!.put(url, queryParameters: query, data: data);
@@ -91,10 +91,10 @@ class DioHelper {
     dio!.options.headers = {
       "Content-Type": "application/json",
       "Accept-Language": lang ?? "en",
-      "Authorization": token ?? "",
+      "Authorization":"Bearer $token",
       "accept": "application/json",
     };
-    var x = await dio!.delete(url, queryParameters: query, data: data);
+    var x = await dio!.delete(url, queryParameters: query, data: data,);
     return x;
   }
 
@@ -108,7 +108,7 @@ class DioHelper {
     dio!.options.headers = {
       "Content-Type": "application/json",
       "Accept-Language": lang ?? "en",
-      "Authorization": token ?? "",
+      "Authorization": "Bearer $token",
       "accept": "application/json",
     };
     var x = await dio!.patch(url, queryParameters: query, data: data);

@@ -25,22 +25,11 @@ class AuthorTabBarView extends ConsumerWidget {
             ),
           )
         : ListView.separated(
-            itemBuilder: (context, i) => GestureDetector(
-              onTap: () {
-                profileAuthorNotifier.getProfileAuthor(items[i].id);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const VisitProfileAuthorScreen(),
-                  ),
-                );
-              },
-              child: AuthorBuilder(
-                authorName: items[i].userName,
-                authorImg: AppAssets.trendingCircleAvatar,
-                subtitle: '${items[i].followersCount} Followers',
-                index: i,
-              ),
+            itemBuilder: (context, i) => AuthorBuilder(
+              authorName: items[i].userName,
+              authorImg: AppAssets.trendingCircleAvatar,
+              subtitle: '${items[i].followersCount} Followers',
+              id: items[i].id,
             ),
             separatorBuilder: (context, index) => SizedBox(height: 2.h),
             itemCount: items.length,

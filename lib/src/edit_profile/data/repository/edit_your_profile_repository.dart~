@@ -1,0 +1,22 @@
+import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
+import 'package:news_app/shared/core/error/exceptions.dart';
+import 'package:news_app/shared/core/error/failure.dart';
+import 'package:news_app/src/edit_profile/data/model/edit_your_profile_model.dart';
+import 'package:news_app/src/edit_profile/domain/reopsitory/edit_your_profile_base_repository.dart';
+import 'package:news_app/src/fill_profile/data/datasourse/fill_your_profile_datasource.dart';
+
+class EditProfileRepository extends EditYourProfileBaseRepository {
+  BaseDataSourceCreateYourProfile baseDataSourceCreateYourProfile;
+  EditProfileRepository(this.baseDataSourceCreateYourProfile);
+  @override
+  Future<Either<Failure, EditProfileModel>> createProfile(FormData formData) async {
+    try {
+      final result = await baseDataSourceCreateYourProfile.createProfile(formData);
+      return Right(result);
+    } on ServerExceptions catch (e) {
+      return Left(ServerFailure(e.errorMessageModel.message));
+    }
+  }
+
+}

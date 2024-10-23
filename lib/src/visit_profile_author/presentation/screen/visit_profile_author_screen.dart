@@ -3,7 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
+import 'package:news_app/src/home_search/presentation/widget/author_tab_bar_view.dart';
+import 'package:news_app/src/home_search/presentation/widget/news_tab_bar_view.dart';
+import 'package:news_app/src/home_search/presentation/widget/topics_tab_bar_view.dart';
 import 'package:news_app/src/visit_profile_author/presentation/provider/profile_author_notifier.dart';
+import 'package:news_app/src/visit_profile_author/presentation/widget/news_by_user_id_tabbar.dart';
+import 'package:news_app/src/visit_profile_author/presentation/widget/recent_news_by_user_id_tabbar.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class VisitProfileAuthorScreen extends ConsumerWidget {
@@ -22,7 +27,7 @@ class VisitProfileAuthorScreen extends ConsumerWidget {
                 onPressed: () {}, icon: const Icon(Icons.more_vert_rounded)),
           ],
         ),
-        body: profileAuthorNotifier.isLoading? const Center(child: SpinKitDoubleBounce(color: AppColors.primaryColor),):SingleChildScrollView(
+        body: profileAuthorNotifier.isLoading? const Center(child: SpinKitDoubleBounce(color: AppColors.primaryColor),):Padding(
           padding: EdgeInsets.only(
             left: 5.w,
             right: 5.w,
@@ -112,7 +117,7 @@ class VisitProfileAuthorScreen extends ConsumerWidget {
                 height: 2.h,
               ),
               Row(
-                children: [
+                children: <Widget>[
                   Expanded(
                       child: ElevatedButton(
                           onPressed: () {
@@ -124,13 +129,13 @@ class VisitProfileAuthorScreen extends ConsumerWidget {
                   ),
                   Expanded(
                       child: ElevatedButton(
-                          onPressed: () {}, child: const Text('Website'))),
+                          onPressed: () {}, child:  const Text('WebSite'))),
                 ],
               ),
               SizedBox(
                 height: 2.h,
               ),
-            /*  TabBar(
+              TabBar(
                 dividerColor: Colors.transparent,
                 indicatorColor: AppColors.primaryColor,
                 indicatorWeight: 1,
@@ -141,22 +146,28 @@ class VisitProfileAuthorScreen extends ConsumerWidget {
                 unselectedLabelStyle: Theme.of(context).textTheme.labelLarge,
                 labelStyle: Theme.of(context).textTheme.bodyMedium,
                 labelColor: Theme.of(context).brightness == Brightness.light
-                    ? AppColors.lightPurpleColor
+                    ? AppColors.blackColor
                     : AppColors.lightGreyColor,
+                padding:  EdgeInsets.symmetric(horizontal: 20.w),
                 indicatorSize: TabBarIndicatorSize.label,
-                onTap: (value) {},
+                onTap: (value) {
+
+                },
                 tabs: const [
-                  Tab(text: 'News',),
+                   Tab(text: 'News',),
                   Tab(text: 'Recent'),
                 ],
               ),
+              SizedBox(
+                height: 2.h,
+              ),
               const Expanded(
                 child: TabBarView(children: [
-                  NewTabBarView(),
-                  TopicsTabBarView(),
+                  NewsByUserIdTabBar(),
+                  RecentNewsByUserIdTabBar()
 
                 ]),
-              ),*/
+              ),
 
 
 

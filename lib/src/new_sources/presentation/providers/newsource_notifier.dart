@@ -19,7 +19,13 @@ class NewsourceNotifier extends ChangeNotifier {
   List<NewSourceModel> _sources = [];
 
   List<NewSourceModel> get sources => _sources;
+  bool _isFollowing = false;
+bool get isFollowing => _isFollowing;
 
+  set isFollowing(bool isFollowing) {
+    _isFollowing = isFollowing;
+    notifyListeners();
+  }
   set sources(List<NewSourceModel> sources) {
     _sources = sources;
     notifyListeners();
@@ -98,14 +104,14 @@ class NewsourceNotifier extends ChangeNotifier {
     isLoading = false;
   }
 
-  Future<void> follow(int index) async {
+  Future<void> follow(int id) async {
     toggleFollowUpdate=true;
     try {
-      final result = await newSourceRepository.follow(index);
+      final result = await newSourceRepository.follow(id);
       result.fold((l) {
         isError = true;
       }, (r) {
-        toggleFollow(index);
+        toggleFollow(id);
         print('true');
         //print('source is followed aaa${sources[index].id} source is ${sources}');
       });
@@ -113,6 +119,25 @@ class NewsourceNotifier extends ChangeNotifier {
       isError = true;
     }
     toggleFollowUpdate=false;
+  }
+  Future<void> checkFollow(int index) async {
+    isLoading = true;
+    try {
+      final result = await newSourceRepository.checkFollow(index);
+      result.fold((l) {
+        isFollowing = false;
+        isError = true;
+
+      }, (r) {
+      isFollowing = r;
+      isSuccess = true;
+        //print('source is followed aaa${sources[index].id} source is ${sources}');
+      });
+    } catch (e) {
+      isFollowing = false;
+      isError = true;
+    }
+    isLoading = false;
   }
 
   bool userFollowing(int id) {
@@ -127,8 +152,16 @@ class NewsourceNotifier extends ChangeNotifier {
   }
 
   void toggleFollow(int index) {
-    sources[index].isFollowed = !sources[index].isFollowed;
+    if (sources[index].isFollowed) {
+      sources[index].isFollowed = false;
+    } else {
+      sources[index].isFollowed = true;
+    }
     notifyListeners();
   }
+ /* bool checkFollow(int index) {
+
+  }
+*/
 
 }

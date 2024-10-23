@@ -1,0 +1,17 @@
+class NotificationEntites {
+ //notification info
+ final String type;
+ final String newsId;
+ final String commentId;
+ final String createdAt;
+ final String newsPost;
+
+ //notifier info
+ final String notifierUserName;
+ final String notifierEmail;
+ final String notifierId;
+
+//notified info
+ final String notifiedUserName;
+ final String notifiedId;
+}

@@ -23,7 +23,7 @@ class MainScreen extends ConsumerWidget {
         currentIndex: indexBottomNavbar,
         type: BottomNavigationBarType.fixed,
         onTap: (value) => ref
-            .read(indexBottomNavbarProvider.notifier)
+            .watch(indexBottomNavbarProvider.notifier)
             .update((state) => value),
         items: [
           BottomNavigationBarItem(icon: Icon(indexBottomNavbar == 0 ? Icons.home : Icons.home_outlined), label: 'Home'),

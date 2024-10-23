@@ -1,18 +1,56 @@
 abstract class ApiUrls {
-  static String baseUrl = 'http://172.104.250.89';
-  static String register() => '$baseUrl/api/auth/register';
-  static String login() => '$baseUrl/api/auth/login';
-  static String getCountries() => '$baseUrl/api/search/countries';
-  static String getTopicsBySearch() => '$baseUrl/api/search/topics';
-  static String getTopics() => '$baseUrl/api/topics';
-  static String searchInNewSources() => '$baseUrl/api/search/authors';
-  static String checkFollowing(int id) => '$baseUrl/api/follow/$id';
-  static String follow(int id) => '$baseUrl/api/follow/$id';
-  static String createYourProfile() => '$baseUrl/api/user/profile/create';
-  static String yourFollowing() => '$baseUrl/api/following';
-  static String logout() => '$baseUrl/api/auth/logout';
-  static String getAllNews() => '$baseUrl/api/news';
-  static String getTrendingNews() => '$baseUrl/api/news/trending';
-  static String getAuthorInfoProfile(int id) => '$baseUrl/api/user/$id/profile/view';
+  static String baseUrl = 'http://172.105.73.38/api';
+
+  static String register() => '$baseUrl/auth/register';
+
+  static String login() => '$baseUrl/auth/login';
+
+  static String getCountries() => '$baseUrl/search/countries';
+
+  static String getTopicsBySearch() => '$baseUrl/search/topics';
+
+  static String getTopics() => '$baseUrl/topics';
+
+  static String searchInNewSources() => '$baseUrl/search/authors';
+
+  static String checkFollowing(int id) => '$baseUrl/follow/$id';
+
+  static String follow(int id) => '$baseUrl/follow/$id';
+
+  static String createYourProfile() => '$baseUrl/user/profile/create';
+  static String editYourProfile() => '$baseUrl/user/profile/edit';
+
+  static String yourFollowing() => '$baseUrl/following';
+
+  static String logout() => '$baseUrl/auth/logout';
+
+  static String getAllNews() => '$baseUrl/news';
+
+  static String getTrendingNews() => '$baseUrl/news/trending';
+  static String getNotifications() => '$baseUrl/notifications';
+  static String deleteNotificationById(int id) => '$baseUrl/notifications/$id';
+
+  static String getAuthorInfoProfile(int id) =>
+      '$baseUrl/user/$id/profile/view';
+
+ static String getNewsByUserId(int id) =>
+      '$baseUrl/news/user/$id';
+
+  static String addNewsToFavorites(int id) =>
+      '$baseUrl/bookmarks/news/$id/toggle';
+
+  static String getAllBookmarks() =>
+      '$baseUrl/bookmarks';
+  static String myProfileInfo() =>
+      '$baseUrl/auth/account';
+
+  static String createNewPost() =>
+      '$baseUrl/news';
+  static String getPostInfoById(int postId) =>
+      '$baseUrl/news/$postId';
+  static String toggleLikePost() =>
+      '$baseUrl/like';
+static String getNewsByTopicId(int postId) =>
+      '$baseUrl/news/topics/$postId';
 
 }

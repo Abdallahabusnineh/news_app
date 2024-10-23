@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/src/home/data/datasource/all_news_datasource.dart';
 import 'package:news_app/src/home/data/models/all_news_model.dart';
 import 'package:news_app/src/home/data/repository/all_news_repositoy_imp.dart';
-
+final allNewsChangeNotifierProvider = ChangeNotifierProvider((ref) {
+  return AllNewsNotifier();
+});
 class AllNewsNotifier extends ChangeNotifier {
   AllNewsNotifier() {
     // TODO: implement AllNewsNotifier

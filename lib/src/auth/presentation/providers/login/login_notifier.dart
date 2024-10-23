@@ -41,6 +41,7 @@ class LoginNotifier extends StateNotifier<LoginState> {
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>  const MainScreen()));
               CacheHelper.saveData(key: 'token', value: r.token).then((value) {
                 AppConstant.token = r.token;
+
               });
               state = state.copyWith(isLoading: false, isSuccess: true);
               showToast(text: 'Login Success', state: ToastState.SUCCESS);

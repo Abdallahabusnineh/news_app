@@ -1,3 +1,4 @@
+import 'package:news_app/shared/core/utils/app_assets.dart';
 import 'package:news_app/src/home/domain/entites/all_news_entites.dart';
 
 class AllNewsModel extends AllNewsEntities {
@@ -19,7 +20,7 @@ class AllNewsModel extends AllNewsEntities {
       // ************ post model**************
       postId: json['id'],
       topicId: json['topic_id'],
-      postImageUri: json['image_uri'],
+      postImageUri: json['image_uri']??AppAssets.trendingImg,
       title: json['title'],
       content: json['content'],
       createdAt: json['created_at'],

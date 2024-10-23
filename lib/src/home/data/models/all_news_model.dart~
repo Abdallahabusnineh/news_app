@@ -28,7 +28,7 @@ class AllNewsModel extends AllNewsEntities {
       userName: json['user']['user_name'],
       email: json['user']['email'],
       type: json['user']['type'],
-      userImageUri: json['user']['profile']['user_image_uri'],
+      userImageUri: json['user']['profile']['image_uri'],
     );
   }
 

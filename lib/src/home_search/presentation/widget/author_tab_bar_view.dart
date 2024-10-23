@@ -14,8 +14,7 @@ class AuthorTabBarView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    ProfileAuthorNotifier profileAuthorNotifier=ref.watch(profileAuthorProvider);
-    NewsourceNotifier newsourceNotifier =
+     NewsourceNotifier newsourceNotifier =
         ref.watch(newSourceChangeNotifierProviderTest);
     var items = newsourceNotifier.sources;
     return newsourceNotifier.isLoading
@@ -25,23 +24,11 @@ class AuthorTabBarView extends ConsumerWidget {
             ),
           )
         : ListView.separated(
-            itemBuilder: (context, i) => GestureDetector(
-              onTap: () {
-                print('tapped ${items[i].id}');
-                profileAuthorNotifier.getProfileAuthor(items[i].id);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const VisitProfileAuthorScreen(),
-                  ),
-                );
-              },
-              child: AuthorBuilder(
-                authorName: items[i].userName,
-                authorImg: AppAssets.trendingCircleAvatar,
-                subtitle: '${items[i].followersCount} Followers',
-                index: i,
-              ),
+            itemBuilder: (context, i) => AuthorBuilder(
+              authorName: items[i].userName,
+              authorImg: AppAssets.trendingCircleAvatar,
+              subtitle: '${items[i].followersCount} Followers',
+              id: items[i].id,
             ),
             separatorBuilder: (context, index) => SizedBox(height: 2.h),
             itemCount: items.length,

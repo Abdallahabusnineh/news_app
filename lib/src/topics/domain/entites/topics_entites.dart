@@ -8,3 +8,12 @@ final String topic;
 TopicsEntites({required this.imageUri, required this.id, required this.description, required this.topic, required this.isSaved});
 
   }
+
+
+  class TopicsCategoryEntites {
+  final int id;
+  final String topic;
+
+  TopicsCategoryEntites({required this.id, required this.topic});
+
+}

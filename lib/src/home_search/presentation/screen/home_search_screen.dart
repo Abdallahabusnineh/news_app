@@ -76,7 +76,7 @@ class HomeSearchScreen extends StatelessWidget {
                 ),
                 const Expanded(
                   child: TabBarView(children: [
-                    NewTabBarView(),
+                    NewsTabBarView(),
                     TopicsTabBarView(),
                     AuthorTabBarView()
                   ]),

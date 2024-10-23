@@ -75,7 +75,6 @@ class ChooseYourTopics extends ConsumerWidget {
                                       child: TextButton(
                                         onPressed: () {
                                          notifier.toggleTopic(index);
-
                                         },
                                         child: Text(
                                           notifier.topics[index].topic,

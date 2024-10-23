@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/shared/abstraction/cash_helper.dart';
 import 'package:news_app/shared/abstraction/dio_helper.dart';
+import 'package:news_app/src/test_theme.dart';
 import 'app.dart';
 
 Future<void> main() async {
@@ -9,6 +10,7 @@ Future<void> main() async {
  await DioHelper.init();
   await CacheHelper.init();
   //AppConstant.isDark = await CacheHelper.isDark();
+
   runApp(const ProviderScope(child: MyApp()));
 }
 

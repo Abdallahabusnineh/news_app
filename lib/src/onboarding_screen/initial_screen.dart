@@ -17,7 +17,7 @@ class _InitialScreenState extends State<InitialScreen> {
   @override
   void initState() {
     // Timer();
-    Future.delayed(const Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
