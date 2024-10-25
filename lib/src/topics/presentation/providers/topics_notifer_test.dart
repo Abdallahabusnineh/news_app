@@ -106,17 +106,17 @@ class TopicsNotifier extends ChangeNotifier {
   }*/
 
   void toggleSelectedTopic(int id) {
-    topics[id].isSaved = !topics[id].isSaved;
-    if (selectedTopics.contains(id)) {
-      selectedTopics.remove(id);
-     // selectedTopics.removeWhere((element) => element == id);
-     }
-    else  {
-      selectedTopics.add(id);
-      //selectedTopics.firstWhere((element) => element == id);
+    final topic = topics.firstWhere((topic) => topic.id == id);
+      topic.isSaved = !topic.isSaved;
 
-    }
-    print('selectedTopics $selectedTopics');
-    notifyListeners();
+      if (selectedTopics.contains(id)) {
+        selectedTopics.remove(id);
+      } else {
+        selectedTopics.add(id);
+      }
+
+      print('selectedTopics $selectedTopics');
+      notifyListeners();
+
   }
 }
