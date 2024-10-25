@@ -28,7 +28,7 @@ class MyApp extends ConsumerWidget {
           darkTheme: notifier.buildDarkTheme(),
           themeMode: themeMode,
           debugShowCheckedModeBanner: false,
-          home: const ChooseYourTopics(),
+          home: const InitialScreen(),
         );
       },
     );
