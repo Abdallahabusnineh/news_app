@@ -14,8 +14,7 @@ class AuthorTabBarView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    ProfileAuthorNotifier profileAuthorNotifier=ref.watch(profileAuthorProvider);
-    NewsourceNotifier newsourceNotifier =
+     NewsourceNotifier newsourceNotifier =
         ref.watch(newSourceChangeNotifierProviderTest);
     var items = newsourceNotifier.sources;
     return newsourceNotifier.isLoading
@@ -26,10 +25,7 @@ class AuthorTabBarView extends ConsumerWidget {
           )
         : ListView.separated(
             itemBuilder: (context, i) => AuthorBuilder(
-              authorName: items[i].userName,
-              authorImg: AppAssets.trendingCircleAvatar,
-              subtitle: '${items[i].followersCount} Followers',
-              id: items[i].id,
+              getPostInfoModel: newsourceNotifier.sources[i],
             ),
             separatorBuilder: (context, index) => SizedBox(height: 2.h),
             itemCount: items.length,

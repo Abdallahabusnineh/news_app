@@ -6,6 +6,7 @@ import 'package:news_app/shared/core/utils/show_toast.dart';
 import 'package:news_app/shared/shared_widget/bottom_sheet_button.dart';
 import 'package:news_app/src/fill_profile/presentation/providers/fill_profile_notifer.dart';
 import 'package:news_app/src/main_screen/presentaion/screen/main_screen.dart';
+import 'package:news_app/src/topics/presentation/providers/topics_notifer_test.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
@@ -17,6 +18,7 @@ class FillProfile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var notifier = ref.watch(createProfileNotifierProvider);
+    print('build home screen ${TopicsNotifier.selectedTopics}');
 
     return Scaffold(
         appBar: AppBar(

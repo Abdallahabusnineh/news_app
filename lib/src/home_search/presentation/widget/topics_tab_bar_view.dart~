@@ -22,7 +22,11 @@ class TopicsTabBarView extends ConsumerWidget {
         : ListView.separated(
       physics: const AlwaysScrollableScrollPhysics(),
             itemBuilder: (context, i) => TopicBuilder(
-              topic: notifier.topics[i],
+              image: AppAssets.topicImg,
+              title: notifier.topics[i].topic,
+              subtitle: notifier.topics[i].description,
+              isSaved: notifier.topics[i].isSaved,
+              id: notifier.topics[i].id,
             ),
             separatorBuilder: (context, index) => SizedBox(
               height: 2.h,

@@ -6,5 +6,4 @@ import 'package:news_app/src/topics/data/model/topics_model.dart';
 abstract class BaseTopicsRepository {
   Future<Either<Failure,List<TopicsBySearchModel>>> getTopicsBySearch( String text);
   Future<Either<Failure,List<TopicsModel>>> getTopics();
-  Future<Either<Failure,bool >> toggleTopic(int topicId);
  }

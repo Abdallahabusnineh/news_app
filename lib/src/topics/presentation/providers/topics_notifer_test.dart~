@@ -108,12 +108,11 @@ class TopicsNotifier extends ChangeNotifier {
   void toggleSelectedTopic(int id) {
     topics[id].isSaved = !topics[id].isSaved;
     if (selectedTopics.contains(id)) {
-      selectedTopics.remove(id);
-     // selectedTopics.removeWhere((element) => element == id);
+      //selectedTopics.remove(id);
+      selectedTopics.removeWhere((element) => element == id);
      }
     else  {
-      selectedTopics.add(id);
-      //selectedTopics.firstWhere((element) => element == id);
+      selectedTopics.firstWhere((element) => element == id);
 
     }
     print('selectedTopics $selectedTopics');

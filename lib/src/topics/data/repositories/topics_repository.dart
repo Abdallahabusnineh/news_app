@@ -29,4 +29,14 @@ class TopicsRepository extends BaseTopicsRepository {
       return Left(ServerFailure(e.errorMessageModel.message));
     }
   }
+
+  @override
+  Future<Either<Failure, bool>> toggleTopic(int topicId) async {
+   try {
+     final result =await baseTopicsDataSource.toggleTopics(topicId);
+     return Right(result);
+   } on ServerExceptions catch (e) {
+     return Left(ServerFailure(e.errorMessageModel.message));
+   }
+  }
 }

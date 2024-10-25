@@ -7,7 +7,6 @@ import 'package:news_app/src/notification/data/models/notification_models.dart';
 import 'package:news_app/src/notification/presentation/providers/notification_notifier.dart';
 import 'package:news_app/src/notification/presentation/screen/notification_screen.dart';
 import 'package:news_app/src/onboarding_screen/initial_screen.dart';
-import 'package:news_app/src/topics/presentation/screen/topics.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class MyApp extends ConsumerWidget {
@@ -28,7 +27,7 @@ class MyApp extends ConsumerWidget {
           darkTheme: notifier.buildDarkTheme(),
           themeMode: themeMode,
           debugShowCheckedModeBanner: false,
-          home: const ChooseYourTopics(),
+          home: const InitialScreen(),
         );
       },
     );

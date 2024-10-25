@@ -68,13 +68,12 @@ class ExploreScreen extends ConsumerWidget {
                       ListView.separated(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
-                          itemBuilder: (context, i) => TopicBuilder(
-                                image: AppAssets.topicImg,
-                                title: topicsNotifier.topics[i].topic,
-                                subtitle: topicsNotifier.topics[i].description,
-                                isSaved: topicsNotifier.topics[i].isSaved,
-                                index: i,
-                              ),
+                          itemBuilder: (context, i) {
+                            var item= topicsNotifier.topics[i];
+                            return TopicBuilder(
+                                  topic: item,
+                                );
+                          },
                           separatorBuilder: (context, index) => SizedBox(
                                 height: 1.h,
                               ),

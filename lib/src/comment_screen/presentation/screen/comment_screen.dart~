@@ -51,8 +51,9 @@ class CommentScreen extends ConsumerWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              const VisitProfileAuthorScreen(),
+                          builder: (context) => const VisitProfileAuthorScreen(
+
+                          ),
                         ),
                       );
                     },
@@ -101,7 +102,10 @@ class CommentScreen extends ConsumerWidget {
                         ),
                         btnOkOnPress: () {
                           commentChangeNotifier.editComment(
-                              postId, item.commentId);
+                            postId,
+                            item.commentId
+                          );
+
                         },
                         btnOkText: 'Edit',
                         btnCancelText: 'No',

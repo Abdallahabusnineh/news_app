@@ -10,6 +10,7 @@ abstract class ApiUrls {
   static String getTopicsBySearch() => '$baseUrl/search/topics';
 
   static String getTopics() => '$baseUrl/topics';
+  static String toggleTopic(int topicId) => '$baseUrl/user/profile/topic/$topicId/toggle';
 
   static String searchInNewSources() => '$baseUrl/search/authors';
 
@@ -52,5 +53,11 @@ abstract class ApiUrls {
       '$baseUrl/like';
 static String getNewsByTopicId(int postId) =>
       '$baseUrl/news/topics/$postId';
+static String getCommentsByPostId(int postId) =>
+      '$baseUrl/comments/$postId';
 
+static String createComment() =>
+      '$baseUrl/comments';
+static String editComment(int commentId) =>
+      '$baseUrl/comments/$commentId';
 }

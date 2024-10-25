@@ -20,6 +20,6 @@ class AppAssets {
   static const String trendingCircleAvatar = 'assets/images/trending_circle_avatar.png';
   static const String iconSettings = 'assets/images/icon_setting.png';
   static const String user = 'assets/images/user_test.png';
-  static const  String placeHolder = 'assets/images/logo.svg';
+  static const  String placeHolder = 'assets/images/placeholder.png';
 
 }

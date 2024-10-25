@@ -14,7 +14,7 @@ class TopicsModel extends TopicsEntites {
       id: json['id'],
       description: json['description'],
       topic: json['topic'],
-      isSaved: json['isSaved']??false,
+      isSaved: json['isSaved'],
     );
   }
 }

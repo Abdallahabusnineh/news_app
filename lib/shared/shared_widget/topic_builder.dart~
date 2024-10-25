@@ -24,7 +24,7 @@ final  TopicsModel topic;
       children: [
 
         FancyImageLoader(
-         path: topic.imageUri??AppAssets.topicImg,
+         path: topic.imageUri!=null?topic.imageUri:AppAssets.topicImg,
           fit: BoxFit.cover,
         ),
         SizedBox(

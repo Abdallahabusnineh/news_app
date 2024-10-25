@@ -4,6 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
 import 'package:news_app/shared/shared_widget/autho_builder.dart';
+import 'package:news_app/src/comment_screen/presentation/provider/comment_change_notifier.dart';
 import 'package:news_app/src/comment_screen/presentation/screen/comment_screen.dart';
 import 'package:news_app/src/post_screen/presentation/provider/get_post_info_notifier.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -13,6 +14,7 @@ class PostScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    CommentChangeNotifier commentChangeNotifier =ref.watch(commentChangeNotifierProvider);
     GetPostInfoNotifier getPostInfoNotifier =
         ref.watch(getPostInfoNotifierProvider);
     var postItem = getPostInfoNotifier.getPostInfoModel;
@@ -107,10 +109,13 @@ getPostInfoNotifier.toggleLikePost(postItem?.postId??0);
               ),
               IconButton(
                 onPressed: () {
+                  commentChangeNotifier.getCommentByPostId(postItem?.postId??0);
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const CommentScreen()));
+                          builder: (context) =>  CommentScreen(
+                            postId: postItem?.postId??0,
+                          )));
                 },
                 icon: const Icon(
                   Icons.mode_comment_outlined,

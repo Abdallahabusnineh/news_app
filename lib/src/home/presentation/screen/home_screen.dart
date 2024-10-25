@@ -10,6 +10,7 @@ import 'package:news_app/src/home/presentation/widget/tab_bar_view/presentation/
 import 'package:news_app/src/home_search/presentation/screen/home_search_screen.dart';
 import 'package:news_app/src/notification/presentation/providers/notification_notifier.dart';
 import 'package:news_app/src/notification/presentation/screen/notification_screen.dart';
+import 'package:news_app/src/topics/presentation/providers/topics_notifer_test.dart';
 import 'package:news_app/src/trending/presentation/providers/trending_news_notifier.dart';
 import 'package:news_app/src/trending/presentation/screen/trending_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
