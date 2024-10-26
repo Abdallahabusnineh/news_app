@@ -14,7 +14,6 @@ class GetPostInfoNotifier extends ChangeNotifier {
   GetPostInfoRepository getPostInfoRepository =
       GetPostInfoRepository(GetPostInfoDatasource());
   GetPostInfoModel? getPostInfoModel;
-  bool isLiked = false;
 
   bool _isLoading = false;
 
@@ -67,7 +66,9 @@ class GetPostInfoNotifier extends ChangeNotifier {
       result.fold((l) {
         isError = true;
       }, (r) {
-        isLiked = r;
+        getPostInfoModel!.isLiked=r;
+        getPostInfoModel!.isLiked? getPostInfoModel!.likeCount++: getPostInfoModel!.likeCount--;
+        print('like ${getPostInfoModel!.likeCount}');
         isSuccess = true;
       });
     } catch (e) {

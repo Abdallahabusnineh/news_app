@@ -48,10 +48,6 @@ class RegisterNotifier extends StateNotifier<RegisterState> {
           {
             CacheHelper.saveData(key: 'token', value: r.token).then((value) {
               AppConstant.token = r.token;
-              emailController.clear();
-              passwordController.clear();
-              confirmPasswordController.clear();
-              userNameController.clear();
             });
             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>   SelectCountryScreen()));
             showToast(text: 'Sign Up Successfully', state: ToastState.SUCCESS);

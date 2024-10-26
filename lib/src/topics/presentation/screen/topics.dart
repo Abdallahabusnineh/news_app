@@ -62,8 +62,8 @@ class ChooseYourTopics extends ConsumerWidget {
                           runSpacing: 1.h,
                           crossAxisAlignment: WrapCrossAlignment.start,
                           children: [
-                            for (var topic in notifier.topics.asMap().entries)
-                            TopicsNotifier.selectedTopics.contains(topic.value.id)
+                            for (var topic in notifier.topics)
+                            TopicsNotifier.selectedTopics.contains(topic.id)
                                 ? Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(6),
@@ -72,12 +72,12 @@ class ChooseYourTopics extends ConsumerWidget {
                                 child: TextButton(
                                   onPressed: () {
                                     notifier
-                                        .toggleSelectedTopic(topic.value.id);
-                                    print('id ${topic.value.id}');
+                                        .toggleSelectedTopic(topic.id);
+                                    print('id ${topic.id}');
                                    // print('index ${index}');
                                   },
                                   child: Text(
-                                    topic.value.topic,
+                                    topic.topic,
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyMedium
@@ -95,10 +95,10 @@ class ChooseYourTopics extends ConsumerWidget {
                                 child: TextButton(
                                   onPressed: () {
                                     notifier
-                                        .toggleSelectedTopic(topic.value.id);
-                                    print('id ${topic.value.id}');
+                                        .toggleSelectedTopic(topic.id);
+                                    print('id ${topic.id}');
                                   },
-                                  child: Text(topic.value.topic,
+                                  child: Text(topic.topic,
                                       style: AppFontStyle.w600ColorBlue(
                                           fontSize: 14)),
                                 )),
@@ -110,11 +110,8 @@ class ChooseYourTopics extends ConsumerWidget {
                 )),
         bottomSheet: BottomSheetButton(
           onPressed: () {
-            if (notifier.topics
-                .where((element) => element.isSaved == true)
-                .isNotEmpty) {
+            if (TopicsNotifier.selectedTopics.isNotEmpty) {
               print('build home screen ${TopicsNotifier.selectedTopics}');
-
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const NewSources()));
             } else {

@@ -110,9 +110,7 @@ class ChooseYourTopics extends ConsumerWidget {
                 )),
         bottomSheet: BottomSheetButton(
           onPressed: () {
-            if (notifier.topics
-                .where((element) => element.isSaved == true)
-                .isNotEmpty) {
+            if (TopicsNotifier.selectedTopics.isNotEmpty) {
               print('build home screen ${TopicsNotifier.selectedTopics}');
 
               Navigator.push(context,

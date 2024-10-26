@@ -7,6 +7,7 @@ import 'package:news_app/src/auth/data/datasource/auth_data_source.dart';
 import 'package:news_app/src/auth/data/repositories/auth_repository.dart';
 import 'package:news_app/src/auth/domain/providers/auth_provider.dart';
 import 'package:news_app/src/auth/presentation/screen/login/login_screen.dart';
+import 'package:news_app/src/main_screen/presentaion/providers/navigation_bar_providers.dart';
 
 final logoutChangeNotifierProvider =
     ChangeNotifierProvider<LogoutChangeNotifier>((ref) {
@@ -69,7 +70,7 @@ class LogoutChangeNotifier extends ChangeNotifier {
             AppConstant.token = '';
             print('logout $value');
           });
-
+          ref.read(indexBottomNavbarProvider.notifier).update((state) => 0); // here is i put the index of bottom navbar = 0;
           isSuccess = true;
           print('logout $r');
         },

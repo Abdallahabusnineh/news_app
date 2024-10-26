@@ -26,7 +26,7 @@ class AuthorBuilder extends ConsumerWidget {
 
     NewsourceNotifier notifier =
     ref.watch(newSourceChangeNotifierProviderTest);
-    bool isFollowed = notifier.userFollowing(id);
+    bool isFollowed = notifier.sources[id].isFollowed;
 
     return InkWell(
       onTap: () {

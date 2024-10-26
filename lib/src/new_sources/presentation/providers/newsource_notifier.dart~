@@ -128,7 +128,14 @@ class NewsourceNotifier extends ChangeNotifier {
     selectedId = 0;
   }
 
-
+  bool userFollowing(int id) {
+    for (int i = 0; i < followSources.length; i++) {
+      if (followSources[i].followedId == id) {
+        return true;
+      }
+    }
+    return false;
+  }
 
 
 

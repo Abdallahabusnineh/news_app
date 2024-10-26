@@ -19,8 +19,8 @@ class NewSourceModel extends NewSource {
       type: json['type'],
       followingCount: json['following_count'],
       followersCount: json['followers_count'],
-      newsCount: json['followers_count'],
-      isFollowed: json['is_followed'] ?? false,
+      newsCount: json['news_count'],
+      isFollowed:  false,
     );
   }
 }

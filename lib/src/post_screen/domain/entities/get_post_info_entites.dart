@@ -7,8 +7,8 @@ class GetPostInfoEntites {
   final String content;
   final String createdAt;
   final int commentCount;
-  final int likeCount;
-  final bool isLiked;
+   int likeCount;
+   bool isLiked;
   final bool isBookMarked;
 
   //topic info entities

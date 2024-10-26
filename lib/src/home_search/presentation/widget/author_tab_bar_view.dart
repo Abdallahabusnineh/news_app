@@ -28,10 +28,8 @@ class AuthorTabBarView extends ConsumerWidget {
           )
         : ListView.separated(
             itemBuilder: (context, i) {
-              bool isFollowed = notifier.userFollowing(notifier.sources[i].id);
-
+              bool isFollowed = notifier.sources[notifier.sources[i].id].isFollowed;
               return InkWell(
-
               onTap: () {
                 print('tapped ${newsourceNotifier.sources[i].id}');
                /* profileAuthorNotifier.getProfileAuthor(getPostInfoModel.userId);*/

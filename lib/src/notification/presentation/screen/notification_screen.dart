@@ -4,11 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
-import 'package:news_app/shared/core/utils/font_style.dart';
 import 'package:news_app/src/new_sources/presentation/providers/newsource_notifier.dart';
 import 'package:news_app/src/notification/data/models/notification_models.dart';
 import 'package:news_app/src/notification/presentation/providers/notification_notifier.dart';
-import 'package:news_app/src/notification/presentation/screen/widget/notification_builder.dart';
 import 'package:news_app/src/visit_profile_author/presentation/provider/profile_author_notifier.dart';
 import 'package:news_app/src/visit_profile_author/presentation/screen/visit_profile_author_screen.dart';
 
@@ -83,7 +81,7 @@ class NotificationScreen extends ConsumerWidget {
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: notificationsForDate.length,
                             itemBuilder: (context, notificationIndex) {
-                              bool isFollowing = newSourceNotifier.userFollowing(notificationNotifier.groupedNotifications[date]![notificationIndex].notifierId);
+                              bool isFollowing = newSourceNotifier.sources[notificationNotifier.groupedNotifications[date]![notificationIndex].notifierId].isFollowed;
                               NotificationModels notificationByDate =
                               notificationsForDate[notificationIndex];
                               return Dismissible(
