@@ -18,8 +18,8 @@ class BottomSheetButton extends StatelessWidget {
                 )
               : null),
       padding: EdgeInsets.only(
-        top: 3.h,
-        bottom: 2.h,
+        top: 4.5.h,
+        bottom: 4.5.h,
         left: 5.w,
         right: 5.w,
       ),

@@ -3,10 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/shared/abstraction/cash_helper.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/utils/app_constant.dart';
-import 'package:news_app/src/auth/data/datasource/auth_data_source.dart';
-import 'package:news_app/src/auth/data/repositories/auth_repository.dart';
+import 'package:news_app/shared/core/utils/app_router.dart';
+import 'package:news_app/shared/core/utils/show_toast.dart';
 import 'package:news_app/src/auth/domain/providers/auth_provider.dart';
-import 'package:news_app/src/auth/presentation/screen/login/login_screen.dart';
 import 'package:news_app/src/main_screen/presentaion/providers/navigation_bar_providers.dart';
 
 final logoutChangeNotifierProvider =
@@ -39,38 +38,25 @@ class LogoutChangeNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> logout(BuildContext context) async {
+  Future<void> logout() async {
     isLoading = true;
     try {
       final result = await ref.read(authRepositoryProvider).logout();
       result.fold(
         (l) {
           isError = true;
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              backgroundColor: AppColors.errorColor,
-              content: Text(
-                'Logout Failed',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium
-                    ?.copyWith(color: Colors.white),
-              ),
-            ),
-          );
+        showToast(text: 'Logout Failed', state: ToastState.ERROR);
         },
         (r) {
-          Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const LoginScreen(),
-              ),
-              (route) => false);
+        appRouter.pushAndPopUntil(
+            predicate: (route) => false,
+            const LoginRoute());
           CacheHelper.removeData(key: 'token').then((value) {
             AppConstant.token = '';
             print('logout $value');
+            ref.read(indexBottomNavbarProvider.notifier).update((state) => 0); // here is i put the index of bottom navbar = 0;
+
           });
-          ref.read(indexBottomNavbarProvider.notifier).update((state) => 1); // index = 0;
           isSuccess = true;
           print('logout $r');
         },

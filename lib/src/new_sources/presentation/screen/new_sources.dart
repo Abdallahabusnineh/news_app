@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
-import 'package:news_app/src/fill_profile/presentation/screen/fill_profile.dart';
+import 'package:news_app/shared/core/utils/app_router.dart';
 import 'package:news_app/src/new_sources/presentation/providers/newsource_notifier.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../../shared/core/theme/app_colors.dart';
 import '../../../../shared/shared_widget/bottom_sheet_button.dart';
 
+import 'package:auto_route/auto_route.dart';
+@RoutePage()
 class NewSources extends ConsumerWidget {
   const NewSources({super.key});
 
@@ -18,12 +20,11 @@ class NewSources extends ConsumerWidget {
     ref.watch(newSourceChangeNotifierProviderTest);
     bool isSuccess=notifier.isSuccess;
     var sources = notifier.sources;
-
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+appRouter.popForced();
           },
           icon: const Icon(Icons.arrow_back),
         ),
@@ -72,8 +73,12 @@ class NewSources extends ConsumerWidget {
                         bool isFollowed = item.isFollowed;
                         return Container(
                           width: double.infinity,
-                          padding: EdgeInsets.symmetric(
-                              horizontal: .5.w, vertical: 1.h),
+                          padding: const EdgeInsets.only(
+                            right: 8,
+                            left: 8,
+                            top: 5,
+                            bottom: 5,
+                              ),
                           decoration: BoxDecoration(
                             color: Theme.of(context).brightness ==
                                     Brightness.light
@@ -86,6 +91,13 @@ class NewSources extends ConsumerWidget {
                               Expanded(
                                 flex: 2,
                                 child: Container(
+
+                                  padding: const EdgeInsets.only(
+                                    right: 13,
+                                    left: 13,
+                                    top: 7,
+                                    bottom: 7,
+                                  ),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(6),
                                       color: Theme.of(context).brightness ==
@@ -103,16 +115,17 @@ class NewSources extends ConsumerWidget {
                                 item.userName,
                                 style: Theme.of(context).textTheme.labelLarge,
                               ),
+                              SizedBox(
+                                height: 1.h,
+                              ),
                               notifier.selectedId==notifier.sources[index].id?const SpinKitFadingCircle(
                                 color: AppColors.primaryColor,
                               ):
                               isFollowed
                                   ? Expanded(
                                       child: Container(
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 1.w,
-                                          vertical: 0.5.h,
-                                        ),
+                                        width: double.infinity,
+
                                         decoration: BoxDecoration(
                                           color: AppColors.primaryColor,
                                           borderRadius:
@@ -138,10 +151,7 @@ class NewSources extends ConsumerWidget {
                                     )
                                   : Expanded(
                                       child: Container(
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 1.w,
-                                          vertical: 0.5.h,
-                                        ),
+                                        width: double.infinity,
                                         decoration: BoxDecoration(
                                           border: Border.all(
                                               color: AppColors.primaryColor,
@@ -155,7 +165,7 @@ class NewSources extends ConsumerWidget {
                                             },
                                             child: FittedBox(
                                               child: Text(
-                                                'follow',
+                                                    'Follow',
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .displayLarge,
@@ -174,7 +184,7 @@ class NewSources extends ConsumerWidget {
       ),
       bottomSheet: BottomSheetButton(
         onPressed: () {
-Navigator.push(context, MaterialPageRoute(builder: (context) => const FillProfile()));
+          appRouter.push(const FillProfileRoute());
       /*    print('sssssss ${topicsProv.selectedTopics}');
           print('ggggg ${topicsProv.topics.length}');
           print('id is ${countryProv.selectedCountryId}');*/

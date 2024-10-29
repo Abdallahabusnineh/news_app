@@ -1,11 +1,14 @@
 import 'dart:async';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
 import 'package:news_app/shared/core/utils/app_constant.dart';
+import 'package:news_app/shared/core/utils/app_router.dart';
 import 'package:news_app/src/main_screen/presentaion/screen/main_screen.dart';
 import 'on_boarding_screen.dart';
 
+@RoutePage()
 class InitialScreen extends StatefulWidget {
   const InitialScreen({super.key});
 
@@ -18,12 +21,17 @@ class _InitialScreenState extends State<InitialScreen> {
   void initState() {
     // Timer();
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (context) =>
-                startPage()), // Call nextPage() to your main page
-      );
+      if (AppConstant.token == "") {
+        appRouter.pushAndPopUntil(
+          const OnBoardingRoute(),
+          predicate: (route) => false,
+        );
+      } else {
+        appRouter.pushAndPopUntil(
+          const MainRoute(),
+          predicate: (route) => false,
+        );
+      }
     });
 
     super.initState();

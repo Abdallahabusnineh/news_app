@@ -1,14 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
+import 'package:news_app/shared/core/utils/app_router.dart';
 import 'package:news_app/shared/shared_widget/post_builder/post_builder.dart';
 import 'package:news_app/src/bookmark/presentation/provider/bookmark_notifier.dart';
 import 'package:news_app/src/post_screen/presentation/provider/get_post_info_notifier.dart';
-import 'package:news_app/src/post_screen/presentation/screen/post_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-
+@RoutePage()
 class BookmarkScreen extends ConsumerWidget {
   const BookmarkScreen({super.key});
 
@@ -67,12 +68,7 @@ GetPostInfoNotifier getPostInfoNotifier = ref.watch(getPostInfoNotifierProvider)
                           return InkWell(
                             onTap: () {
                               getPostInfoNotifier.getPostInfo(item.postId);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const PostScreen(),
-                                ),
-                              );
+                              AutoRouter.of(context).push(const PostRoute());
                             },
                             child: PostBuilder(
                               isTrendingPost: false,

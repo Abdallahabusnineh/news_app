@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
 import 'package:news_app/shared/shared_widget/post_builder/post_builder.dart';
 import 'package:news_app/src/profile/presentation/provider/my_profile_notifier.dart';
-import 'package:news_app/src/visit_profile_author/presentation/provider/profile_author_notifier.dart';
 
 class MyNewsTabBar extends ConsumerWidget {
   const MyNewsTabBar({super.key});

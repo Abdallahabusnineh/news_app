@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
-import 'package:news_app/shared/core/utils/show_toast.dart';
+import 'package:news_app/shared/core/utils/app_router.dart';
 import 'package:news_app/src/edit_profile/presentation/providers/edit_profile_provider.dart';
-import 'package:news_app/src/main_screen/presentaion/screen/main_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import 'package:auto_route/auto_route.dart';
+@RoutePage()
 class EditProfileScreen extends ConsumerWidget {
   const EditProfileScreen({super.key});
 
@@ -19,7 +19,7 @@ class EditProfileScreen extends ConsumerWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            appRouter.popForced();
           },
           icon: const Icon(Icons.close),
         ),
@@ -32,13 +32,12 @@ class EditProfileScreen extends ConsumerWidget {
             onPressed: () {
               //here we must post data to api
               if (notifier.formKey.currentState!.validate()) {
-
                 notifier.editProfile();
                 if (notifier.isSuccess) {
-                  Navigator.pushAndRemoveUntil(context,
-                      MaterialPageRoute(builder: (context) {
-                    return const MainScreen();
-                  }), (route) => false);
+                  appRouter.pushAndPopUntil(
+                    const MainRoute(),
+                    predicate: (route) => false,
+                  );
                 }
               }
             },
@@ -66,7 +65,7 @@ class EditProfileScreen extends ConsumerWidget {
                               radius: 35.sp,
                               backgroundImage: notifier.isFilePicked
                                   ? Image.file(notifier.attachmentFile!).image
-                                  : AssetImage(AppAssets.user)),
+                                  : const AssetImage(AppAssets.user)),
                           Positioned(
                               right: 1,
                               bottom: 1,

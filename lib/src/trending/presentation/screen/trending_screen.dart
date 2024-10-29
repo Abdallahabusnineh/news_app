@@ -7,6 +7,8 @@ import 'package:news_app/shared/shared_widget/post_builder/post_builder.dart';
 import 'package:news_app/src/trending/presentation/providers/trending_news_notifier.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import 'package:auto_route/auto_route.dart';
+@RoutePage()
 class TrendingScreen extends ConsumerWidget {
   const TrendingScreen({super.key});
 

@@ -17,6 +17,7 @@ class TopicsNotifier extends ChangeNotifier {
   TopicsRepository topicsRepository =
       TopicsRepository(baseTopicsDataSource: TopicsDataSource());
   List<TopicsModel> topics = [];
+  List<TopicsModel> filteredItems = [];
   static List<int> selectedTopics = [];
   List<TopicsBySearchModel> topicsOfSearch = [];
   bool _isLoading = false;
@@ -98,12 +99,20 @@ class TopicsNotifier extends ChangeNotifier {
     }
     isLoading = false;
   }
-/*
   void searchTopic(String text) {
-    getTopicsBySearch(text);
-    topics = topics.where((element) => element.topic.contains(text)).toList();
+    if (text.isNotEmpty) {
+      filteredItems = topics.where((element) => element.topic.contains(text))
+          .toList();
+      print('filteredItems ${filteredItems[0].topic}');
+    }
+    else  {
+      text='';
+      if (text.isEmpty) {
+        filteredItems = [];
+      }
+    }
     notifyListeners();
-  }*/
+  }
 
   void toggleSelectedTopic(int id) {
     if (selectedTopics.contains(id)) {

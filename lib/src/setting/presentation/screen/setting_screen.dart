@@ -4,11 +4,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/theme/mode_theme/provider_mode_theme.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
+import 'package:news_app/shared/core/utils/app_router.dart';
 import 'package:news_app/src/auth/presentation/providers/logout/logout_provider.dart';
 import 'package:news_app/src/notification/presentation/providers/notification_notifier.dart';
-import 'package:news_app/src/notification/presentation/screen/notification_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import 'package:auto_route/auto_route.dart';
+@RoutePage()
 class SettingScreen extends ConsumerWidget {
   const SettingScreen({super.key});
 
@@ -36,11 +38,7 @@ class SettingScreen extends ConsumerWidget {
             GestureDetector(
               onTap: () {
                 notificationNotifier.getNotifications();
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
-                    return const NotificationScreen();
-                  },
-                ));
+                appRouter.push(const NotificationRoute());
               },
               child: Row(
                 children: [
@@ -172,7 +170,7 @@ class SettingScreen extends ConsumerWidget {
 
                   },
                   btnOkOnPress: () {
-                    logoutChangeNotifier.logout(context);
+                    logoutChangeNotifier.logout();
 
                   },
                 ).show();

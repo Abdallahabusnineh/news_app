@@ -82,6 +82,12 @@ class EditProfileNotifier extends ChangeNotifier {
       }, (r) {
         print(
             'hi from right of form data this is attachment $attachmentFile');
+        countryIdController.clear();
+        fullNameController.clear();
+        phoneNumberController.clear();
+        bioController.clear();
+        websiteController.clear();
+
         isSuccess = true;
       });
     } catch (e) {

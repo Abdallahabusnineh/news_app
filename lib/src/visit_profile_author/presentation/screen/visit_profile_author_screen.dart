@@ -9,6 +9,8 @@ import 'package:news_app/src/visit_profile_author/presentation/widget/news_by_us
 import 'package:news_app/src/visit_profile_author/presentation/widget/recent_news_by_user_id_tabbar.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import 'package:auto_route/auto_route.dart';
+@RoutePage()
 class VisitProfileAuthorScreen extends ConsumerWidget {
   const VisitProfileAuthorScreen({super.key});
 

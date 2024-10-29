@@ -8,6 +8,10 @@ class CacheHelper {
     sharedPreferences = await SharedPreferences.getInstance();
     AppConstant.token = await CacheHelper.getData(key: 'token') ?? "";
     AppConstant.lang = await CacheHelper.getData(key: 'lang') ?? "en";
+    AppConstant.isAuth = await CacheHelper.getData(key: 'isAuth') ?? false;
+    AppConstant.themeMode = await CacheHelper.getData(key: 'themeMode') ?? false;
+    print('isAuth ${AppConstant.isAuth}');
+    print('themeMode is  ${AppConstant.themeMode}');
   }
 
   static late String _token;

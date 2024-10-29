@@ -1,17 +1,20 @@
+
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
+import 'package:news_app/shared/core/utils/app_router.dart';
 import 'package:news_app/src/comment_screen/presentation/provider/comment_change_notifier.dart';
 import 'package:news_app/src/comment_screen/presentation/widget/comment_widget.dart';
 import 'package:news_app/src/visit_profile_author/presentation/provider/profile_author_notifier.dart';
-import 'package:news_app/src/visit_profile_author/presentation/screen/visit_profile_author_screen.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
+import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:auto_route/auto_route.dart';
+@RoutePage()
 class CommentScreen extends ConsumerWidget {
-  CommentScreen({super.key, required this.postId});
+  const CommentScreen({super.key, required this.postId});
 
   final int postId;
 
@@ -48,14 +51,7 @@ class CommentScreen extends ConsumerWidget {
                   return InkWell(
                     onTap: () {
                       profileAuthorNotifier.getProfileAuthor(item.userId);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const VisitProfileAuthorScreen(
-
-                          ),
-                        ),
-                      );
+                      appRouter.push(const VisitProfileAuthorRoute());
                     },
                     onLongPress: () {
                       AwesomeDialog(
@@ -71,7 +67,7 @@ class CommentScreen extends ConsumerWidget {
                         btnCancelOnPress: () {},
                         body: Column(
                           children: [
-                            FittedBox(
+                            const FittedBox(
                               child: Text(
                                 'Are you sure want to edit your comment?',
                               ),
@@ -102,10 +98,7 @@ class CommentScreen extends ConsumerWidget {
                         ),
                         btnOkOnPress: () {
                           commentChangeNotifier.editComment(
-                            postId,
-                            item.commentId
-                          );
-
+                              postId, item.commentId);
                         },
                         btnOkText: 'Edit',
                         btnCancelText: 'No',
@@ -149,7 +142,10 @@ class CommentScreen extends ConsumerWidget {
               ),
               IconButton(
                   style: ButtonStyle(
-                    padding: WidgetStatePropertyAll(EdgeInsets.all(20.sp)),
+                    padding: WidgetStatePropertyAll(EdgeInsets.symmetric(
+                      horizontal: 4.w,
+                      vertical: 4.w,
+                    )),
                     foregroundColor: const WidgetStatePropertyAll(Colors.white),
                     backgroundColor:
                         const WidgetStatePropertyAll(AppColors.primaryColor),
@@ -166,7 +162,7 @@ class CommentScreen extends ConsumerWidget {
                           'error ${commentChangeNotifier.formKey.currentState!.validate()}');
                     }
                   },
-                  icon: const Icon(Icons.send))
+                  icon: Image.asset(AppAssets.sendComment)),
             ],
           ),
         ),

@@ -8,7 +8,6 @@ import 'package:news_app/shared/core/network/error_message_model.dart';
 import 'package:news_app/shared/core/utils/app_constant.dart';
 import 'package:news_app/src/profile/data/modules/my_profile_models.dart';
 import 'package:news_app/src/visit_profile_author/data/modules/news_by_user_id_models.dart';
-import 'package:news_app/src/visit_profile_author/data/modules/profile_author_models.dart';
 
 abstract class MyProfileBaseDatasource {
   Future<MyProfileModels> myProfileInfo();

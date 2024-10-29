@@ -7,6 +7,8 @@ import 'package:news_app/src/home_search/presentation/widget/topics_tab_bar_view
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
+import 'package:auto_route/auto_route.dart';
+@RoutePage()
 class HomeSearchScreen extends StatelessWidget {
   const HomeSearchScreen({super.key});
 
@@ -50,7 +52,6 @@ class HomeSearchScreen extends StatelessWidget {
                       growable: true),
                 ),
                 TabBar(
-
                   dividerColor: Colors.transparent,
                   indicatorColor: AppColors.primaryColor,
                   indicatorWeight: 1,
@@ -65,10 +66,11 @@ class HomeSearchScreen extends StatelessWidget {
                       : AppColors.lightGreyColor,
                   indicatorSize: TabBarIndicatorSize.label,
                   onTap: (value) {},
+                  isScrollable: true,
                   tabs: const [
                     Tab(text: 'News',),
                     Tab(text: 'Topics'),
-                    Tab(text: 'Author'),
+                    Tab(text: 'Author')
                   ],
                 ),
                 SizedBox(

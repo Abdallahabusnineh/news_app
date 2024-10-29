@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/src/new_sources/data/datasource/new_source_datasource.dart';
-import 'package:news_app/src/new_sources/data/model/follow_model.dart';
 import 'package:news_app/src/new_sources/data/model/new_source_model.dart';
 import 'package:news_app/src/new_sources/data/model/your_following_models.dart';
 import 'package:news_app/src/new_sources/data/repository/newsource_repository.dart';

@@ -4,10 +4,7 @@ import 'package:news_app/shared/core/error/failure.dart';
 import 'package:news_app/src/profile/data/datasource/my_profile_datasource.dart';
 import 'package:news_app/src/profile/data/modules/my_profile_models.dart';
 import 'package:news_app/src/profile/domain/repository/my_profile_base_repository.dart';
-import 'package:news_app/src/visit_profile_author/data/datasource/profile_author_datasource.dart';
 import 'package:news_app/src/visit_profile_author/data/modules/news_by_user_id_models.dart';
-import 'package:news_app/src/visit_profile_author/data/modules/profile_author_models.dart';
-import 'package:news_app/src/visit_profile_author/domain/repository/profile_author_base_repository.dart';
 
 class MyProfileRepository extends MyProfileBaseRepository{
   MyProfileBaseDatasource myProfileBaseDatasource;

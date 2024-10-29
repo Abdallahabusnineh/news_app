@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/src/bookmark/presentation/screen/bookmark_screen.dart';
@@ -5,7 +6,7 @@ import 'package:news_app/src/explore/presentation/screen/explore_screen.dart';
 import 'package:news_app/src/home/presentation/screen/home_screen.dart';
 import 'package:news_app/src/main_screen/presentaion/providers/navigation_bar_providers.dart';
 import 'package:news_app/src/profile/presentation/screen/profile_screen.dart';
-
+@RoutePage()
 class MainScreen extends ConsumerWidget {
   const MainScreen({super.key});
 

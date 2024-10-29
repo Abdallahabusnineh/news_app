@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
-import 'package:news_app/shared/core/utils/app_assets.dart';
-import 'package:news_app/shared/core/utils/app_constant.dart';
 import 'package:news_app/shared/shared_widget/image_loader.dart';
 import 'package:news_app/src/topics/data/model/topics_model.dart';
 import 'package:news_app/src/topics/presentation/providers/topics_notifer_test.dart';
@@ -24,7 +22,7 @@ final  TopicsModel topic;
       children: [
 
         FancyImageLoader(
-         path: topic.imageUri!=null?topic.imageUri:AppAssets.topicImg,
+         path: topic.imageUri,
           fit: BoxFit.cover,
         ),
         SizedBox(
@@ -51,7 +49,9 @@ final  TopicsModel topic;
         ),
         topic.isSaved
             ? Container(
-                height: 40,
+            height: 40,
+            width: 78,
+
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(6),
                     color: AppColors.primaryColor),
@@ -68,6 +68,8 @@ final  TopicsModel topic;
                 ))
             : Container(
                 height: 40,
+                width: 78,
+               
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(6),
                   border: Border.all(color: AppColors.primaryColor, width: 1),

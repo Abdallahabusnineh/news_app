@@ -63,10 +63,10 @@ class CreateProfileNotifier extends ChangeNotifier {
 
   Future<void> createProfile()  async {
     isLoading = true;
-    FormData formData;
+
     try {
       final result = await createProfileRepository
-          .createProfile(formData = FormData.fromMap({
+          .createProfile( FormData.fromMap({
         'full_name': fullNameController.text,
         'phone_number': phoneNumberController.text,
         'country_id': CountriesNotifier.selectedCountryId,

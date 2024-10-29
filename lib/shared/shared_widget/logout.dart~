@@ -1,0 +1,13 @@
+import 'package:flutter/cupertino.dart';
+
+class Logout extends StatelessWidget {
+  const Logout({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+  static void logout(){
+    
+  }
+}

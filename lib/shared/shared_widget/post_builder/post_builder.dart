@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
 import 'package:news_app/src/bookmark/presentation/provider/bookmark_notifier.dart';
-import 'package:news_app/src/home/presentation/providers/all_news_notifier.dart';
 
 import 'package:responsive_sizer/responsive_sizer.dart';
+
 class PostBuilder extends ConsumerWidget {
   final bool isTrendingPost;
   final String postImage;
@@ -14,9 +14,9 @@ class PostBuilder extends ConsumerWidget {
   final String postAuthorName;
   final String postAuthorImg;
   final String postTime;
-  int postId;
+  final int postId;
 
-  PostBuilder(
+  const PostBuilder(
       {super.key,
       required this.isTrendingPost,
       required this.postImage,
@@ -50,19 +50,14 @@ class PostBuilder extends ConsumerWidget {
                   maxLines: 1,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image.asset(
                       postAuthorImg,
                     ),
-                    SizedBox(
-                      width: 1.w,
-                    ),
                     Text(
                       postAuthorName,
                       style: Theme.of(context).textTheme.displaySmall,
-                    ),
-                    SizedBox(
-                      width: 3.w,
                     ),
                     Image.asset(
                       AppAssets.iconClock,
@@ -71,12 +66,9 @@ class PostBuilder extends ConsumerWidget {
                           ? AppColors.lightPurpleColor
                           : AppColors.lightGreyColor,
                     ),
-                    SizedBox(
-                      width: 1.w,
-                    ),
                     Flexible(
                       child: Text(
-                        postTime,
+                        postTime.substring(0, 10),
                         style: Theme.of(context).textTheme.labelSmall,
                       ),
                     ),
@@ -84,13 +76,11 @@ class PostBuilder extends ConsumerWidget {
                     IconButton(
                         onPressed: () {
                           bookmarkNotifier.toggleBookmark(postId);
-
                         },
                         icon: Icon(
                           bookmarkNotifier.allBookmark
-                              .where((element) =>
-                          element.postId == postId)
-                              .isNotEmpty
+                                  .where((element) => element.postId == postId)
+                                  .isNotEmpty
                               ? Icons.bookmark
                               : Icons.bookmark_outline,
                           color: AppColors.primaryColor,
@@ -149,7 +139,7 @@ class PostBuilder extends ConsumerWidget {
                           ),
                           Flexible(
                             child: Text(
-                              postTime,
+                              postTime.substring(0, 10),
                               style: Theme.of(context).textTheme.labelSmall,
                             ),
                           ),

@@ -28,14 +28,13 @@ class FancyImageLoader extends StatelessWidget {
   final double? height;
   final double? width;
   const FancyImageLoader(
-      {Key? key,
+      {super.key,
         required this.path,
         this.fit,
         this.height,
         this.width,
         this.placeholder = AppAssets.placeHolder,
-        this.color})
-      : super(key: key);
+        this.color});
 
   @override
   Widget build(BuildContext context) {

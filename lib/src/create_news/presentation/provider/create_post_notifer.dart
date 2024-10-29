@@ -3,10 +3,10 @@ import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:news_app/shared/core/utils/app_router.dart';
 import 'package:news_app/shared/core/utils/show_toast.dart';
 import 'package:news_app/src/create_news/data/datasource/create_new_post_datasource.dart';
 import 'package:news_app/src/create_news/data/repository/create_new_post_repository.dart';
-import 'package:news_app/src/main_screen/presentaion/screen/main_screen.dart';
 import 'package:news_app/src/select_country/presentation/providers/countries_notifer.dart';
 final createPostNotiferProvider =
 ChangeNotifierProvider<CreatePostNotifer>((ref) {
@@ -86,9 +86,7 @@ int ?topicId;
             'create post hi from right of form data this is attachment $attachmentFile');
         isSuccess = true;
         showToast(text: 'Post created successfully', state: ToastState.SUCCESS);
-        Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) {
-          return const MainScreen();
-        }));
+       appRouter.replace(const MainRoute());
       });
     } catch (e) {
       isError = true;

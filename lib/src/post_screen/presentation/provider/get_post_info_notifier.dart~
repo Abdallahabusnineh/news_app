@@ -60,14 +60,14 @@ class GetPostInfoNotifier extends ChangeNotifier {
   }
 
   Future<void> toggleLikePost(int postId) async {
-    isLoading = true;
+   
     try {
       final result = await getPostInfoRepository.toggleLikePost(postId);
       result.fold((l) {
         isError = true;
       }, (r) {
         getPostInfoModel!.isLiked=r;
-        getPostInfoModel!.isLiked? getPostInfoModel!.likeCount + 1 : getPostInfoModel!.likeCount - 1;
+        getPostInfoModel!.isLiked? getPostInfoModel!.likeCount++: getPostInfoModel!.likeCount--;
         print('like ${getPostInfoModel!.likeCount}');
         isSuccess = true;
       });

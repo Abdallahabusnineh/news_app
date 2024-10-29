@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
+import 'package:news_app/shared/core/utils/app_router.dart';
 import 'package:news_app/shared/shared_widget/post_builder/post_builder.dart';
 import 'package:news_app/src/home/presentation/providers/all_news_notifier.dart';
 import 'package:news_app/src/post_screen/presentation/provider/get_post_info_notifier.dart';
-import 'package:news_app/src/post_screen/presentation/screen/post_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class NewsTabBarView extends ConsumerWidget {
@@ -32,12 +32,7 @@ class NewsTabBarView extends ConsumerWidget {
         return InkWell(
           onTap: () {
             getPostInfoNotifier.getPostInfo(item[index].postId);
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const PostScreen(),
-              ),
-            );
+           appRouter.push(const PostRoute());
           },
           child: PostBuilder(
           isTrendingPost: false,

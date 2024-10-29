@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/src/comment_screen/data/datasource/comment_datasource.dart';
 import 'package:news_app/src/comment_screen/data/modules/comment_model.dart';
 import 'package:news_app/src/comment_screen/data/repository/comment_repository.dart';
-import 'package:news_app/src/post_screen/data/modules/get_post_info_model.dart';
 
 final commentChangeNotifierProvider =
     ChangeNotifierProvider<CommentChangeNotifier>(

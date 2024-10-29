@@ -1,4 +1,3 @@
-import 'package:news_app/src/comment_screen/domain/entities/create_comment_entites.dart';
 import 'package:news_app/src/comment_screen/domain/entities/edit_comment_entites.dart';
 
 class EditCommentModel extends EditCommentEntites {

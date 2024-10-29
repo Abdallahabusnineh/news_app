@@ -6,7 +6,6 @@ import 'package:news_app/shared/core/error/exceptions.dart';
 import 'package:news_app/shared/core/network/api_urls.dart';
 import 'package:news_app/shared/core/network/error_message_model.dart';
 import 'package:news_app/shared/core/utils/app_constant.dart';
-import 'package:news_app/src/bookmark/data/modules/add_fav_bookmark_model.dart';
 import 'package:news_app/src/bookmark/data/modules/all_bookmark_model.dart';
 
 abstract class BookmarkBaseDatasource {

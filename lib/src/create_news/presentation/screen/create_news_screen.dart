@@ -8,6 +8,8 @@ import 'package:news_app/src/create_news/presentation/widget/all_border_dash.dar
 import 'package:news_app/src/home/presentation/widget/constant.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import 'package:auto_route/auto_route.dart';
+@RoutePage()
 class CreateNewsPost extends ConsumerWidget {
   CreateNewsPost({super.key});
 

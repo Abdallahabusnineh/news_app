@@ -1,4 +1,5 @@
-/*
+class RegexValidation {
+  /*
 bool validateEmailRegex({required String email}) {
   return RegExp(
     //email format validation
@@ -8,11 +9,16 @@ bool validateEmailRegex({required String email}) {
 
 */
 
+ static bool userNameValidation({required String name}) {
+    return RegExp(
+      //username validation
+        r'^[a-zA-Z0-9._@]+$').hasMatch(name);
+  }
 
+ static bool isValidEmail({required String email}) {
+    return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
+  }
 
-bool isValidEmail({required String email}) {
-  return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
-}
 /*
 bool validatePasswordRegex({required String password}) {
   return RegExp(
@@ -26,10 +32,10 @@ bool validatePasswordRegex({required String password}) {
       r'^(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$')
       .hasMatch(password);
 }*/
-bool validatePasswordRegex({required String password}) {
-  return RegExp(
+ static bool validatePasswordRegex({required String password}) {
+    return RegExp(
 
-    /*
+      /*
 
      Explanation of the regex pattern:
      (?=.*[A-Za-z]): Ensures there is at least one letter (uppercase or lowercase).
@@ -39,9 +45,8 @@ bool validatePasswordRegex({required String password}) {
 
     * */
 
-      r'^(?=.*[A-Za-z])(?=.*[!@#$%^&*(),.?":{}|<>]).{6,}$')
-      .hasMatch(password);
-}
+        r'^(?=.*[A-Za-z])(?=.*[!@#$%^&*(),.?":{}|<>]).{6,}$').hasMatch(password);
+  }
 
 /*bool validatePasswordRegex({required String password}) {
   return RegExp(
@@ -49,3 +54,5 @@ bool validatePasswordRegex({required String password}) {
       r'\d{6,}')
       .hasMatch(password);
 }*/
+
+}

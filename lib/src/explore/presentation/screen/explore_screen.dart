@@ -3,13 +3,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
+import 'package:news_app/shared/core/utils/app_router.dart';
 import 'package:news_app/shared/shared_widget/post_builder/post_builder.dart';
 import 'package:news_app/shared/shared_widget/topic_builder.dart';
-import 'package:news_app/src/explore/presentation/screen/all_topic_screen.dart';
 import 'package:news_app/src/home/presentation/providers/all_news_notifier.dart';
 import 'package:news_app/src/topics/presentation/providers/topics_notifer_test.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import 'package:auto_route/auto_route.dart';
+@RoutePage()
 class ExploreScreen extends ConsumerWidget {
   const ExploreScreen({super.key});
 
@@ -52,12 +54,7 @@ class ExploreScreen extends ConsumerWidget {
                           TextButton(
                               onPressed: () {
                                 topicsNotifier.getTopics();
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const AllTopicScreen(),
-                                    ));
+                               appRouter.push(const AllTopicRoute());
                               },
                               child: Text(
                                 'See all',

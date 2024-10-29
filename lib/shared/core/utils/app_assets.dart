@@ -13,9 +13,11 @@ class AppAssets {
   static const String camera = 'assets/images/camera.png';
   static const String logoAppBar = 'assets/images/logo_appbar.png';
   static const String iconNotifications = 'assets/images/icon_notifications.png';
+  static const String commentIcon = 'assets/images/comment_icon.png';
   static const String topicImg = 'assets/images/topic_images.png';
   static const String iconSearch = 'assets/images/search_icon.png';
   static const String iconFilters = 'assets/images/filters_icon.png';
+  static const String sendComment = 'assets/images/send_comment.png';
   static const String iconClock = 'assets/images/clock_icon.png';
   static const String trendingCircleAvatar = 'assets/images/trending_circle_avatar.png';
   static const String iconSettings = 'assets/images/icon_setting.png';

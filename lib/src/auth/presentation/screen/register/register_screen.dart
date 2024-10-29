@@ -1,14 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:news_app/shared/core/theme/app_colors.dart';
 import 'package:news_app/shared/core/utils/app_assets.dart';
+import 'package:news_app/shared/core/utils/app_router.dart';
+import 'package:news_app/shared/core/utils/regex_validation.dart';
 import 'package:news_app/src/auth/domain/providers/auth_provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../../../../shared/core/theme/app_colors.dart';
-import '../../../../../shared/core/utils/regex_validation.dart';
-import '../login/login_screen.dart';
-
+@RoutePage()
 class RegisterScreen extends ConsumerWidget {
   const RegisterScreen({super.key});
 
@@ -18,7 +19,7 @@ class RegisterScreen extends ConsumerWidget {
     final registerState = ref.watch(registerNotifierProvider);
     return Scaffold(
         body: SingleChildScrollView(
-      padding: EdgeInsets.only(top: 5.h, left: 5.w, right: 5.w, bottom: 3.h),
+      padding: EdgeInsets.only(top: 6.h, left: 5.w, right: 5.w, bottom: 3.h),
       child: Form(
         key: registerNotifier.registerFormKey,
         child: Column(
@@ -37,7 +38,7 @@ class RegisterScreen extends ConsumerWidget {
               maxLines: 2,
             ),
             SizedBox(
-              height: 3.h,
+              height: 5.h,
             ),
             Text('Email', style: Theme.of(context).textTheme.labelMedium),
             SizedBox(
@@ -46,13 +47,15 @@ class RegisterScreen extends ConsumerWidget {
             TextFormField(
               controller: registerNotifier.emailController,
               keyboardType: TextInputType.emailAddress,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  fontSize: 12
-              ),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium
+                  ?.copyWith(fontSize: 12),
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter email ';
-                } else if (isValidEmail(email: value.toString())) {
+                } else if (RegexValidation.isValidEmail(
+                    email: value.toString())) {
                   return null;
                 } else {
                   return 'Please enter valid email';
@@ -67,19 +70,27 @@ class RegisterScreen extends ConsumerWidget {
               height: 1.h,
             ),
             TextFormField(
-              controller: registerNotifier.userNameController,
-              keyboardType: TextInputType.text,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  fontSize: 12
-              ),
-
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter username';
-                }
-                return null;
-              },
-            ),
+                controller: registerNotifier.userNameController,
+                keyboardType: TextInputType.text,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium
+                    ?.copyWith(fontSize: 12),
+                decoration: InputDecoration(
+                  fillColor: registerNotifier.filledColor
+                      ? Colors.red.withOpacity(0.1):Colors.transparent,
+                  filled: registerNotifier.filledColor,
+                  suffixIcon: registerNotifier.showSuffixIconForUserName
+                      ? const Icon(
+                          Icons.close,
+                          color: AppColors.errorColor,
+                        )
+                      : null,
+                ),
+                validator: (value) {
+                  return registerNotifier
+                      .toggleShowSuffixIconForUserName(value);
+                }),
             SizedBox(
               height: 1.h,
             ),
@@ -91,9 +102,10 @@ class RegisterScreen extends ConsumerWidget {
               obscureText: registerNotifier.showPassword,
               controller: registerNotifier.passwordController,
               keyboardType: TextInputType.visiblePassword,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  fontSize: 12
-              ),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium
+                  ?.copyWith(fontSize: 12),
               decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderSide:
@@ -105,12 +117,13 @@ class RegisterScreen extends ConsumerWidget {
                         registerNotifier.toggleShowPassword();
                       },
                       icon: Icon(registerNotifier.showPassword
-                          ? Icons.visibility
-                          : Icons.visibility_off))),
+                          ? Icons.visibility_off_outlined
+                          : Icons.visibility))),
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter password';
-                } else if (validatePasswordRegex(password: value)) {
+                } else if (RegexValidation.validatePasswordRegex(
+                    password: value)) {
                   return null;
                 } else {
                   return 'Password must be at least 6 characters';
@@ -129,9 +142,10 @@ class RegisterScreen extends ConsumerWidget {
               obscureText: registerNotifier.showConfirmedPassword,
               controller: registerNotifier.confirmPasswordController,
               keyboardType: TextInputType.visiblePassword,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  fontSize: 12
-              ),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium
+                  ?.copyWith(fontSize: 12),
               decoration: InputDecoration(
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(6.0),
@@ -147,8 +161,8 @@ class RegisterScreen extends ConsumerWidget {
                         registerNotifier.toggleShowConfirmedPassword();
                       },
                       icon: Icon(registerNotifier.showConfirmedPassword
-                          ? Icons.visibility
-                          : Icons.visibility_off))),
+                          ? Icons.visibility_off_outlined
+                          : Icons.visibility))),
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter password';
@@ -163,7 +177,6 @@ class RegisterScreen extends ConsumerWidget {
               children: [
                 Checkbox(
                   activeColor: AppColors.primaryColor,
-                  checkColor: AppColors.whiteColor,
                   value: registerNotifier.rememberMe,
                   onChanged: (value) {
                     registerNotifier.toggleRememberMe();
@@ -175,28 +188,24 @@ class RegisterScreen extends ConsumerWidget {
                 ),
               ],
             ),
-            registerState.isLoading ? const SpinKitSquareCircle(
-              color: AppColors.primaryColor,
-            ): SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                    style: ButtonStyle(
-                        backgroundColor:
-                            WidgetStateProperty.all(AppColors.primaryColor),
-                        shape: WidgetStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6)))),
-                    onPressed: () {
-                      if (registerNotifier.registerFormKey.currentState!
-                          .validate()) {
-                        registerNotifier.register(context);
-
-                      }
-                    },
-                    child: const Text(
-                      'Sign Up',
-                    ))),
+            registerState.isLoading
+                ? const SpinKitSquareCircle(
+                    color: AppColors.primaryColor,
+                  )
+                : SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          if (registerNotifier.registerFormKey.currentState!
+                              .validate()) {
+                            registerNotifier.register(context);
+                          }
+                        },
+                        child: const Text(
+                          'Sign Up',
+                        ))),
             SizedBox(
-              height: 1.h,
+              height: 2.h,
             ),
             Align(
                 alignment: Alignment.center,
@@ -212,6 +221,12 @@ class RegisterScreen extends ConsumerWidget {
                 Expanded(
                     child: TextButton(
                   style: ButtonStyle(
+                    padding: WidgetStateProperty.all(const EdgeInsets.only(
+                      bottom: 12,
+                      top: 12,
+                      left: 16,
+                      right: 24,
+                    )),
                     backgroundColor:
                         WidgetStateProperty.all(const Color(0xFFEEF1F4)),
                     shape: WidgetStateProperty.all(RoundedRectangleBorder(
@@ -237,6 +252,12 @@ class RegisterScreen extends ConsumerWidget {
                 Expanded(
                     child: TextButton(
                   style: ButtonStyle(
+                    padding: WidgetStateProperty.all(const EdgeInsets.only(
+                      bottom: 12,
+                      top: 12,
+                      left: 16,
+                      right: 24,
+                    )),
                     backgroundColor:
                         WidgetStateProperty.all(const Color(0xFFEEF1F4)),
                     shape: WidgetStateProperty.all(RoundedRectangleBorder(
@@ -265,14 +286,12 @@ class RegisterScreen extends ConsumerWidget {
                     style: Theme.of(context).textTheme.labelMedium),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => const LoginScreen()));
+                   appRouter.replace(const LoginRoute());
                   },
                   child: Text('Login',
-                      style: Theme.of(context)
-                          .textTheme
-                          .labelLarge
-                          ?.copyWith(color: AppColors.primaryColor,fontWeight: FontWeight.w600)),
+                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                          color: AppColors.primaryColor,
+                          fontWeight: FontWeight.w600)),
                 )
               ],
             ),

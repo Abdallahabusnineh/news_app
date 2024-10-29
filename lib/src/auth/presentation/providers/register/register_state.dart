@@ -6,15 +6,19 @@ class RegisterState {
   final bool showPassword;
   final bool showConfirmedPassword;
   final bool rememberMe;
+  final bool showSuffixIconForUserName;
+  final bool filledColor;
 
-  RegisterState({required this.isInitial, required this.isLoading, required this.isSuccess, required this.isError, required this.showPassword, required this.showConfirmedPassword, required this.rememberMe});
+  RegisterState({required this.isInitial, required this.filledColor,required this.showSuffixIconForUserName,required this.isLoading, required this.isSuccess, required this.isError, required this.showPassword, required this.showConfirmedPassword, required this.rememberMe});
 
 
 
 
   // To copy the current state and update the values
-  RegisterState copyWith({bool? rememberMe,bool? isLoading, bool? isSuccess, bool? isError,bool ?isInitial,bool ?showPassword,bool ?showConfirmedPassword}) {
+  RegisterState copyWith({bool? rememberMe,bool? isLoading, bool? isSuccess, bool? filledColor,bool ?showSuffixIconForUserName,bool? isError,bool ?isInitial,bool ?showPassword,bool ?showConfirmedPassword}) {
     return RegisterState(
+      filledColor: filledColor ?? this.filledColor,
+      showSuffixIconForUserName: showSuffixIconForUserName ?? this.showSuffixIconForUserName,
       rememberMe: rememberMe ?? this.rememberMe,
       showConfirmedPassword: showConfirmedPassword ?? this.showConfirmedPassword,
       showPassword: showPassword ?? this.showPassword,

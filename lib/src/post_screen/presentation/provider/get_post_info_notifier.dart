@@ -60,7 +60,7 @@ class GetPostInfoNotifier extends ChangeNotifier {
   }
 
   Future<void> toggleLikePost(int postId) async {
-    isLoading = true;
+
     try {
       final result = await getPostInfoRepository.toggleLikePost(postId);
       result.fold((l) {

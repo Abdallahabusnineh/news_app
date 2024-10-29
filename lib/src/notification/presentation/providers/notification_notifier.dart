@@ -1,7 +1,5 @@
-import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 import 'package:news_app/src/notification/data/datasource/notificatios_datasource.dart';
 import 'package:news_app/src/notification/data/models/notification_models.dart';
 import 'package:news_app/src/notification/data/repository/notificatios_repository.dart';

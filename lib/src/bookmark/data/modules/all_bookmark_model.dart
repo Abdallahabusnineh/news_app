@@ -1,4 +1,3 @@
-import 'package:news_app/src/bookmark/domain/entities/add_fav_bookmark.dart';
 import 'package:news_app/src/bookmark/domain/entities/all_bookmark.dart';
 
 class AllBookmarkModel extends AllBookMark {
