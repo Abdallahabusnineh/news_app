@@ -1,0 +1,57 @@
+import 'package:flutter/material.dart';
+
+class CustomErrorWidget extends StatelessWidget {
+  const CustomErrorWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Oops! Something Went Wrong')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.error_outline, color: Colors.red, size: 80),
+              const SizedBox(height: 16),
+              const Text(
+                'An error occurred',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
+              const Text(
+                'We’re sorry for the inconvenience. Please try again or contact support if the issue persists.',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16, color: Colors.black54),
+              ),
+              const SizedBox(height: 24),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop(); // Go back to the previous screen
+                },
+                child: const Text('Go Back'),
+              ),
+              const SizedBox(height: 8),
+              ElevatedButton(
+                onPressed: () {
+                  // Optionally add retry logic here
+                },
+                child: const Text('Retry'),
+              ),
+              // You can also show the error details in debug mode
+              if (const bool.fromEnvironment('dart.vm.product') == false)
+                const Padding(
+                  padding: EdgeInsets.only(top: 16.0),
+                  child: Text(
+                    'Error: {errorDetails.exception}',
+                    style: TextStyle(color: Colors.red, fontSize: 12),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

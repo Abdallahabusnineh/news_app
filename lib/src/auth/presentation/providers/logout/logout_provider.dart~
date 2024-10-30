@@ -64,15 +64,7 @@ class LogoutChangeNotifier extends ChangeNotifier {
     } catch (e) {
       // Handle error
       isError = true;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: AppColors.errorColor,
-          content: Text(
-            'Logout Failed',
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-        ),
-      );
+      showToast(text: 'Logout Failed', state: ToastState.ERROR);
       print('logout error catch $e');
     }
     isLoading = false;

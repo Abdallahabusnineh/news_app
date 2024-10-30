@@ -13,14 +13,14 @@ class CreateProfileModel extends CreateProfile {
 
   factory CreateProfileModel.fromJson(Map<String, dynamic> json) {
     return CreateProfileModel(
-      userId: json['user_id']??0,
-      imageUri: json['image_uri']??'',
-      fullName: json['full_name']??'',
-      phoneNumber: json['phone_number']??'',
-      countryName: json['country']['country_name']??'',
-      countryId: json['country']['country_id']??0,
-      bio: json['bio']??'',
-      website: json['website']??'',
+      userId: json['user_id'],
+      imageUri: json['image_uri'],
+      fullName: json['full_name'],
+      phoneNumber: json['phone_number'],
+      countryName: json['country']['country_name'],
+      countryId: json['country']['country_id'],
+      bio: json['bio'],
+      website: json['website'],
     );
   }
 }

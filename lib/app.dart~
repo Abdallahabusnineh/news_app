@@ -17,6 +17,18 @@ class MyApp extends ConsumerWidget {
     final notifier = ref.watch(themeNotifierProvider.notifier);
     final themeMode = ref.watch(themeNotifierProvider);
     // Get the current theme mode
+    ErrorWidget.builder = (FlutterErrorDetails details) {
+      print('flutter errorrrrrrr2');
+      return
+        Builder(builder: (context) {
+          print('flutter errorrrrrrr3');
+          return CustomErrorPage(
+            errorDetails: details,
+            key: Key('error'),
+          );
+        });
+    };
+
     return ResponsiveSizer(
       builder: (BuildContext c, Orientation o, ScreenType st) {
         return MaterialApp.router(

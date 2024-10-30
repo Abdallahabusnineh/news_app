@@ -21,11 +21,9 @@ class ProfileScreen extends ConsumerWidget {
       length: 2,
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
-         
           shape: const CircleBorder(),
           onPressed: () {
             appRouter.push( CreateNewsPostRoute());
-
           },
           backgroundColor: AppColors.primaryColor,
           child: const Icon(
@@ -200,10 +198,8 @@ class ProfileScreen extends ConsumerWidget {
                       SizedBox(
                         height: 2.h,
                       ),
-                      const Expanded(
-                        child: TabBarView(
-                            children: [MyNewsTabBar(), RecentMyNewsTabBar()]),
-                      ),
+                      TabBarView(
+                          children: [MyNewsTabBar(), RecentMyNewsTabBar()]),
                     ],
                   ),
                 ),

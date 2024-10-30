@@ -130,6 +130,7 @@ class NotificationScreen extends ConsumerWidget {
                                                     notificationByDate.newsId);
                                           },
                                           child: Container(
+                                            color: Colors.red,
                                             padding: const EdgeInsets.only(
                                                 left: 8,
                                                 right: 8,
@@ -203,7 +204,7 @@ class NotificationScreen extends ConsumerWidget {
                                                                   .textTheme
                                                                   .bodyMedium,
                                                             ):TextSpan(
-                                                              text:notificationByDate.type == 'like'?' liked your post ':'commented on your post',
+                                                              text:notificationByDate.type == 'like'?'liked your post ':'commented on your post',
                                                             ),
                                                           ],
                                                         ),

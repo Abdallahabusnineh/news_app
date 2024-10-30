@@ -24,7 +24,6 @@ class ProfileScreen extends ConsumerWidget {
           shape: const CircleBorder(),
           onPressed: () {
             appRouter.push( CreateNewsPostRoute());
-
           },
           backgroundColor: AppColors.primaryColor,
           child: const Icon(

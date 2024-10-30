@@ -33,7 +33,7 @@ class AppRouter extends RootStackRouter  {
   @override
   List<AutoRoute> get routes => [
     /// routes go here
-    AutoRoute(page: InitialRoute.page,initial: true),
+    AutoRoute(page: InitialRoute.page),
     AutoRoute(page: OnBoardingRoute.page),
     AutoRoute(page: LoginRoute.page),
     AutoRoute(page: RegisterRoute.page),
@@ -55,7 +55,7 @@ class AppRouter extends RootStackRouter  {
     AutoRoute(page: BookmarkRoute.page),
     AutoRoute(page: VisitProfileAuthorRoute.page),
     AutoRoute(page: CommentRoute.page),
-    AutoRoute(page: SelectCountryRoute.page,),
+    AutoRoute(page: SelectCountryRoute.page,initial: true),
   ];
 
 }

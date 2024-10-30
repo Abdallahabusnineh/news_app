@@ -123,7 +123,7 @@ class CommentScreen extends ConsumerWidget {
               BorderSide(
                 color: Theme.of(context).brightness == Brightness.light
                     ? Colors.grey.shade300
-                    : AppColors.whiteColor,
+                    : Colors.transparent,
                 width: 1,
               ),
             )

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/shared/abstraction/cash_helper.dart';
-import 'package:news_app/shared/core/theme/app_colors.dart';
+
 import 'package:news_app/shared/core/utils/app_constant.dart';
 import 'package:news_app/shared/core/utils/app_router.dart';
 import 'package:news_app/shared/core/utils/show_toast.dart';

@@ -65,11 +65,11 @@ class PostScreen extends ConsumerWidget {
                       height: 1.h,
                     ),
                     Text(
-                      postItem?.topicName ?? '',
+                      postItem.topicName,
                       style: Theme.of(context).textTheme.labelMedium,
                     ),
                     Text(
-                      postItem?.title ?? '',
+                      postItem.title ?? '',
                       style: Theme.of(context)
                           .textTheme
                           .bodyMedium
@@ -81,7 +81,7 @@ class PostScreen extends ConsumerWidget {
                     ),
                     RichText(
                         text: TextSpan(
-                      text: postItem?.content,
+                      text: postItem.content,
                       style: Theme.of(context).textTheme.labelLarge,
                     )),
                     SizedBox(
@@ -103,7 +103,7 @@ class PostScreen extends ConsumerWidget {
     BorderSide(
     color: Theme.of(context).brightness == Brightness.light
     ? Colors.grey.shade200
-        : AppColors.whiteColor,
+        : Colors.transparent,
     width: 1,
     ),),),
           child: Row(

@@ -1,13 +1,20 @@
 class CreateProfile {
-  final String name;
-  final String email;
-  final String type;
-  final String phone;
+  final int userId;
   final String imageUri;
   final String fullName;
-  final int countryId;
+  final String phoneNumber;
   final String countryName;
+  final int countryId;
+  final String bio;
+  final String website;
 
-  CreateProfile({required this.name, required this.email, required this.type, required this.phone, required this.imageUri, required this.fullName, required this.countryId, required this.countryName});
-
-  }
+  CreateProfile(
+      {required this.userId,
+      required this.imageUri,
+      required this.fullName,
+      required this.phoneNumber,
+      required this.countryName,
+      required this.countryId,
+      required this.bio,
+      required this.website});
+}
