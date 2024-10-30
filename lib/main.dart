@@ -41,17 +41,7 @@ FlutterError.onError = (FlutterErrorDetails details)  {
       ),
     );
   };*/
-  ErrorWidget.builder = (FlutterErrorDetails details) {
-    print('flutter errorrrrrrr2');
-    return
-      Builder(builder: (context) {
-        print('flutter errorrrrrrr3');
-        return CustomErrorPage(
-          errorDetails: details,
-          key: Key('error'),
-        );
-      });
-  };
+
   runApp(
     const ProviderScope(child: MyApp()),
   );
