@@ -53,10 +53,6 @@ FlutterError.onError = (FlutterErrorDetails details)  {
       });
   };
   runApp(
-    DevicePreview(
-      enabled: false,
-      builder: (context) =>
-          const ProviderScope(child: MyApp()), // Wrap your app
-    ),
+    const ProviderScope(child: MyApp()),
   );
 }
